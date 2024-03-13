@@ -1,0 +1,127 @@
+{
+  "project_info": {
+    "project_number": "864744635617",
+    "firebase_url": "https://remus-ccc64-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "remus-ccc64",
+    "storage_bucket": "remus-ccc64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864744635617:android:3144da90305719cb79cba0",
+        "android_client_info": {
+          "package_name": "com.flutterflow.remus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864744635617-htmcc4dh0pukrplmd98k890b7apn0ijd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterflow.remus",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "864744635617-rb83hq7vr8u46haemqh3d9i7reapnnqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_Qu3t2wnmcg1mMZV_qXaaAwgXzOwfc68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864744635617-rb83hq7vr8u46haemqh3d9i7reapnnqt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "864744635617-4k11j906bkv27uiop4uiok3rolfodu9h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "health.ai"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864744635617:android:61c9ea13cc391f4379cba0",
+        "android_client_info": {
+          "package_name": "com.mycompany.appremus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864744635617-rb83hq7vr8u46haemqh3d9i7reapnnqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_Qu3t2wnmcg1mMZV_qXaaAwgXzOwfc68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864744635617-rb83hq7vr8u46haemqh3d9i7reapnnqt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "864744635617-4k11j906bkv27uiop4uiok3rolfodu9h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "health.ai"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864744635617:android:eccfc624fd5bb87979cba0",
+        "android_client_info": {
+          "package_name": "health.ai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864744635617-rb83hq7vr8u46haemqh3d9i7reapnnqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_Qu3t2wnmcg1mMZV_qXaaAwgXzOwfc68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864744635617-rb83hq7vr8u46haemqh3d9i7reapnnqt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "864744635617-4k11j906bkv27uiop4uiok3rolfodu9h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "health.ai"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
