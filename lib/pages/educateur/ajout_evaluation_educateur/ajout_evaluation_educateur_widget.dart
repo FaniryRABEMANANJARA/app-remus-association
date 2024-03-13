@@ -238,19 +238,6 @@ class _AjoutEvaluationEducateurWidgetState
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12.0),
-                      child: Image.asset(
-                        'assets/images/mission.jpg',
-                        width: double.infinity,
-                        height: 200.0,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: Container(
                       width: double.infinity,
@@ -339,9 +326,10 @@ class _AjoutEvaluationEducateurWidgetState
                         await NoteEducateurRecord.collection
                             .doc()
                             .set(createNoteEducateurRecordData(
-                              commentaire: '',
-                              note: '',
-                              nomAssociation: '',
+                              commentaire: _model.commentaireController.text,
+                              note: _model.noteController.text,
+                              nomAssociation:
+                                  _model.nomAssociationController.text,
                             ));
                       },
                       text: 'Valider',

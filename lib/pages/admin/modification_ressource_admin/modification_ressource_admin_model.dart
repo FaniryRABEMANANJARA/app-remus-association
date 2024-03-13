@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'modification_ressource_admin_widget.dart'
     show ModificationRessourceAdminWidget;
@@ -22,10 +24,8 @@ class ModificationRessourceAdminModel
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue1;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue2;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController;
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionController;
@@ -46,4 +46,6 @@ class ModificationRessourceAdminModel
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  String? get radioButtonValue => radioButtonValueController?.value;
 }

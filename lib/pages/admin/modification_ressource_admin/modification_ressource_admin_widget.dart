@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -639,129 +641,36 @@ class _ModificationRessourceAdminWidgetState
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
                                         children: [
-                                          Container(
-                                            width: 25.0,
-                                            height: 25.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              border: Border.all(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            child: Theme(
-                                              data: ThemeData(
-                                                checkboxTheme:
-                                                    CheckboxThemeData(
-                                                  visualDensity:
-                                                      VisualDensity.compact,
-                                                  materialTapTargetSize:
-                                                      MaterialTapTargetSize
-                                                          .shrinkWrap,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            4.0),
-                                                  ),
-                                                ),
-                                                unselectedWidgetColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                              ),
-                                              child: Checkbox(
-                                                value: _model.checkboxValue1 ??=
-                                                    true,
-                                                onChanged: (newValue) async {
-                                                  setState(() =>
-                                                      _model.checkboxValue1 =
-                                                          newValue!);
-                                                },
-                                                activeColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                checkColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Vidéo  ',
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                          ),
-                                          Container(
-                                            width: 25.0,
-                                            height: 25.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              border: Border.all(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            child: Theme(
-                                              data: ThemeData(
-                                                checkboxTheme:
-                                                    CheckboxThemeData(
-                                                  visualDensity:
-                                                      VisualDensity.compact,
-                                                  materialTapTargetSize:
-                                                      MaterialTapTargetSize
-                                                          .shrinkWrap,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            4.0),
-                                                  ),
-                                                ),
-                                                unselectedWidgetColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                              ),
-                                              child: Checkbox(
-                                                value: _model.checkboxValue2 ??=
-                                                    true,
-                                                onChanged: (newValue) async {
-                                                  setState(() =>
-                                                      _model.checkboxValue2 =
-                                                          newValue!);
-                                                },
-                                                activeColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                checkColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Document ',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
+                                          FlutterFlowRadioButton(
+                                            options:
+                                                ['Vidéo', 'Document'].toList(),
+                                            onChanged: (val) => setState(() {}),
+                                            controller: _model
+                                                    .radioButtonValueController ??=
+                                                FormFieldController<String>(
+                                                    null),
+                                            optionHeight: 32.0,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            selectedTextStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium,
+                                            buttonPosition:
+                                                RadioButtonPosition.left,
+                                            direction: Axis.horizontal,
+                                            radioButtonColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            inactiveRadioButtonColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryText,
+                                            toggleable: false,
+                                            horizontalAlignment:
+                                                WrapAlignment.start,
+                                            verticalAlignment:
+                                                WrapCrossAlignment.start,
                                           ),
                                         ],
                                       ),

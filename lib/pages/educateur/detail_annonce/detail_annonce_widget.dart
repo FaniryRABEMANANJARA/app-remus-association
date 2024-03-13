@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -62,52 +63,94 @@ class _DetailAnnonceWidgetState extends State<DetailAnnonceWidget> {
         centerTitle: false,
         elevation: 0.0,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: Image.network(
-                  'https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8eW9nYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 230.0,
-                  fit: BoxFit.cover,
+      body: StreamBuilder<List<AnnonceRecord>>(
+        stream: queryAnnonceRecord(
+          singleRecord: true,
+        ),
+        builder: (context, snapshot) {
+          // Customize what your widget looks like when it's loading.
+          if (!snapshot.hasData) {
+            return Center(
+              child: SizedBox(
+                width: 50.0,
+                height: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Annonce',
-                    style: FlutterFlowTheme.of(context).headlineMedium,
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                    child: Text(
-                      'Date de création',
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).primary,
-                          ),
+            );
+          }
+          List<AnnonceRecord> columnMainContentAnnonceRecordList =
+              snapshot.data!;
+          // Return an empty Container when the item does not exist.
+          if (snapshot.data!.isEmpty) {
+            return Container();
+          }
+          final columnMainContentAnnonceRecord =
+              columnMainContentAnnonceRecordList.isNotEmpty
+                  ? columnMainContentAnnonceRecordList.first
+                  : null;
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.0),
+                    child: Image.network(
+                      columnMainContentAnnonceRecord!.image,
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: 230.0,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  Text(
-                    'Contenu de l\'annonce ',
-                    style: FlutterFlowTheme.of(context).labelLarge,
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        valueOrDefault<String>(
+                          columnMainContentAnnonceRecord?.nom,
+                          'nom',
+                        ),
+                        style: FlutterFlowTheme.of(context).headlineMedium,
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                        child: Text(
+                          valueOrDefault<String>(
+                            columnMainContentAnnonceRecord?.date,
+                            'date',
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).titleMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
+                        ),
+                      ),
+                      Text(
+                        valueOrDefault<String>(
+                          columnMainContentAnnonceRecord?.description,
+                          'description',
+                        ),
+                        style: FlutterFlowTheme.of(context).labelLarge,
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

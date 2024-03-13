@@ -1,7 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,6 +31,9 @@ class _AjoutAnnonceAdminWidgetState extends State<AjoutAnnonceAdminWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AjoutAnnonceAdminModel());
+
+    _model.nomController ??= TextEditingController();
+    _model.nomFocusNode ??= FocusNode();
 
     _model.descriptionController ??= TextEditingController();
     _model.descriptionFocusNode ??= FocusNode();
@@ -131,159 +139,101 @@ class _AjoutAnnonceAdminWidgetState extends State<AjoutAnnonceAdminWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium,
                                             ),
-                                            InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                final _datePicked1Date =
-                                                    await showDatePicker(
-                                                  context: context,
-                                                  initialDate:
-                                                      getCurrentTimestamp,
-                                                  firstDate:
-                                                      getCurrentTimestamp,
-                                                  lastDate: DateTime(2050),
-                                                  builder: (context, child) {
-                                                    return wrapInMaterialDatePickerTheme(
-                                                      context,
-                                                      child!,
-                                                      headerBackgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      headerForegroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      headerTextStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 32.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                      pickerBackgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryBackground,
-                                                      pickerForegroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      selectedDateTimeBackgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      selectedDateTimeForegroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      actionButtonForegroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      iconSize: 24.0,
-                                                    );
-                                                  },
-                                                );
-
-                                                TimeOfDay? _datePicked1Time;
-                                                if (_datePicked1Date != null) {
-                                                  _datePicked1Time =
-                                                      await showTimePicker(
-                                                    context: context,
-                                                    initialTime:
-                                                        TimeOfDay.fromDateTime(
-                                                            getCurrentTimestamp),
-                                                    builder: (context, child) {
-                                                      return wrapInMaterialTimePickerTheme(
-                                                        context,
-                                                        child!,
-                                                        headerBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        headerForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        headerTextStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineLarge
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  fontSize:
-                                                                      32.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                        pickerBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryBackground,
-                                                        pickerForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        selectedDateTimeBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        selectedDateTimeForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        actionButtonForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        iconSize: 24.0,
-                                                      );
-                                                    },
-                                                  );
-                                                }
-
-                                                if (_datePicked1Date != null &&
-                                                    _datePicked1Time != null) {
-                                                  safeSetState(() {
-                                                    _model.datePicked1 =
-                                                        DateTime(
-                                                      _datePicked1Date.year,
-                                                      _datePicked1Date.month,
-                                                      _datePicked1Date.day,
-                                                      _datePicked1Time!.hour,
-                                                      _datePicked1Time.minute,
-                                                    );
-                                                  });
-                                                }
-                                              },
-                                              child: Container(
-                                                width: double.infinity,
-                                                height: 48.0,
-                                                decoration: BoxDecoration(
+                                            Container(
+                                              width: double.infinity,
+                                              height: 48.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                                border: Border.all(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                  border: Border.all(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                    width: 2.0,
+                                                      .alternate,
+                                                  width: 2.0,
+                                                ),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        8.0, 0.0, 8.0, 0.0),
+                                                child: TextFormField(
+                                                  controller:
+                                                      _model.nomController,
+                                                  focusNode:
+                                                      _model.nomFocusNode,
+                                                  autofocus: true,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium,
+                                                    hintStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium,
+                                                    enabledBorder:
+                                                        UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
                                                   ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                  validator: _model
+                                                      .nomControllerValidator
+                                                      .asValidator(context),
                                                 ),
                                               ),
                                             ),
@@ -314,7 +264,7 @@ class _AjoutAnnonceAdminWidgetState extends State<AjoutAnnonceAdminWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                final _datePicked2Date =
+                                                final _datePickedDate =
                                                     await showDatePicker(
                                                   context: context,
                                                   initialDate:
@@ -371,75 +321,13 @@ class _AjoutAnnonceAdminWidgetState extends State<AjoutAnnonceAdminWidget> {
                                                   },
                                                 );
 
-                                                TimeOfDay? _datePicked2Time;
-                                                if (_datePicked2Date != null) {
-                                                  _datePicked2Time =
-                                                      await showTimePicker(
-                                                    context: context,
-                                                    initialTime:
-                                                        TimeOfDay.fromDateTime(
-                                                            getCurrentTimestamp),
-                                                    builder: (context, child) {
-                                                      return wrapInMaterialTimePickerTheme(
-                                                        context,
-                                                        child!,
-                                                        headerBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        headerForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        headerTextStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineLarge
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  fontSize:
-                                                                      32.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                        pickerBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryBackground,
-                                                        pickerForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        selectedDateTimeBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        selectedDateTimeForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        actionButtonForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        iconSize: 24.0,
-                                                      );
-                                                    },
-                                                  );
-                                                }
-
-                                                if (_datePicked2Date != null &&
-                                                    _datePicked2Time != null) {
+                                                if (_datePickedDate != null) {
                                                   safeSetState(() {
-                                                    _model.datePicked2 =
+                                                    _model.datePicked =
                                                         DateTime(
-                                                      _datePicked2Date.year,
-                                                      _datePicked2Date.month,
-                                                      _datePicked2Date.day,
-                                                      _datePicked2Time!.hour,
-                                                      _datePicked2Time.minute,
+                                                      _datePickedDate.year,
+                                                      _datePickedDate.month,
+                                                      _datePickedDate.day,
                                                     );
                                                   });
                                                 }
@@ -473,7 +361,7 @@ class _AjoutAnnonceAdminWidgetState extends State<AjoutAnnonceAdminWidget> {
                                                     child: Text(
                                                       dateTimeFormat(
                                                         'd/M/y',
-                                                        _model.datePicked2,
+                                                        _model.datePicked,
                                                         locale:
                                                             FFLocalizations.of(
                                                                     context)
@@ -485,6 +373,154 @@ class _AjoutAnnonceAdminWidgetState extends State<AjoutAnnonceAdminWidget> {
                                                               .bodyLarge,
                                                     ),
                                                   ),
+                                                ),
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(height: 4.0)),
+                                        ),
+                                      ),
+                                    ].divide(SizedBox(width: 12.0)),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Image',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium,
+                                            ),
+                                            Container(
+                                              width: double.infinity,
+                                              height: 48.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                                border: Border.all(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .alternate,
+                                                  width: 2.0,
+                                                ),
+                                              ),
+                                              child: FFButtonWidget(
+                                                onPressed: () async {
+                                                  final selectedMedia =
+                                                      await selectMediaWithSourceBottomSheet(
+                                                    context: context,
+                                                    allowPhoto: true,
+                                                  );
+                                                  if (selectedMedia != null &&
+                                                      selectedMedia.every((m) =>
+                                                          validateFileFormat(
+                                                              m.storagePath,
+                                                              context))) {
+                                                    setState(() =>
+                                                        _model.isDataUploading =
+                                                            true);
+                                                    var selectedUploadedFiles =
+                                                        <FFUploadedFile>[];
+
+                                                    var downloadUrls =
+                                                        <String>[];
+                                                    try {
+                                                      selectedUploadedFiles =
+                                                          selectedMedia
+                                                              .map((m) =>
+                                                                  FFUploadedFile(
+                                                                    name: m
+                                                                        .storagePath
+                                                                        .split(
+                                                                            '/')
+                                                                        .last,
+                                                                    bytes:
+                                                                        m.bytes,
+                                                                    height: m
+                                                                        .dimensions
+                                                                        ?.height,
+                                                                    width: m
+                                                                        .dimensions
+                                                                        ?.width,
+                                                                    blurHash: m
+                                                                        .blurHash,
+                                                                  ))
+                                                              .toList();
+
+                                                      downloadUrls =
+                                                          (await Future.wait(
+                                                        selectedMedia.map(
+                                                          (m) async =>
+                                                              await uploadData(
+                                                                  m.storagePath,
+                                                                  m.bytes),
+                                                        ),
+                                                      ))
+                                                              .where((u) =>
+                                                                  u != null)
+                                                              .map((u) => u!)
+                                                              .toList();
+                                                    } finally {
+                                                      _model.isDataUploading =
+                                                          false;
+                                                    }
+                                                    if (selectedUploadedFiles
+                                                                .length ==
+                                                            selectedMedia
+                                                                .length &&
+                                                        downloadUrls.length ==
+                                                            selectedMedia
+                                                                .length) {
+                                                      setState(() {
+                                                        _model.uploadedLocalFile =
+                                                            selectedUploadedFiles
+                                                                .first;
+                                                        _model.uploadedFileUrl =
+                                                            downloadUrls.first;
+                                                      });
+                                                    } else {
+                                                      setState(() {});
+                                                      return;
+                                                    }
+                                                  }
+                                                },
+                                                text: 'Télécharger',
+                                                icon: Icon(
+                                                  Icons.download_for_offline,
+                                                  size: 15.0,
+                                                ),
+                                                options: FFButtonOptions(
+                                                  height: 40.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          24.0, 0.0, 24.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge,
+                                                  elevation: 3.0,
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
                                                 ),
                                               ),
                                             ),
@@ -597,10 +633,19 @@ class _AjoutAnnonceAdminWidgetState extends State<AjoutAnnonceAdminWidget> {
                         EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        if (_model.formKey.currentState == null ||
-                            !_model.formKey.currentState!.validate()) {
-                          return;
-                        }
+                        await AnnonceRecord.collection
+                            .doc()
+                            .set(createAnnonceRecordData(
+                              nom: _model.nomController.text,
+                              date: dateTimeFormat(
+                                'd/M/y',
+                                _model.datePicked,
+                                locale:
+                                    FFLocalizations.of(context).languageCode,
+                              ),
+                              description: _model.descriptionController.text,
+                              image: _model.uploadedFileUrl,
+                            ));
                       },
                       text: 'Ajouter',
                       options: FFButtonOptions(
