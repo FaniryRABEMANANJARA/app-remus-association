@@ -8,14 +8,16 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
-import 'ajout_mission_admin_widget.dart' show AjoutMissionAdminWidget;
+import 'modification_mission_admin_widget.dart'
+    show ModificationMissionAdminWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class AjoutMissionAdminModel extends FlutterFlowModel<AjoutMissionAdminWidget> {
+class ModificationMissionAdminModel
+    extends FlutterFlowModel<ModificationMissionAdminWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

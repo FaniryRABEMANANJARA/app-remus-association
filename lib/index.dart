@@ -34,18 +34,12 @@ export '/pages/educateur/detail_mission/detail_mission_widget.dart'
     show DetailMissionWidget;
 export '/pages/educateur/detail_annonce/detail_annonce_widget.dart'
     show DetailAnnonceWidget;
-export '/pages/admin/ajout_mission_admin/ajout_mission_admin_widget.dart'
-    show AjoutMissionAdminWidget;
 export '/pages/admin/liste_mission_admin/liste_mission_admin_widget.dart'
     show ListeMissionAdminWidget;
-export '/pages/admin/ajout_ressource_admin/ajout_ressource_admin_widget.dart'
-    show AjoutRessourceAdminWidget;
 export '/pages/admin/modification_ressource_admin/modification_ressource_admin_widget.dart'
     show ModificationRessourceAdminWidget;
 export '/pages/admin/gestion_ressources_admin/gestion_ressources_admin_widget.dart'
     show GestionRessourcesAdminWidget;
-export '/pages/admin/ajout_maison_admin/ajout_maison_admin_widget.dart'
-    show AjoutMaisonAdminWidget;
 export '/pages/association/ajout_evaluation/ajout_evaluation_widget.dart'
     show AjoutEvaluationWidget;
 export '/pages/educateur/ajout_evaluation_educateur/ajout_evaluation_educateur_widget.dart'
@@ -62,3 +56,19 @@ export '/pages/educateur/engagement/engagement_widget.dart'
     show EngagementWidget;
 export '/pages/association/modification_profile_association/modification_profile_association_widget.dart'
     show ModificationProfileAssociationWidget;
+export '/pages/admin/ajout_mission_admin/ajout_mission_admin_widget.dart'
+    show AjoutMissionAdminWidget;
+export '/pages/admin/modification_mission_admin/modification_mission_admin_widget.dart'
+    show ModificationMissionAdminWidget;
+export '/pages/admin/ajout_ressource_admin/ajout_ressource_admin_widget.dart'
+    show AjoutRessourceAdminWidget;
+export '/pages/admin/ajout_maison_admin/ajout_maison_admin_widget.dart'
+    show AjoutMaisonAdminWidget;
+export '/pages/admin/liste_maison_admin/liste_maison_admin_widget.dart'
+    show ListeMaisonAdminWidget;
+export '/pages/admin/modification_maison_admin/modification_maison_admin_widget.dart'
+    show ModificationMaisonAdminWidget;
+export '/pages/admin/liste_annonce_admin/liste_annonce_admin_widget.dart'
+    show ListeAnnonceAdminWidget;
+export '/pages/admin/modification_annonce_admin/modification_annonce_admin_widget.dart'
+    show ModificationAnnonceAdminWidget;

@@ -2,37 +2,36 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'ajout_ressource_admin_model.dart';
-export 'ajout_ressource_admin_model.dart';
+import 'modification_annonce_admin_model.dart';
+export 'modification_annonce_admin_model.dart';
 
-class AjoutRessourceAdminWidget extends StatefulWidget {
-  const AjoutRessourceAdminWidget({super.key});
+class ModificationAnnonceAdminWidget extends StatefulWidget {
+  const ModificationAnnonceAdminWidget({super.key});
 
   @override
-  State<AjoutRessourceAdminWidget> createState() =>
-      _AjoutRessourceAdminWidgetState();
+  State<ModificationAnnonceAdminWidget> createState() =>
+      _ModificationAnnonceAdminWidgetState();
 }
 
-class _AjoutRessourceAdminWidgetState extends State<AjoutRessourceAdminWidget> {
-  late AjoutRessourceAdminModel _model;
+class _ModificationAnnonceAdminWidgetState
+    extends State<ModificationAnnonceAdminWidget> {
+  late ModificationAnnonceAdminModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AjoutRessourceAdminModel());
+    _model = createModel(context, () => ModificationAnnonceAdminModel());
 
     _model.nomController ??= TextEditingController();
     _model.nomFocusNode ??= FocusNode();
@@ -66,11 +65,11 @@ class _AjoutRessourceAdminWidgetState extends State<AjoutRessourceAdminWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Création de Ressources',
+                'Modification une annonce',
                 style: FlutterFlowTheme.of(context).headlineMedium,
               ),
               Text(
-                'Formulaire pour créer une ressource',
+                'Formulaire pour modifier une annonce',
                 style: FlutterFlowTheme.of(context).labelMedium,
               ),
             ].divide(SizedBox(height: 4.0)),
@@ -323,75 +322,13 @@ class _AjoutRessourceAdminWidgetState extends State<AjoutRessourceAdminWidget> {
                                                   },
                                                 );
 
-                                                TimeOfDay? _datePickedTime;
                                                 if (_datePickedDate != null) {
-                                                  _datePickedTime =
-                                                      await showTimePicker(
-                                                    context: context,
-                                                    initialTime:
-                                                        TimeOfDay.fromDateTime(
-                                                            getCurrentTimestamp),
-                                                    builder: (context, child) {
-                                                      return wrapInMaterialTimePickerTheme(
-                                                        context,
-                                                        child!,
-                                                        headerBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        headerForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        headerTextStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineLarge
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  fontSize:
-                                                                      32.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                        pickerBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryBackground,
-                                                        pickerForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        selectedDateTimeBackgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        selectedDateTimeForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        actionButtonForegroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        iconSize: 24.0,
-                                                      );
-                                                    },
-                                                  );
-                                                }
-
-                                                if (_datePickedDate != null &&
-                                                    _datePickedTime != null) {
                                                   safeSetState(() {
                                                     _model.datePicked =
                                                         DateTime(
                                                       _datePickedDate.year,
                                                       _datePickedDate.month,
                                                       _datePickedDate.day,
-                                                      _datePickedTime!.hour,
-                                                      _datePickedTime.minute,
                                                     );
                                                   });
                                                 }
@@ -423,7 +360,14 @@ class _AjoutRessourceAdminWidgetState extends State<AjoutRessourceAdminWidget> {
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Feb. 9th',
+                                                      dateTimeFormat(
+                                                        'd/M/y',
+                                                        _model.datePicked,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -448,7 +392,7 @@ class _AjoutRessourceAdminWidgetState extends State<AjoutRessourceAdminWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Fichier',
+                                              'Image',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium,
@@ -550,6 +494,10 @@ class _AjoutRessourceAdminWidgetState extends State<AjoutRessourceAdminWidget> {
                                                   }
                                                 },
                                                 text: 'Télécharger',
+                                                icon: Icon(
+                                                  Icons.download_for_offline,
+                                                  size: 15.0,
+                                                ),
                                                 options: FFButtonOptions(
                                                   height: 40.0,
                                                   padding: EdgeInsetsDirectional
@@ -562,16 +510,10 @@ class _AjoutRessourceAdminWidgetState extends State<AjoutRessourceAdminWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryBackground,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Inter',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge,
                                                   elevation: 3.0,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
@@ -588,62 +530,10 @@ class _AjoutRessourceAdminWidgetState extends State<AjoutRessourceAdminWidget> {
                                       ),
                                     ].divide(SizedBox(width: 12.0)),
                                   ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            'Type',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium,
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          FlutterFlowRadioButton(
-                                            options:
-                                                ['Document', 'Vidéo'].toList(),
-                                            onChanged: (val) => setState(() {}),
-                                            controller: _model
-                                                    .radioButtonValueController ??=
-                                                FormFieldController<String>(
-                                                    null),
-                                            optionHeight: 32.0,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium,
-                                            selectedTextStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
-                                            buttonPosition:
-                                                RadioButtonPosition.left,
-                                            direction: Axis.horizontal,
-                                            radioButtonColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            inactiveRadioButtonColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryText,
-                                            toggleable: false,
-                                            horizontalAlignment:
-                                                WrapAlignment.start,
-                                            verticalAlignment:
-                                                WrapCrossAlignment.start,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
                                   Text(
-                                    'Information ',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    'Contenu de l\'annonce ',
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium,
                                   ),
                                   TextFormField(
                                     controller: _model.descriptionController,
@@ -744,19 +634,18 @@ class _AjoutRessourceAdminWidgetState extends State<AjoutRessourceAdminWidget> {
                         EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        await RessourceRecord.collection
+                        await AnnonceRecord.collection
                             .doc()
-                            .set(createRessourceRecordData(
+                            .set(createAnnonceRecordData(
                               nom: _model.nomController.text,
-                              fichier: _model.uploadedFileUrl,
                               date: dateTimeFormat(
                                 'd/M/y',
                                 _model.datePicked,
                                 locale:
                                     FFLocalizations.of(context).languageCode,
                               ),
-                              type: _model.radioButtonValue,
                               description: _model.descriptionController.text,
+                              image: _model.uploadedFileUrl,
                             ));
                       },
                       text: 'Ajouter',

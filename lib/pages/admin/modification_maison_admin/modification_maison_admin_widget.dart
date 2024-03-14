@@ -1,38 +1,43 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'modification_ressource_admin_model.dart';
-export 'modification_ressource_admin_model.dart';
+import 'modification_maison_admin_model.dart';
+export 'modification_maison_admin_model.dart';
 
-class ModificationRessourceAdminWidget extends StatefulWidget {
-  const ModificationRessourceAdminWidget({super.key});
+class ModificationMaisonAdminWidget extends StatefulWidget {
+  const ModificationMaisonAdminWidget({super.key});
 
   @override
-  State<ModificationRessourceAdminWidget> createState() =>
-      _ModificationRessourceAdminWidgetState();
+  State<ModificationMaisonAdminWidget> createState() =>
+      _ModificationMaisonAdminWidgetState();
 }
 
-class _ModificationRessourceAdminWidgetState
-    extends State<ModificationRessourceAdminWidget> {
-  late ModificationRessourceAdminModel _model;
+class _ModificationMaisonAdminWidgetState
+    extends State<ModificationMaisonAdminWidget> {
+  late ModificationMaisonAdminModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ModificationRessourceAdminModel());
+    _model = createModel(context, () => ModificationMaisonAdminModel());
+
+    _model.nomController ??= TextEditingController();
+    _model.nomFocusNode ??= FocusNode();
+
+    _model.tauxHoraireController ??= TextEditingController();
+    _model.tauxHoraireFocusNode ??= FocusNode();
 
     _model.descriptionController ??= TextEditingController();
     _model.descriptionFocusNode ??= FocusNode();
@@ -63,11 +68,11 @@ class _ModificationRessourceAdminWidgetState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Modification de Ressources',
+                'Modification d\'une maison',
                 style: FlutterFlowTheme.of(context).headlineMedium,
               ),
               Text(
-                'Formulaire pour modifier une ressource',
+                'Formulaire pour modifier une maison',
                 style: FlutterFlowTheme.of(context).labelMedium,
               ),
             ].divide(SizedBox(height: 4.0)),
@@ -100,10 +105,8 @@ class _ModificationRessourceAdminWidgetState
           child: Form(
             key: _model.formKey,
             autovalidateMode: AutovalidateMode.disabled,
-            child: StreamBuilder<List<RessourceRecord>>(
-              stream: queryRessourceRecord(
-                queryBuilder: (ressourceRecord) =>
-                    ressourceRecord.orderBy('date', descending: true),
+            child: StreamBuilder<List<MaisonRecord>>(
+              stream: queryMaisonRecord(
                 singleRecord: true,
               ),
               builder: (context, snapshot) {
@@ -121,16 +124,14 @@ class _ModificationRessourceAdminWidgetState
                     ),
                   );
                 }
-                List<RessourceRecord> columnRessourceRecordList =
-                    snapshot.data!;
+                List<MaisonRecord> columnMaisonRecordList = snapshot.data!;
                 // Return an empty Container when the item does not exist.
                 if (snapshot.data!.isEmpty) {
                   return Container();
                 }
-                final columnRessourceRecord =
-                    columnRessourceRecordList.isNotEmpty
-                        ? columnRessourceRecordList.first
-                        : null;
+                final columnMaisonRecord = columnMaisonRecordList.isNotEmpty
+                    ? columnMaisonRecordList.first
+                    : null;
                 return Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,183 +171,116 @@ class _ModificationRessourceAdminWidgetState
                                                           context)
                                                       .labelMedium,
                                                 ),
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    final _datePicked1Date =
-                                                        await showDatePicker(
-                                                      context: context,
-                                                      initialDate:
-                                                          getCurrentTimestamp,
-                                                      firstDate:
-                                                          getCurrentTimestamp,
-                                                      lastDate: DateTime(2050),
-                                                      builder:
-                                                          (context, child) {
-                                                        return wrapInMaterialDatePickerTheme(
-                                                          context,
-                                                          child!,
-                                                          headerBackgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primary,
-                                                          headerForegroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .info,
-                                                          headerTextStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineLarge
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    fontSize:
-                                                                        32.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
-                                                          pickerBackgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .secondaryBackground,
-                                                          pickerForegroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primaryText,
-                                                          selectedDateTimeBackgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primary,
-                                                          selectedDateTimeForegroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .info,
-                                                          actionButtonForegroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primaryText,
-                                                          iconSize: 24.0,
-                                                        );
-                                                      },
-                                                    );
-
-                                                    TimeOfDay? _datePicked1Time;
-                                                    if (_datePicked1Date !=
-                                                        null) {
-                                                      _datePicked1Time =
-                                                          await showTimePicker(
-                                                        context: context,
-                                                        initialTime: TimeOfDay
-                                                            .fromDateTime(
-                                                                getCurrentTimestamp),
-                                                        builder:
-                                                            (context, child) {
-                                                          return wrapInMaterialTimePickerTheme(
-                                                            context,
-                                                            child!,
-                                                            headerBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            headerForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                            headerTextStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      fontSize:
-                                                                          32.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
-                                                            pickerBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                            pickerForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            selectedDateTimeBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            selectedDateTimeForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                            actionButtonForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            iconSize: 24.0,
-                                                          );
-                                                        },
-                                                      );
-                                                    }
-
-                                                    if (_datePicked1Date !=
-                                                            null &&
-                                                        _datePicked1Time !=
-                                                            null) {
-                                                      safeSetState(() {
-                                                        _model.datePicked1 =
-                                                            DateTime(
-                                                          _datePicked1Date.year,
-                                                          _datePicked1Date
-                                                              .month,
-                                                          _datePicked1Date.day,
-                                                          _datePicked1Time!
-                                                              .hour,
-                                                          _datePicked1Time
-                                                              .minute,
-                                                        );
-                                                      });
-                                                    }
-                                                  },
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 48.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.0),
-                                                      border: Border.all(
-                                                        color:
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: 48.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      width: 2.0,
+                                                    ),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                8.0, 0.0),
+                                                    child: TextFormField(
+                                                      controller:
+                                                          _model.nomController,
+                                                      focusNode:
+                                                          _model.nomFocusNode,
+                                                      autofocus: true,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
+                                                                .labelMedium,
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .alternate,
-                                                        width: 2.0,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        focusedBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        errorBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
                                                       ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                      validator: _model
+                                                          .nomControllerValidator
+                                                          .asValidator(context),
                                                     ),
                                                   ),
                                                 ),
                                               ].divide(SizedBox(height: 4.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(width: 12.0)),
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
                                           Expanded(
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -354,7 +288,7 @@ class _ModificationRessourceAdminWidgetState
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Date de création',
+                                                  'Taux Horaire',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelMedium,
@@ -369,7 +303,7 @@ class _ModificationRessourceAdminWidgetState
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
-                                                    final _datePicked2Date =
+                                                    final _datePickedDate =
                                                         await showDatePicker(
                                                       context: context,
                                                       initialDate:
@@ -428,10 +362,10 @@ class _ModificationRessourceAdminWidgetState
                                                       },
                                                     );
 
-                                                    TimeOfDay? _datePicked2Time;
-                                                    if (_datePicked2Date !=
+                                                    TimeOfDay? _datePickedTime;
+                                                    if (_datePickedDate !=
                                                         null) {
-                                                      _datePicked2Time =
+                                                      _datePickedTime =
                                                           await showTimePicker(
                                                         context: context,
                                                         initialTime: TimeOfDay
@@ -489,20 +423,18 @@ class _ModificationRessourceAdminWidgetState
                                                       );
                                                     }
 
-                                                    if (_datePicked2Date !=
+                                                    if (_datePickedDate !=
                                                             null &&
-                                                        _datePicked2Time !=
+                                                        _datePickedTime !=
                                                             null) {
                                                       safeSetState(() {
-                                                        _model.datePicked2 =
+                                                        _model.datePicked =
                                                             DateTime(
-                                                          _datePicked2Date.year,
-                                                          _datePicked2Date
-                                                              .month,
-                                                          _datePicked2Date.day,
-                                                          _datePicked2Time!
-                                                              .hour,
-                                                          _datePicked2Time
+                                                          _datePickedDate.year,
+                                                          _datePickedDate.month,
+                                                          _datePickedDate.day,
+                                                          _datePickedTime!.hour,
+                                                          _datePickedTime
                                                               .minute,
                                                         );
                                                       });
@@ -526,30 +458,96 @@ class _ModificationRessourceAdminWidgetState
                                                         width: 2.0,
                                                       ),
                                                     ),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              -1.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    12.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          dateTimeFormat(
-                                                            'd/M/y',
-                                                            _model.datePicked2,
-                                                            locale: FFLocalizations
-                                                                    .of(context)
-                                                                .languageCode,
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  8.0,
+                                                                  0.0,
+                                                                  8.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .tauxHoraireController,
+                                                        focusNode: _model
+                                                            .tauxHoraireFocusNode,
+                                                        autofocus: true,
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium,
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium,
+                                                          enabledBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                              width: 2.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
                                                           ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyLarge,
+                                                          focusedBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              width: 2.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 2.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 2.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
                                                         ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                        validator: _model
+                                                            .tauxHoraireControllerValidator
+                                                            .asValidator(
+                                                                context),
                                                       ),
                                                     ),
                                                   ),
@@ -597,8 +595,7 @@ class _ModificationRessourceAdminWidgetState
                                                       final selectedMedia =
                                                           await selectMediaWithSourceBottomSheet(
                                                         context: context,
-                                                        allowPhoto: false,
-                                                        allowVideo: true,
+                                                        allowPhoto: true,
                                                       );
                                                       if (selectedMedia !=
                                                               null &&
@@ -612,6 +609,8 @@ class _ModificationRessourceAdminWidgetState
                                                         var selectedUploadedFiles =
                                                             <FFUploadedFile>[];
 
+                                                        var downloadUrls =
+                                                            <String>[];
                                                         try {
                                                           selectedUploadedFiles =
                                                               selectedMedia
@@ -633,17 +632,40 @@ class _ModificationRessourceAdminWidgetState
                                                                             m.blurHash,
                                                                       ))
                                                                   .toList();
+
+                                                          downloadUrls =
+                                                              (await Future
+                                                                      .wait(
+                                                            selectedMedia.map(
+                                                              (m) async =>
+                                                                  await uploadData(
+                                                                      m.storagePath,
+                                                                      m.bytes),
+                                                            ),
+                                                          ))
+                                                                  .where((u) =>
+                                                                      u != null)
+                                                                  .map(
+                                                                      (u) => u!)
+                                                                  .toList();
                                                         } finally {
                                                           _model.isDataUploading =
                                                               false;
                                                         }
                                                         if (selectedUploadedFiles
-                                                                .length ==
-                                                            selectedMedia
-                                                                .length) {
+                                                                    .length ==
+                                                                selectedMedia
+                                                                    .length &&
+                                                            downloadUrls
+                                                                    .length ==
+                                                                selectedMedia
+                                                                    .length) {
                                                           setState(() {
                                                             _model.uploadedLocalFile =
                                                                 selectedUploadedFiles
+                                                                    .first;
+                                                            _model.uploadedFileUrl =
+                                                                downloadUrls
                                                                     .first;
                                                           });
                                                         } else {
@@ -653,6 +675,11 @@ class _ModificationRessourceAdminWidgetState
                                                       }
                                                     },
                                                     text: 'Télécharger',
+                                                    icon: Icon(
+                                                      Icons
+                                                          .download_for_offline_sharp,
+                                                      size: 15.0,
+                                                    ),
                                                     options: FFButtonOptions(
                                                       height: 40.0,
                                                       padding:
@@ -699,58 +726,6 @@ class _ModificationRessourceAdminWidgetState
                                             ),
                                           ),
                                         ].divide(SizedBox(width: 12.0)),
-                                      ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                'Type',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              FlutterFlowRadioButton(
-                                                options: ['Vidéo', 'Document']
-                                                    .toList(),
-                                                onChanged: (val) =>
-                                                    setState(() {}),
-                                                controller: _model
-                                                        .radioButtonValueController ??=
-                                                    FormFieldController<String>(
-                                                        null),
-                                                optionHeight: 32.0,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                selectedTextStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                                buttonPosition:
-                                                    RadioButtonPosition.left,
-                                                direction: Axis.horizontal,
-                                                radioButtonColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                inactiveRadioButtonColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                toggleable: false,
-                                                horizontalAlignment:
-                                                    WrapAlignment.start,
-                                                verticalAlignment:
-                                                    WrapCrossAlignment.start,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
                                       ),
                                       Text(
                                         'Information ',
@@ -848,6 +823,61 @@ class _ModificationRessourceAdminWidgetState
                                             .descriptionControllerValidator
                                             .asValidator(context),
                                       ),
+                                      Container(
+                                        constraints: BoxConstraints(
+                                          maxWidth: 770.0,
+                                        ),
+                                        decoration: BoxDecoration(),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 12.0, 16.0, 12.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              await columnMaisonRecord!
+                                                  .reference
+                                                  .update(
+                                                      createMaisonRecordData(
+                                                nom: columnMaisonRecord?.nom,
+                                                tauxHoraire: columnMaisonRecord
+                                                    ?.tauxHoraire,
+                                                imageMaison: columnMaisonRecord
+                                                    ?.imageMaison,
+                                                description: columnMaisonRecord
+                                                    ?.description,
+                                              ));
+
+                                              context.pushNamed(
+                                                  'ListeMaison_Admin');
+                                            },
+                                            text: 'Modifier',
+                                            options: FFButtonOptions(
+                                              width: double.infinity,
+                                              height: 48.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Color(0xFF928163),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color: Colors.white,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ]
                                         .divide(SizedBox(height: 12.0))
                                         .addToEnd(SizedBox(height: 32.0)),
@@ -856,53 +886,6 @@ class _ModificationRessourceAdminWidgetState
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      constraints: BoxConstraints(
-                        maxWidth: 770.0,
-                      ),
-                      decoration: BoxDecoration(),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 12.0, 16.0, 12.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            await columnRessourceRecord!.reference
-                                .update(createRessourceRecordData(
-                              nom: valueOrDefault<String>(
-                                columnRessourceRecord?.nom,
-                                'nom',
-                              ),
-                              fichier: columnRessourceRecord?.fichier,
-                              date: columnRessourceRecord?.date,
-                              type: columnRessourceRecord?.type,
-                              description: columnRessourceRecord?.description,
-                            ));
-                          },
-                          text: 'Modifier',
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 48.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF928163),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Inter',
-                                  color: Colors.white,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
                         ),
                       ),
                     ),

@@ -190,19 +190,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => DetailAnnonceWidget(),
         ),
         FFRoute(
-          name: 'AjoutMission_Admin',
-          path: '/ajoutMissionAdmin',
-          builder: (context, params) => AjoutMissionAdminWidget(),
-        ),
-        FFRoute(
           name: 'ListeMission_Admin',
           path: '/listeMissionAdmin',
           builder: (context, params) => ListeMissionAdminWidget(),
-        ),
-        FFRoute(
-          name: 'AjoutRessource_Admin',
-          path: '/ajoutRessourceAdmin',
-          builder: (context, params) => AjoutRessourceAdminWidget(),
         ),
         FFRoute(
           name: 'ModificationRessource_Admin',
@@ -213,11 +203,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Gestion_Ressources_Admin',
           path: '/gestionRessourcesAdmin',
           builder: (context, params) => GestionRessourcesAdminWidget(),
-        ),
-        FFRoute(
-          name: 'AjoutMaison_Admin',
-          path: '/ajoutMaisonAdmin',
-          builder: (context, params) => AjoutMaisonAdminWidget(),
         ),
         FFRoute(
           name: 'AjoutEvaluation',
@@ -260,6 +245,50 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Modification_Profile_Association',
           path: '/modificationProfileAssociation',
           builder: (context, params) => ModificationProfileAssociationWidget(),
+        ),
+        FFRoute(
+          name: 'AjoutMission_Admin',
+          path: '/ajoutMissionAdmin',
+          builder: (context, params) => AjoutMissionAdminWidget(),
+        ),
+        FFRoute(
+          name: 'ModificationMission_Admin',
+          path: '/modificationMissionAdmin',
+          builder: (context, params) => ModificationMissionAdminWidget(),
+        ),
+        FFRoute(
+          name: 'AjoutRessource_Admin',
+          path: '/ajoutRessourceAdmin',
+          builder: (context, params) => AjoutRessourceAdminWidget(),
+        ),
+        FFRoute(
+          name: 'AjoutMaison_Admin',
+          path: '/ajoutMaisonAdmin',
+          builder: (context, params) => AjoutMaisonAdminWidget(),
+        ),
+        FFRoute(
+          name: 'ListeMaison_Admin',
+          path: '/listeMaisonAdmin',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'ListeMaison_Admin')
+              : ListeMaisonAdminWidget(),
+        ),
+        FFRoute(
+          name: 'ModificationMaison_Admin',
+          path: '/modificationMaisonAdmin',
+          builder: (context, params) => ModificationMaisonAdminWidget(),
+        ),
+        FFRoute(
+          name: 'ListeAnnonce_Admin',
+          path: '/listeAnnonceAdmin',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'ListeAnnonce_Admin')
+              : ListeAnnonceAdminWidget(),
+        ),
+        FFRoute(
+          name: 'ModificationAnnonce_Admin',
+          path: '/modificationAnnonceAdmin',
+          builder: (context, params) => ModificationAnnonceAdminWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -440,15 +469,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/jackson-david-cIcBInoyb7U-unsplash.jpeg',
+                    fit: BoxFit.cover,
                   ),
                 )
               : page;
