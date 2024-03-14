@@ -22,10 +22,10 @@ class AuthLoginAssociationModel
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  // State field(s) for display_name widget.
-  FocusNode? displayNameFocusNode;
-  TextEditingController? displayNameController;
-  String? Function(BuildContext, String?)? displayNameControllerValidator;
+  // State field(s) for nom widget.
+  FocusNode? nomFocusNode;
+  TextEditingController? nomController;
+  String? Function(BuildContext, String?)? nomControllerValidator;
   // State field(s) for phone_number widget.
   FocusNode? phoneNumberFocusNode;
   TextEditingController? phoneNumberController;
@@ -70,8 +70,8 @@ class AuthLoginAssociationModel
   void dispose() {
     unfocusNode.dispose();
     tabBarController?.dispose();
-    displayNameFocusNode?.dispose();
-    displayNameController?.dispose();
+    nomFocusNode?.dispose();
+    nomController?.dispose();
 
     phoneNumberFocusNode?.dispose();
     phoneNumberController?.dispose();

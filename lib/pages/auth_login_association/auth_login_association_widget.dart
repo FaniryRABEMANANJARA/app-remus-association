@@ -107,8 +107,8 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
       length: 2,
       initialIndex: 0,
     )..addListener(() => setState(() {}));
-    _model.displayNameController ??= TextEditingController();
-    _model.displayNameFocusNode ??= FocusNode();
+    _model.nomController ??= TextEditingController();
+    _model.nomFocusNode ??= FocusNode();
 
     _model.phoneNumberController ??= TextEditingController();
     _model.phoneNumberFocusNode ??= FocusNode();
@@ -318,9 +318,9 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .displayNameController,
-                                                        focusNode: _model
-                                                            .displayNameFocusNode,
+                                                            .nomController,
+                                                        focusNode:
+                                                            _model.nomFocusNode,
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.email
@@ -406,7 +406,7 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                             TextInputType
                                                                 .emailAddress,
                                                         validator: _model
-                                                            .displayNameControllerValidator
+                                                            .nomControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -977,13 +977,21 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                               .doc(user.uid)
                                                               .update(
                                                                   createUsersRecordData(
-                                                                nom: '',
-                                                                email: '',
-                                                                uid: '',
-                                                                adresse: '',
-                                                                maison: '',
-                                                                phoneNumber: '',
-                                                                displayName: '',
+                                                                nom: _model
+                                                                    .nomController
+                                                                    .text,
+                                                                email: _model
+                                                                    .emailAddressCreateController
+                                                                    .text,
+                                                                adresse: _model
+                                                                    .adresseController
+                                                                    .text,
+                                                                maison: _model
+                                                                    .maisonController
+                                                                    .text,
+                                                                phoneNumber: _model
+                                                                    .phoneNumberController
+                                                                    .text,
                                                               ));
 
                                                           context.goNamedAuth(

@@ -135,8 +135,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'ListeMaison': ListeMaisonWidget(),
       'ListeNote_Educateur': ListeNoteEducateurWidget(),
       'Profile_Association': ProfileAssociationWidget(),
-      'ListeMaison_Admin': ListeMaisonAdminWidget(),
-      'ListeAnnonce_Admin': ListeAnnonceAdminWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -200,22 +198,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Profile',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_work,
-              size: 24.0,
-            ),
-            label: 'Maison',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.newspaper_rounded,
-              size: 24.0,
-            ),
-            label: 'Annonce',
             tooltip: '',
           )
         ],

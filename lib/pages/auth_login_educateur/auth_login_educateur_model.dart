@@ -1,9 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'auth_login_educateur_widget.dart' show AuthLoginEducateurWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -54,10 +55,12 @@ class AuthLoginEducateurModel
   FocusNode? contactFocusNode;
   TextEditingController? contactController;
   String? Function(BuildContext, String?)? contactControllerValidator;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue1;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue2;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController1;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController2;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController3;
   // State field(s) for emailAddress widget.
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressController;
@@ -111,4 +114,8 @@ class AuthLoginEducateurModel
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  String? get radioButtonValue1 => radioButtonValueController1?.value;
+  String? get radioButtonValue2 => radioButtonValueController2?.value;
+  String? get radioButtonValue3 => radioButtonValueController3?.value;
 }

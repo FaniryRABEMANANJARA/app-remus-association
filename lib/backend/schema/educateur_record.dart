@@ -56,6 +56,16 @@ class EducateurRecord extends FirestoreRecord {
   String get sexe => _sexe ?? '';
   bool hasSexe() => _sexe != null;
 
+  // "vehicule" field.
+  String? _vehicule;
+  String get vehicule => _vehicule ?? '';
+  bool hasVehicule() => _vehicule != null;
+
+  // "auto_entrepreneur" field.
+  String? _autoEntrepreneur;
+  String get autoEntrepreneur => _autoEntrepreneur ?? '';
+  bool hasAutoEntrepreneur() => _autoEntrepreneur != null;
+
   void _initializeFields() {
     _nom = snapshotData['nom'] as String?;
     _prenom = snapshotData['prenom'] as String?;
@@ -65,6 +75,8 @@ class EducateurRecord extends FirestoreRecord {
     _email = snapshotData['email'] as String?;
     _image = snapshotData['image'] as String?;
     _sexe = snapshotData['sexe'] as String?;
+    _vehicule = snapshotData['vehicule'] as String?;
+    _autoEntrepreneur = snapshotData['auto_entrepreneur'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -110,6 +122,8 @@ Map<String, dynamic> createEducateurRecordData({
   String? email,
   String? image,
   String? sexe,
+  String? vehicule,
+  String? autoEntrepreneur,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -121,6 +135,8 @@ Map<String, dynamic> createEducateurRecordData({
       'email': email,
       'image': image,
       'sexe': sexe,
+      'vehicule': vehicule,
+      'auto_entrepreneur': autoEntrepreneur,
     }.withoutNulls,
   );
 
@@ -139,7 +155,9 @@ class EducateurRecordDocumentEquality implements Equality<EducateurRecord> {
         e1?.informationMed == e2?.informationMed &&
         e1?.email == e2?.email &&
         e1?.image == e2?.image &&
-        e1?.sexe == e2?.sexe;
+        e1?.sexe == e2?.sexe &&
+        e1?.vehicule == e2?.vehicule &&
+        e1?.autoEntrepreneur == e2?.autoEntrepreneur;
   }
 
   @override
@@ -151,7 +169,9 @@ class EducateurRecordDocumentEquality implements Equality<EducateurRecord> {
         e?.informationMed,
         e?.email,
         e?.image,
-        e?.sexe
+        e?.sexe,
+        e?.vehicule,
+        e?.autoEntrepreneur
       ]);
 
   @override

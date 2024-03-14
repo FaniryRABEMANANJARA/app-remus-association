@@ -269,9 +269,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ListeMaison_Admin',
           path: '/listeMaisonAdmin',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListeMaison_Admin')
-              : ListeMaisonAdminWidget(),
+          builder: (context, params) => ListeMaisonAdminWidget(),
         ),
         FFRoute(
           name: 'ModificationMaison_Admin',
@@ -281,9 +279,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ListeAnnonce_Admin',
           path: '/listeAnnonceAdmin',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListeAnnonce_Admin')
-              : ListeAnnonceAdminWidget(),
+          builder: (context, params) => ListeAnnonceAdminWidget(),
         ),
         FFRoute(
           name: 'ModificationAnnonce_Admin',

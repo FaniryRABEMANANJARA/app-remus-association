@@ -1,9 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -1048,137 +1049,189 @@ class _AuthLoginEducateurWidgetState extends State<AuthLoginEducateurWidget>
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Theme(
-                                                            data: ThemeData(
-                                                              checkboxTheme:
-                                                                  CheckboxThemeData(
-                                                                visualDensity:
-                                                                    VisualDensity
-                                                                        .compact,
-                                                                materialTapTargetSize:
-                                                                    MaterialTapTargetSize
-                                                                        .shrinkWrap,
-                                                                shape:
-                                                                    RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              4.0),
-                                                                ),
-                                                              ),
-                                                              unselectedWidgetColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                            ),
-                                                            child: Checkbox(
-                                                              value: _model
-                                                                      .checkboxValue1 ??=
-                                                                  true,
-                                                              onChanged:
-                                                                  (newValue) async {
-                                                                setState(() =>
-                                                                    _model.checkboxValue1 =
-                                                                        newValue!);
-                                                              },
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              checkColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            'Possession d\'un véhicule',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                          ),
-                                                        ],
+                                                      Text(
+                                                        'Sexe',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge,
                                                       ),
                                                       Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
                                                         children: [
-                                                          Theme(
-                                                            data: ThemeData(
-                                                              checkboxTheme:
-                                                                  CheckboxThemeData(
-                                                                visualDensity:
-                                                                    VisualDensity
-                                                                        .compact,
-                                                                materialTapTargetSize:
-                                                                    MaterialTapTargetSize
-                                                                        .shrinkWrap,
-                                                                shape:
-                                                                    RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              4.0),
-                                                                ),
-                                                              ),
-                                                              unselectedWidgetColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                            ),
-                                                            child: Checkbox(
-                                                              value: _model
-                                                                      .checkboxValue2 ??=
-                                                                  true,
-                                                              onChanged:
-                                                                  (newValue) async {
-                                                                setState(() =>
-                                                                    _model.checkboxValue2 =
-                                                                        newValue!);
-                                                              },
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              checkColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                            ),
+                                                          FlutterFlowRadioButton(
+                                                            options: [
+                                                              'Homme',
+                                                              'Femme'
+                                                            ].toList(),
+                                                            onChanged: (val) =>
+                                                                setState(() {}),
+                                                            controller: _model
+                                                                    .radioButtonValueController1 ??=
+                                                                FormFieldController<
+                                                                        String>(
+                                                                    null),
+                                                            optionHeight: 32.0,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium,
+                                                            selectedTextStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                            buttonPosition:
+                                                                RadioButtonPosition
+                                                                    .left,
+                                                            direction:
+                                                                Axis.horizontal,
+                                                            radioButtonColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                            inactiveRadioButtonColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                            toggleable: false,
+                                                            horizontalAlignment:
+                                                                WrapAlignment
+                                                                    .start,
+                                                            verticalAlignment:
+                                                                WrapCrossAlignment
+                                                                    .start,
                                                           ),
-                                                          Text(
-                                                            'Auto-entrepreneur',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Text(
+                                                        'Possession d\'un véhicule',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge,
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          FlutterFlowRadioButton(
+                                                            options: [
+                                                              'Oui',
+                                                              'Non'
+                                                            ].toList(),
+                                                            onChanged: (val) =>
+                                                                setState(() {}),
+                                                            controller: _model
+                                                                    .radioButtonValueController2 ??=
+                                                                FormFieldController<
+                                                                        String>(
+                                                                    null),
+                                                            optionHeight: 32.0,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium,
+                                                            selectedTextStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                            buttonPosition:
+                                                                RadioButtonPosition
+                                                                    .left,
+                                                            direction:
+                                                                Axis.horizontal,
+                                                            radioButtonColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                            inactiveRadioButtonColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                            toggleable: false,
+                                                            horizontalAlignment:
+                                                                WrapAlignment
+                                                                    .start,
+                                                            verticalAlignment:
+                                                                WrapCrossAlignment
+                                                                    .start,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Text(
+                                                        'Auto-entrepreneur',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge,
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          FlutterFlowRadioButton(
+                                                            options: [
+                                                              'Oui',
+                                                              'Non'
+                                                            ].toList(),
+                                                            onChanged: (val) =>
+                                                                setState(() {}),
+                                                            controller: _model
+                                                                    .radioButtonValueController3 ??=
+                                                                FormFieldController<
+                                                                        String>(
+                                                                    null),
+                                                            optionHeight: 32.0,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium,
+                                                            selectedTextStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                            buttonPosition:
+                                                                RadioButtonPosition
+                                                                    .left,
+                                                            direction:
+                                                                Axis.horizontal,
+                                                            radioButtonColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                            inactiveRadioButtonColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                            toggleable: false,
+                                                            horizontalAlignment:
+                                                                WrapAlignment
+                                                                    .start,
+                                                            verticalAlignment:
+                                                                WrapCrossAlignment
+                                                                    .start,
                                                           ),
                                                         ],
                                                       ),
@@ -1197,42 +1250,9 @@ class _AuthLoginEducateurWidgetState extends State<AuthLoginEducateurWidget>
                                                                   0.0,
                                                                   16.0),
                                                       child: FFButtonWidget(
-                                                        onPressed: () async {
-                                                          GoRouter.of(context)
-                                                              .prepareAuthEvent();
-
-                                                          final user =
-                                                              await authManager
-                                                                  .createAccountWithEmail(
-                                                            context,
-                                                            _model
-                                                                .emailAddressController
-                                                                .text,
-                                                            _model
-                                                                .passwordCreateController
-                                                                .text,
-                                                          );
-                                                          if (user == null) {
-                                                            return;
-                                                          }
-
-                                                          await UsersRecord
-                                                              .collection
-                                                              .doc(user.uid)
-                                                              .update(
-                                                                  createUsersRecordData(
-                                                                nom: '',
-                                                                email: '',
-                                                                uid: '',
-                                                                adresse: '',
-                                                                maison: '',
-                                                                phoneNumber: '',
-                                                                displayName: '',
-                                                              ));
-
-                                                          context.goNamedAuth(
-                                                              'Gestion_Ressources',
-                                                              context.mounted);
+                                                        onPressed: () {
+                                                          print(
+                                                              'Button pressed ...');
                                                         },
                                                         text: 'S\'inscrire',
                                                         options:
