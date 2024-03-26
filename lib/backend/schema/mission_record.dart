@@ -6,13 +6,12 @@ import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 
 class MissionRecord extends FirestoreRecord {
   MissionRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -41,15 +40,20 @@ class MissionRecord extends FirestoreRecord {
   String get options => _options ?? '';
   bool hasOptions() => _options != null;
 
-  // "longitude" field.
-  String? _longitude;
-  String get longitude => _longitude ?? '';
-  bool hasLongitude() => _longitude != null;
+  // "titre" field.
+  String? _titre;
+  String get titre => _titre ?? '';
+  bool hasTitre() => _titre != null;
 
-  // "latitude" field.
-  String? _latitude;
-  String get latitude => _latitude ?? '';
-  bool hasLatitude() => _latitude != null;
+  // "image" field.
+  String? _image;
+  String get image => _image ?? '';
+  bool hasImage() => _image != null;
+
+  // "localisation" field.
+  String? _localisation;
+  String get localisation => _localisation ?? '';
+  bool hasLocalisation() => _localisation != null;
 
   // "date_debut" field.
   String? _dateDebut;
@@ -61,28 +65,17 @@ class MissionRecord extends FirestoreRecord {
   String get dateFin => _dateFin ?? '';
   bool hasDateFin() => _dateFin != null;
 
-  // "titre" field.
-  String? _titre;
-  String get titre => _titre ?? '';
-  bool hasTitre() => _titre != null;
-
-  // "image" field.
-  String? _image;
-  String get image => _image ?? '';
-  bool hasImage() => _image != null;
-
   void _initializeFields() {
     _adresse = snapshotData['adresse'] as String?;
     _annotation = snapshotData['annotation'] as String?;
     _disponiblite = snapshotData['disponiblite'] as String?;
     _information = snapshotData['information'] as String?;
     _options = snapshotData['options'] as String?;
-    _longitude = snapshotData['longitude'] as String?;
-    _latitude = snapshotData['latitude'] as String?;
-    _dateDebut = snapshotData['date_debut'] as String?;
-    _dateFin = snapshotData['date_fin'] as String?;
     _titre = snapshotData['titre'] as String?;
     _image = snapshotData['image'] as String?;
+    _localisation = snapshotData['localisation'] as String?;
+    _dateDebut = snapshotData['date_debut'] as String?;
+    _dateFin = snapshotData['date_fin'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -125,12 +118,11 @@ Map<String, dynamic> createMissionRecordData({
   String? disponiblite,
   String? information,
   String? options,
-  String? longitude,
-  String? latitude,
-  String? dateDebut,
-  String? dateFin,
   String? titre,
   String? image,
+  String? localisation,
+  String? dateDebut,
+  String? dateFin,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -139,12 +131,11 @@ Map<String, dynamic> createMissionRecordData({
       'disponiblite': disponiblite,
       'information': information,
       'options': options,
-      'longitude': longitude,
-      'latitude': latitude,
-      'date_debut': dateDebut,
-      'date_fin': dateFin,
       'titre': titre,
       'image': image,
+      'localisation': localisation,
+      'date_debut': dateDebut,
+      'date_fin': dateFin,
     }.withoutNulls,
   );
 
@@ -161,12 +152,11 @@ class MissionRecordDocumentEquality implements Equality<MissionRecord> {
         e1?.disponiblite == e2?.disponiblite &&
         e1?.information == e2?.information &&
         e1?.options == e2?.options &&
-        e1?.longitude == e2?.longitude &&
-        e1?.latitude == e2?.latitude &&
-        e1?.dateDebut == e2?.dateDebut &&
-        e1?.dateFin == e2?.dateFin &&
         e1?.titre == e2?.titre &&
-        e1?.image == e2?.image;
+        e1?.image == e2?.image &&
+        e1?.localisation == e2?.localisation &&
+        e1?.dateDebut == e2?.dateDebut &&
+        e1?.dateFin == e2?.dateFin;
   }
 
   @override
@@ -176,12 +166,11 @@ class MissionRecordDocumentEquality implements Equality<MissionRecord> {
         e?.disponiblite,
         e?.information,
         e?.options,
-        e?.longitude,
-        e?.latitude,
-        e?.dateDebut,
-        e?.dateFin,
         e?.titre,
-        e?.image
+        e?.image,
+        e?.localisation,
+        e?.dateDebut,
+        e?.dateFin
       ]);
 
   @override

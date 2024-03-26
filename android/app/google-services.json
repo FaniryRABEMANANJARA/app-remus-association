@@ -88,6 +88,78 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:864744635617:android:492e91e8d986755f79cba0",
+        "android_client_info": {
+          "package_name": "com.mycompany.appremusadministrateur"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864744635617-rb83hq7vr8u46haemqh3d9i7reapnnqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_Qu3t2wnmcg1mMZV_qXaaAwgXzOwfc68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864744635617-rb83hq7vr8u46haemqh3d9i7reapnnqt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "864744635617-4k11j906bkv27uiop4uiok3rolfodu9h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "health.ai"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864744635617:android:c6760356f6c59aa179cba0",
+        "android_client_info": {
+          "package_name": "com.mycompany.appremuseducateur"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864744635617-rb83hq7vr8u46haemqh3d9i7reapnnqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_Qu3t2wnmcg1mMZV_qXaaAwgXzOwfc68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864744635617-rb83hq7vr8u46haemqh3d9i7reapnnqt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "864744635617-4k11j906bkv27uiop4uiok3rolfodu9h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "health.ai"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:864744635617:android:eccfc624fd5bb87979cba0",
         "android_client_info": {
           "package_name": "health.ai"

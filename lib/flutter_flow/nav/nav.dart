@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
@@ -10,11 +8,7 @@ import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -79,212 +73,176 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? NavBarPage()
-          : AuthLoginAssociationWidget(),
+          ? const NavBarPage()
+          : const AuthLoginAssociationWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? NavBarPage()
-              : AuthLoginAssociationWidget(),
+              ? const NavBarPage()
+              : const AuthLoginAssociationWidget(),
         ),
         FFRoute(
           name: 'AjoutMission_Association',
           path: '/ajoutMissionAssociation',
-          builder: (context, params) => AjoutMissionAssociationWidget(),
+          builder: (context, params) => const AjoutMissionAssociationWidget(),
         ),
         FFRoute(
           name: 'Accueil',
           path: '/accueil',
-          builder: (context, params) => AccueilWidget(),
+          builder: (context, params) => const AccueilWidget(),
         ),
         FFRoute(
           name: 'Gestion_Ressources',
           path: '/gestionRessources',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Gestion_Ressources')
-              : GestionRessourcesWidget(),
+              ? const NavBarPage(initialPage: 'Gestion_Ressources')
+              : const GestionRessourcesWidget(),
         ),
         FFRoute(
           name: 'AjoutRessource',
           path: '/ajoutRessource',
-          builder: (context, params) => AjoutRessourceWidget(),
+          builder: (context, params) => const AjoutRessourceWidget(),
         ),
         FFRoute(
           name: 'ListeMissions',
           path: '/listeMissions',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListeMissions')
-              : ListeMissionsWidget(),
-        ),
-        FFRoute(
-          name: 'AjoutAnnonce_Admin',
-          path: '/ajoutAnnonceAdmin',
-          builder: (context, params) => AjoutAnnonceAdminWidget(),
+              ? const NavBarPage(initialPage: 'ListeMissions')
+              : const ListeMissionsWidget(),
         ),
         FFRoute(
           name: 'ListeAnnonce',
           path: '/listeAnnonce',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListeAnnonce')
-              : ListeAnnonceWidget(),
+              ? const NavBarPage(initialPage: 'ListeAnnonce')
+              : const ListeAnnonceWidget(),
         ),
         FFRoute(
           name: 'Profile_Association',
           path: '/profileAssociation',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Profile_Association')
-              : ProfileAssociationWidget(),
-        ),
-        FFRoute(
-          name: 'Profile_Educateur',
-          path: '/profileEducateur',
-          builder: (context, params) => ProfileEducateurWidget(),
-        ),
-        FFRoute(
-          name: 'Profile_Admin',
-          path: '/profileAdmin',
-          builder: (context, params) => ProfileAdminWidget(),
-        ),
-        FFRoute(
-          name: 'ListeMissions_Educateur',
-          path: '/listeMissionsEducateur',
-          builder: (context, params) => ListeMissionsEducateurWidget(),
+              ? const NavBarPage(initialPage: 'Profile_Association')
+              : const ProfileAssociationWidget(),
         ),
         FFRoute(
           name: 'ListeMaison',
           path: '/listeMaison',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListeMaison')
-              : ListeMaisonWidget(),
+              ? const NavBarPage(initialPage: 'ListeMaison')
+              : const ListeMaisonWidget(),
         ),
         FFRoute(
           name: 'AjoutMaison',
           path: '/ajoutMaison',
-          builder: (context, params) => AjoutMaisonWidget(),
-        ),
-        FFRoute(
-          name: 'CarteMissions',
-          path: '/carteMissions',
-          builder: (context, params) => CarteMissionsWidget(),
-        ),
-        FFRoute(
-          name: 'Liste_Ressources',
-          path: '/listeRessources',
-          builder: (context, params) => ListeRessourcesWidget(),
-        ),
-        FFRoute(
-          name: 'Notifications',
-          path: '/notifications',
-          builder: (context, params) => NotificationsWidget(),
-        ),
-        FFRoute(
-          name: 'DetailMission',
-          path: '/detailMission',
-          builder: (context, params) => DetailMissionWidget(),
-        ),
-        FFRoute(
-          name: 'DetailAnnonce',
-          path: '/detailAnnonce',
-          builder: (context, params) => DetailAnnonceWidget(),
-        ),
-        FFRoute(
-          name: 'ListeMission_Admin',
-          path: '/listeMissionAdmin',
-          builder: (context, params) => ListeMissionAdminWidget(),
-        ),
-        FFRoute(
-          name: 'ModificationRessource_Admin',
-          path: '/modificationRessourceAdmin',
-          builder: (context, params) => ModificationRessourceAdminWidget(),
-        ),
-        FFRoute(
-          name: 'Gestion_Ressources_Admin',
-          path: '/gestionRessourcesAdmin',
-          builder: (context, params) => GestionRessourcesAdminWidget(),
+          builder: (context, params) => const AjoutMaisonWidget(),
         ),
         FFRoute(
           name: 'AjoutEvaluation',
           path: '/ajoutEvaluation',
-          builder: (context, params) => AjoutEvaluationWidget(),
+          builder: (context, params) => const AjoutEvaluationWidget(),
         ),
         FFRoute(
-          name: 'AjoutEvaluation_Educateur',
-          path: '/ajoutEvaluationEducateur',
-          builder: (context, params) => AjoutEvaluationEducateurWidget(),
-        ),
-        FFRoute(
-          name: 'ListeNote_Educateur',
-          path: '/listeNoteEducateur',
+          name: 'Evaluation',
+          path: '/evaluation',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListeNote_Educateur')
-              : ListeNoteEducateurWidget(),
-        ),
-        FFRoute(
-          name: 'ListeNote_Associations',
-          path: '/listeNoteAssociations',
-          builder: (context, params) => ListeNoteAssociationsWidget(),
+              ? const NavBarPage(initialPage: 'Evaluation')
+              : const EvaluationWidget(),
         ),
         FFRoute(
           name: 'Auth_Login_Association',
           path: '/authLoginAssociation',
-          builder: (context, params) => AuthLoginAssociationWidget(),
-        ),
-        FFRoute(
-          name: 'Auth_Login_Educateur',
-          path: '/authLoginEducateur',
-          builder: (context, params) => AuthLoginEducateurWidget(),
-        ),
-        FFRoute(
-          name: 'Engagement',
-          path: '/engagement',
-          builder: (context, params) => EngagementWidget(),
+          builder: (context, params) => const AuthLoginAssociationWidget(),
         ),
         FFRoute(
           name: 'Modification_Profile_Association',
           path: '/modificationProfileAssociation',
-          builder: (context, params) => ModificationProfileAssociationWidget(),
+          asyncParams: {
+            'modifierProfil': getDoc(['users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => ModificationProfileAssociationWidget(
+            modifierProfil:
+                params.getParam('modifierProfil', ParamType.Document),
+          ),
         ),
         FFRoute(
-          name: 'AjoutMission_Admin',
-          path: '/ajoutMissionAdmin',
-          builder: (context, params) => AjoutMissionAdminWidget(),
+          name: 'Detail_maison',
+          path: '/detailMaison',
+          builder: (context, params) => DetailMaisonWidget(
+            maisonDetails: params.getParam('maisonDetails',
+                ParamType.DocumentReference, false, ['maison']),
+          ),
         ),
         FFRoute(
-          name: 'ModificationMission_Admin',
-          path: '/modificationMissionAdmin',
-          builder: (context, params) => ModificationMissionAdminWidget(),
+          name: 'Complete_profil',
+          path: '/completeProfil',
+          asyncParams: {
+            'completeProfil': getDoc(['users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => CompleteProfilWidget(
+            completeProfil:
+                params.getParam('completeProfil', ParamType.Document),
+          ),
         ),
         FFRoute(
-          name: 'AjoutRessource_Admin',
-          path: '/ajoutRessourceAdmin',
-          builder: (context, params) => AjoutRessourceAdminWidget(),
+          name: 'Detail_annonce',
+          path: '/detailAnnonce',
+          builder: (context, params) => DetailAnnonceWidget(
+            annonceDetails: params.getParam('annonceDetails',
+                ParamType.DocumentReference, false, ['annonce']),
+          ),
         ),
         FFRoute(
-          name: 'AjoutMaison_Admin',
-          path: '/ajoutMaisonAdmin',
-          builder: (context, params) => AjoutMaisonAdminWidget(),
+          name: 'ModifierRessource',
+          path: '/modifierRessource',
+          asyncParams: {
+            'modifierRessource':
+                getDoc(['ressource'], RessourceRecord.fromSnapshot),
+          },
+          builder: (context, params) => ModifierRessourceWidget(
+            modifierRessource:
+                params.getParam('modifierRessource', ParamType.Document),
+          ),
         ),
         FFRoute(
-          name: 'ListeMaison_Admin',
-          path: '/listeMaisonAdmin',
-          builder: (context, params) => ListeMaisonAdminWidget(),
+          name: 'ModifierEvaluation',
+          path: '/modifierEvaluation',
+          asyncParams: {
+            'modifEvaluation': getDoc(
+                ['note_association'], NoteAssociationRecord.fromSnapshot),
+          },
+          builder: (context, params) => ModifierEvaluationWidget(
+            modifEvaluation:
+                params.getParam('modifEvaluation', ParamType.Document),
+          ),
         ),
         FFRoute(
-          name: 'ModificationMaison_Admin',
-          path: '/modificationMaisonAdmin',
-          builder: (context, params) => ModificationMaisonAdminWidget(),
+          name: 'Reccurente',
+          path: '/reccurente',
+          builder: (context, params) => const ReccurenteWidget(),
         ),
         FFRoute(
-          name: 'ListeAnnonce_Admin',
-          path: '/listeAnnonceAdmin',
-          builder: (context, params) => ListeAnnonceAdminWidget(),
+          name: 'CodeValidation',
+          path: '/codeValidation',
+          builder: (context, params) => const CodeValidationWidget(),
         ),
         FFRoute(
-          name: 'ModificationAnnonce_Admin',
-          path: '/modificationAnnonceAdmin',
-          builder: (context, params) => ModificationAnnonceAdminWidget(),
+          name: 'Detail_missionComblee',
+          path: '/detailMissionComblee',
+          asyncParams: {
+            'missionDetails':
+                getDoc(['missionaComble'], MissionaCombleRecord.fromSnapshot),
+          },
+          builder: (context, params) => DetailMissionCombleeWidget(
+            missionDetails:
+                params.getParam('missionDetails', ParamType.Document),
+          ),
+        ),
+        FFRoute(
+          name: 'ListeMissionsaComblee',
+          path: '/listeMissionsaComblee',
+          builder: (context, params) => const ListeMissionsaCombleeWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -514,7 +472,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

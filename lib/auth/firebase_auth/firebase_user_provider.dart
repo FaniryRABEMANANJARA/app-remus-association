@@ -5,9 +5,10 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class AppRemusFirebaseUser extends BaseAuthUser {
-  AppRemusFirebaseUser(this.user);
+class AppRemusAssociationFirebaseUser extends BaseAuthUser {
+  AppRemusAssociationFirebaseUser(this.user);
   User? user;
+  @override
   bool get loggedIn => user != null;
 
   @override
@@ -54,17 +55,18 @@ class AppRemusFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      AppRemusFirebaseUser(user);
+      AppRemusAssociationFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> appRemusFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> appRemusAssociationFirebaseUserStream() =>
+    FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = AppRemusFirebaseUser(user);
+        currentUser = AppRemusAssociationFirebaseUser(user);
         return currentUser!;
       },
     );

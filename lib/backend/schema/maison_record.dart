@@ -6,13 +6,12 @@ import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 
 class MaisonRecord extends FirestoreRecord {
   MaisonRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -20,11 +19,6 @@ class MaisonRecord extends FirestoreRecord {
   String? _nom;
   String get nom => _nom ?? '';
   bool hasNom() => _nom != null;
-
-  // "taux_horaire" field.
-  String? _tauxHoraire;
-  String get tauxHoraire => _tauxHoraire ?? '';
-  bool hasTauxHoraire() => _tauxHoraire != null;
 
   // "image_maison" field.
   String? _imageMaison;
@@ -36,11 +30,34 @@ class MaisonRecord extends FirestoreRecord {
   String get description => _description ?? '';
   bool hasDescription() => _description != null;
 
+  // "adresse" field.
+  String? _adresse;
+  String get adresse => _adresse ?? '';
+  bool hasAdresse() => _adresse != null;
+
+  // "ressource" field.
+  String? _ressource;
+  String get ressource => _ressource ?? '';
+  bool hasRessource() => _ressource != null;
+
+  // "nombre" field.
+  String? _nombre;
+  String get nombre => _nombre ?? '';
+  bool hasNombre() => _nombre != null;
+
+  // "age" field.
+  String? _age;
+  String get age => _age ?? '';
+  bool hasAge() => _age != null;
+
   void _initializeFields() {
     _nom = snapshotData['nom'] as String?;
-    _tauxHoraire = snapshotData['taux_horaire'] as String?;
     _imageMaison = snapshotData['image_maison'] as String?;
     _description = snapshotData['description'] as String?;
+    _adresse = snapshotData['adresse'] as String?;
+    _ressource = snapshotData['ressource'] as String?;
+    _nombre = snapshotData['nombre'] as String?;
+    _age = snapshotData['age'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -78,16 +95,22 @@ class MaisonRecord extends FirestoreRecord {
 
 Map<String, dynamic> createMaisonRecordData({
   String? nom,
-  String? tauxHoraire,
   String? imageMaison,
   String? description,
+  String? adresse,
+  String? ressource,
+  String? nombre,
+  String? age,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'nom': nom,
-      'taux_horaire': tauxHoraire,
       'image_maison': imageMaison,
       'description': description,
+      'adresse': adresse,
+      'ressource': ressource,
+      'nombre': nombre,
+      'age': age,
     }.withoutNulls,
   );
 
@@ -100,14 +123,24 @@ class MaisonRecordDocumentEquality implements Equality<MaisonRecord> {
   @override
   bool equals(MaisonRecord? e1, MaisonRecord? e2) {
     return e1?.nom == e2?.nom &&
-        e1?.tauxHoraire == e2?.tauxHoraire &&
         e1?.imageMaison == e2?.imageMaison &&
-        e1?.description == e2?.description;
+        e1?.description == e2?.description &&
+        e1?.adresse == e2?.adresse &&
+        e1?.ressource == e2?.ressource &&
+        e1?.nombre == e2?.nombre &&
+        e1?.age == e2?.age;
   }
 
   @override
-  int hash(MaisonRecord? e) => const ListEquality()
-      .hash([e?.nom, e?.tauxHoraire, e?.imageMaison, e?.description]);
+  int hash(MaisonRecord? e) => const ListEquality().hash([
+        e?.nom,
+        e?.imageMaison,
+        e?.description,
+        e?.adresse,
+        e?.ressource,
+        e?.nombre,
+        e?.age
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is MaisonRecord;
