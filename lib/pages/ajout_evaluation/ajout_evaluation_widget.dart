@@ -114,13 +114,19 @@ class _AjoutEvaluationWidgetState extends State<AjoutEvaluationWidget>
                 children: [
                   Text(
                     'Évaluation',
-                    style: FlutterFlowTheme.of(context).headlineMedium,
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                     child: Text(
                       'Laisser des notes et des appréciations',
-                      style: FlutterFlowTheme.of(context).labelLarge,
+                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                            fontFamily: 'Inter',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                   Column(
@@ -139,9 +145,14 @@ class _AjoutEvaluationWidgetState extends State<AjoutEvaluationWidget>
                                 fontFamily: 'Readex Pro',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                               ),
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).alternate,
@@ -173,7 +184,12 @@ class _AjoutEvaluationWidgetState extends State<AjoutEvaluationWidget>
                           contentPadding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 12.0),
                         ),
-                        style: FlutterFlowTheme.of(context).headlineSmall,
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                        minLines: null,
                         cursorColor: FlutterFlowTheme.of(context).primary,
                         validator: _model.nomEducateurControllerValidator
                             .asValidator(context),
@@ -184,9 +200,17 @@ class _AjoutEvaluationWidgetState extends State<AjoutEvaluationWidget>
                         autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                          labelStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                           hintText: 'Votre appréciation',
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).alternate,
@@ -218,7 +242,10 @@ class _AjoutEvaluationWidgetState extends State<AjoutEvaluationWidget>
                           contentPadding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 24.0, 16.0, 12.0),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Inter',
+                              letterSpacing: 0.0,
+                            ),
                         maxLines: 16,
                         minLines: 6,
                         cursorColor: FlutterFlowTheme.of(context).primary,
@@ -262,9 +289,17 @@ class _AjoutEvaluationWidgetState extends State<AjoutEvaluationWidget>
                                   decoration: InputDecoration(
                                     labelText: 'Votre Note',
                                     labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: FlutterFlowTheme.of(context)
@@ -298,8 +333,13 @@ class _AjoutEvaluationWidgetState extends State<AjoutEvaluationWidget>
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  minLines: null,
                                   validator: _model.noteControllerValidator
                                       .asValidator(context),
                                 ),
@@ -345,6 +385,7 @@ class _AjoutEvaluationWidgetState extends State<AjoutEvaluationWidget>
                                 .override(
                                   fontFamily: 'Inter',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
                             borderSide: const BorderSide(

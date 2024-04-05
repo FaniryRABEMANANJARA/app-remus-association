@@ -134,7 +134,10 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
           automaticallyImplyLeading: false,
           title: Text(
             'Liste des Maisons',
-            style: FlutterFlowTheme.of(context).titleLarge,
+            style: FlutterFlowTheme.of(context).titleLarge.override(
+                  fontFamily: 'Readex Pro',
+                  letterSpacing: 0.0,
+                ),
           ),
           actions: const [],
           centerTitle: false,
@@ -154,7 +157,11 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                           const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
                       child: Text(
                         'Nouveau',
-                        style: FlutterFlowTheme.of(context).labelMedium,
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation1']!),
                     ),
@@ -170,13 +177,13 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
-                            return Center(
+                            return const Center(
                               child: SizedBox(
                                 width: 50.0,
                                 height: 50.0,
                                 child: CircularProgressIndicator(
                                   valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
+                                    Color(0xFFF4B74C),
                                   ),
                                 ),
                               ),
@@ -210,7 +217,10 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                       BoxShadow(
                                         blurRadius: 4.0,
                                         color: Color(0x520E151B),
-                                        offset: Offset(0.0, 2.0),
+                                        offset: Offset(
+                                          0.0,
+                                          2.0,
+                                        ),
                                       )
                                     ],
                                     borderRadius: BorderRadius.circular(8.0),
@@ -268,7 +278,11 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyLarge,
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                             ],
                                           ),
@@ -283,7 +297,11 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                               'adresse',
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .labelMedium,
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                         Align(
@@ -326,6 +344,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                 elevation: 3.0,
                                                 borderSide: const BorderSide(
@@ -354,7 +373,11 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                           const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
                       child: Text(
                         'La liste des maisons',
-                        style: FlutterFlowTheme.of(context).labelMedium,
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation2']!),
                     ),
@@ -369,13 +392,13 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
-                            return Center(
+                            return const Center(
                               child: SizedBox(
                                 width: 50.0,
                                 height: 50.0,
                                 child: CircularProgressIndicator(
                                   valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
+                                    Color(0xFFF4B74C),
                                   ),
                                 ),
                               ),
@@ -405,7 +428,10 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                       BoxShadow(
                                         blurRadius: 4.0,
                                         color: Color(0x520E151B),
-                                        offset: Offset(0.0, 2.0),
+                                        offset: Offset(
+                                          0.0,
+                                          2.0,
+                                        ),
                                       )
                                     ],
                                     borderRadius: BorderRadius.circular(8.0),
@@ -464,7 +490,11 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                                     listViewMaisonRecord.nom,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyLarge,
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                   Align(
                                                     alignment:
@@ -487,7 +517,13 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium,
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                     ),
                                                   ),

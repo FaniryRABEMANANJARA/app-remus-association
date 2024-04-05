@@ -31,8 +31,6 @@ class CompleteProfilModel extends FlutterFlowModel<CompleteProfilWidget> {
   String? maisonValue;
   FormFieldController<String>? maisonValueController;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -50,8 +48,4 @@ class CompleteProfilModel extends FlutterFlowModel<CompleteProfilWidget> {
     emailFocusNode?.dispose();
     emailController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

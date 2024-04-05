@@ -136,7 +136,10 @@ class _AccueilWidgetState extends State<AccueilWidget>
           automaticallyImplyLeading: false,
           title: Text(
             'Accueil',
-            style: FlutterFlowTheme.of(context).headlineLarge,
+            style: FlutterFlowTheme.of(context).headlineLarge.override(
+                  fontFamily: 'Readex Pro',
+                  letterSpacing: 0.0,
+                ),
           ),
           actions: const [],
           centerTitle: false,
@@ -186,8 +189,12 @@ class _AccueilWidgetState extends State<AccueilWidget>
                                     iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: const Color(0xFF928163),
-                                    textStyle:
-                                        FlutterFlowTheme.of(context).titleSmall,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                     elevation: 0.0,
                                     borderSide: BorderSide(
                                       color:
@@ -212,8 +219,12 @@ class _AccueilWidgetState extends State<AccueilWidget>
                                 iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).secondary,
-                                textStyle:
-                                    FlutterFlowTheme.of(context).titleSmall,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                                 elevation: 0.0,
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).accent1,
@@ -235,7 +246,11 @@ class _AccueilWidgetState extends State<AccueilWidget>
                           const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                       child: Text(
                         'Nouvelles Missions à Comblé',
-                        style: FlutterFlowTheme.of(context).labelMedium,
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation1']!),
                     ),
@@ -245,13 +260,13 @@ class _AccueilWidgetState extends State<AccueilWidget>
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
-                        return Center(
+                        return const Center(
                           child: SizedBox(
                             width: 50.0,
                             height: 50.0,
                             child: CircularProgressIndicator(
                               valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+                                Color(0xFFF4B74C),
                               ),
                             ),
                           ),
@@ -338,7 +353,11 @@ class _AccueilWidgetState extends State<AccueilWidget>
                                                     .titre,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                             ),
                                             Padding(
@@ -366,6 +385,7 @@ class _AccueilWidgetState extends State<AccueilWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondary,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),
@@ -390,7 +410,11 @@ class _AccueilWidgetState extends State<AccueilWidget>
                           const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 8.0),
                       child: Text(
                         'Les Annonces',
-                        style: FlutterFlowTheme.of(context).labelMedium,
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation2']!),
                     ),
@@ -406,13 +430,13 @@ class _AccueilWidgetState extends State<AccueilWidget>
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
-                          return Center(
+                          return const Center(
                             child: SizedBox(
                               width: 50.0,
                               height: 50.0,
                               child: CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
+                                  Color(0xFFF4B74C),
                                 ),
                               ),
                             ),
@@ -440,7 +464,10 @@ class _AccueilWidgetState extends State<AccueilWidget>
                                       blurRadius: 0.0,
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
-                                      offset: const Offset(0.0, 1.0),
+                                      offset: const Offset(
+                                        0.0,
+                                        1.0,
+                                      ),
                                     )
                                   ],
                                 ),
@@ -494,7 +521,11 @@ class _AccueilWidgetState extends State<AccueilWidget>
                                                 columnAnnonceRecord.nom,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyLarge,
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                               Expanded(
                                                 child: Padding(
@@ -505,7 +536,11 @@ class _AccueilWidgetState extends State<AccueilWidget>
                                                     columnAnnonceRecord.date,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelMedium,
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ),

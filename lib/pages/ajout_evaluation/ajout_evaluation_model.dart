@@ -19,8 +19,6 @@ class AjoutEvaluationModel extends FlutterFlowModel<AjoutEvaluationWidget> {
   TextEditingController? noteController;
   String? Function(BuildContext, String?)? noteControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -36,8 +34,4 @@ class AjoutEvaluationModel extends FlutterFlowModel<AjoutEvaluationWidget> {
     noteFocusNode?.dispose();
     noteController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

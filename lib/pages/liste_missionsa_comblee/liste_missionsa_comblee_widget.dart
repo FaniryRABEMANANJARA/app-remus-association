@@ -61,13 +61,13 @@ class _ListeMissionsaCombleeWidgetState
         if (!snapshot.hasData) {
           return Scaffold(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            body: Center(
+            body: const Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    Color(0xFFF4B74C),
                   ),
                 ),
               ),
@@ -90,27 +90,28 @@ class _ListeMissionsaCombleeWidgetState
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(
-                      alignment: const AlignmentDirectional(1.0, -1.0),
-                      child: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                        child: FlutterFlowIconButton(
-                          borderColor: FlutterFlowTheme.of(context).primary,
-                          borderRadius: 20.0,
-                          borderWidth: 1.0,
-                          buttonSize: 40.0,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          icon: Icon(
-                            Icons.add_circle,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 24.0,
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed('AjoutMission_Association');
+                            },
+                            child: Icon(
+                              Icons.add_circle,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 40.0,
+                            ),
                           ),
-                          onPressed: () async {
-                            context.pushNamed('AjoutMission_Association');
-                          },
-                        ),
+                        ],
                       ),
                     ),
                     Row(
@@ -123,7 +124,12 @@ class _ListeMissionsaCombleeWidgetState
                                 10.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Liste des missions',
-                              style: FlutterFlowTheme.of(context).titleLarge,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ),
                         ),
@@ -181,7 +187,11 @@ class _ListeMissionsaCombleeWidgetState
                                           onSelected: onSelected,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMedium,
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Inter',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           textHighlightStyle: const TextStyle(),
                                           elevation: 4.0,
                                           optionBackgroundColor:
@@ -254,11 +264,19 @@ class _ListeMissionsaCombleeWidgetState
                                           decoration: InputDecoration(
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Inter',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             hintText: 'Rechercher..........',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Inter',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             enabledBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
@@ -302,7 +320,12 @@ class _ListeMissionsaCombleeWidgetState
                                             ),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                letterSpacing: 0.0,
+                                              ),
+                                          minLines: null,
                                           validator: _model
                                               .textControllerValidator
                                               .asValidator(context),
@@ -350,8 +373,12 @@ class _ListeMissionsaCombleeWidgetState
                                     10.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Resultats',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                               Padding(
@@ -359,8 +386,12 @@ class _ListeMissionsaCombleeWidgetState
                                     0.0, 0.0, 10.0, 0.0),
                                 child: Text(
                                   _model.simpleSearchResults.length.toString(),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                             ],
@@ -392,6 +423,7 @@ class _ListeMissionsaCombleeWidgetState
                                           fontFamily: 'Inter',
                                           color: FlutterFlowTheme.of(context)
                                               .secondary,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -406,6 +438,7 @@ class _ListeMissionsaCombleeWidgetState
                                       .override(
                                         fontFamily: 'Inter',
                                         color: const Color(0xFFF4B74C),
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -478,6 +511,7 @@ class _ListeMissionsaCombleeWidgetState
                                                         .labelLarge
                                                         .override(
                                                           fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -499,6 +533,7 @@ class _ListeMissionsaCombleeWidgetState
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         fontSize: 12.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -521,6 +556,7 @@ class _ListeMissionsaCombleeWidgetState
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           fontSize: 12.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                   Padding(
@@ -531,17 +567,24 @@ class _ListeMissionsaCombleeWidgetState
                                                     child: Text(
                                                       missionSearchItem
                                                           .dateDebut,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelSmall,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                   Text(
                                                     'AM',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelSmall,
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ],
                                               ),
@@ -562,6 +605,7 @@ class _ListeMissionsaCombleeWidgetState
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           fontSize: 12.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                   Padding(
@@ -571,17 +615,24 @@ class _ListeMissionsaCombleeWidgetState
                                                                 0.0, 0.0),
                                                     child: Text(
                                                       missionSearchItem.dateFin,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelSmall,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                   Text(
                                                     'PM',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelSmall,
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ],
                                               ),
@@ -628,6 +679,7 @@ class _ListeMissionsaCombleeWidgetState
                                                           .override(
                                                             fontFamily: 'Inter',
                                                             fontSize: 12.0,
+                                                            letterSpacing: 0.0,
                                                           ),
                                                     ),
                                                   ),
@@ -740,6 +792,7 @@ class _ListeMissionsaCombleeWidgetState
                                                         .labelLarge
                                                         .override(
                                                           fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -761,6 +814,7 @@ class _ListeMissionsaCombleeWidgetState
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         fontSize: 12.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -780,6 +834,7 @@ class _ListeMissionsaCombleeWidgetState
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         fontSize: 12.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                                 Padding(
@@ -790,14 +845,22 @@ class _ListeMissionsaCombleeWidgetState
                                                     missionSearchItem.dateDebut,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelSmall,
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                                 Text(
                                                   'AM',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .labelSmall,
+                                                      .labelSmall
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                 ),
                                               ],
                                             ),
@@ -817,6 +880,7 @@ class _ListeMissionsaCombleeWidgetState
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           fontSize: 12.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                   Padding(
@@ -826,17 +890,24 @@ class _ListeMissionsaCombleeWidgetState
                                                                 0.0, 0.0),
                                                     child: Text(
                                                       missionSearchItem.dateFin,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelSmall,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                   Text(
                                                     'PM',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelSmall,
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ],
                                               ),
@@ -883,6 +954,7 @@ class _ListeMissionsaCombleeWidgetState
                                                           .override(
                                                             fontFamily: 'Inter',
                                                             fontSize: 12.0,
+                                                            letterSpacing: 0.0,
                                                           ),
                                                     ),
                                                   ),

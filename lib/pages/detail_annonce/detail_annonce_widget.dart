@@ -60,7 +60,10 @@ class _DetailAnnonceWidgetState extends State<DetailAnnonceWidget> {
         ),
         title: Text(
           'Détails annonce',
-          style: FlutterFlowTheme.of(context).headlineMedium,
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
+                fontFamily: 'Readex Pro',
+                letterSpacing: 0.0,
+              ),
         ),
         actions: const [],
         centerTitle: false,
@@ -71,13 +74,13 @@ class _DetailAnnonceWidgetState extends State<DetailAnnonceWidget> {
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    Color(0xFFF4B74C),
                   ),
                 ),
               ),
@@ -96,7 +99,7 @@ class _DetailAnnonceWidgetState extends State<DetailAnnonceWidget> {
                     child: Image.network(
                       columnMainContentAnnonceRecord.image,
                       width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: 430.0,
+                      height: 400.0,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -112,7 +115,13 @@ class _DetailAnnonceWidgetState extends State<DetailAnnonceWidget> {
                           columnMainContentAnnonceRecord.nom,
                           'nom',
                         ),
-                        style: FlutterFlowTheme.of(context).headlineMedium,
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              fontFamily: 'Readex Pro',
+                              fontSize: 16.0,
+                              letterSpacing: 0.0,
+                            ),
                       ),
                       Column(
                         mainAxisSize: MainAxisSize.max,
@@ -128,7 +137,12 @@ class _DetailAnnonceWidgetState extends State<DetailAnnonceWidget> {
                                   columnMainContentAnnonceRecord.date,
                                   'date',
                                 ),
-                                style: FlutterFlowTheme.of(context).labelLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                           ),
@@ -140,7 +154,12 @@ class _DetailAnnonceWidgetState extends State<DetailAnnonceWidget> {
                                 columnMainContentAnnonceRecord.description,
                                 'description',
                               ),
-                              style: FlutterFlowTheme.of(context).labelLarge,
+                              style: FlutterFlowTheme.of(context)
+                                  .labelLarge
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ),
                         ],

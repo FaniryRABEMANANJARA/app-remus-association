@@ -123,13 +123,13 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
-                  return Center(
+                  return const Center(
                     child: SizedBox(
                       width: 50.0,
                       height: 50.0,
                       child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(
-                          FlutterFlowTheme.of(context).primary,
+                          Color(0xFFF4B74C),
                         ),
                       ),
                     ),
@@ -152,14 +152,23 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                     children: [
                       Text(
                         'Modification évaluation',
-                        style: FlutterFlowTheme.of(context).headlineMedium,
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
                       ),
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           'Laisser des notes et des appréciations',
-                          style: FlutterFlowTheme.of(context).labelLarge,
+                          style:
+                              FlutterFlowTheme.of(context).labelLarge.override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                       Column(
@@ -178,10 +187,15 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                                     fontFamily: 'Readex Pro',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).alternate,
@@ -213,7 +227,13 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                               contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 12.0, 16.0, 12.0),
                             ),
-                            style: FlutterFlowTheme.of(context).headlineSmall,
+                            style: FlutterFlowTheme.of(context)
+                                .headlineSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            minLines: null,
                             cursorColor: FlutterFlowTheme.of(context).primary,
                             validator: _model.nomEducateurControllerValidator
                                 .asValidator(context),
@@ -224,10 +244,18 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).alternate,
@@ -259,7 +287,12 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                               contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 24.0, 16.0, 12.0),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                             maxLines: 16,
                             minLines: 6,
                             cursorColor: FlutterFlowTheme.of(context).primary,
@@ -304,9 +337,17 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                                       decoration: InputDecoration(
                                         labelText: 'Votre Note',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
@@ -346,7 +387,12 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      minLines: null,
                                       validator: _model.noteControllerValidator
                                           .asValidator(context),
                                     ),
@@ -391,6 +437,7 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                                     .override(
                                       fontFamily: 'Inter',
                                       color: Colors.white,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
                                 borderSide: const BorderSide(

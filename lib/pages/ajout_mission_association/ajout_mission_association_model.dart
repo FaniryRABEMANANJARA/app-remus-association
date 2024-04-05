@@ -29,6 +29,9 @@ class AjoutMissionAssociationModel
   // State field(s) for adresse widget.
   String? adresseValue;
   FormFieldController<String>? adresseValueController;
+  // State field(s) for educateur widget.
+  List<String>? educateurValue;
+  FormFieldController<List<String>>? educateurValueController;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -40,8 +43,6 @@ class AjoutMissionAssociationModel
   FocusNode? informationFocusNode;
   TextEditingController? informationController;
   String? Function(BuildContext, String?)? informationControllerValidator;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {}
@@ -62,10 +63,7 @@ class AjoutMissionAssociationModel
     informationController?.dispose();
   }
 
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
-
+  /// Additional helper methods.
   String? get radioButtonValue => radioButtonValueController?.value;
   String? get radioButtonOptionsValue =>
       radioButtonOptionsValueController?.value;

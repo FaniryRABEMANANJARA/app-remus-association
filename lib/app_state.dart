@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -18,6 +19,13 @@ class FFAppState extends ChangeNotifier {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
       _recentSearch = prefs.getStringList('ff_recentSearch') ?? _recentSearch;
+    });
+    _safeInit(() {
+      _SelectedValues = prefs
+              .getStringList('ff_SelectedValues')
+              ?.map((path) => path.ref)
+              .toList() ??
+          _SelectedValues;
     });
   }
 
@@ -73,6 +81,76 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInRecentSearch(int index, String value) {
     _recentSearch.insert(index, value);
     prefs.setStringList('ff_recentSearch', _recentSearch);
+  }
+
+  List<DocumentReference> _DropdownValue = [];
+  List<DocumentReference> get DropdownValue => _DropdownValue;
+  set DropdownValue(List<DocumentReference> value) {
+    _DropdownValue = value;
+  }
+
+  void addToDropdownValue(DocumentReference value) {
+    _DropdownValue.add(value);
+  }
+
+  void removeFromDropdownValue(DocumentReference value) {
+    _DropdownValue.remove(value);
+  }
+
+  void removeAtIndexFromDropdownValue(int index) {
+    _DropdownValue.removeAt(index);
+  }
+
+  void updateDropdownValueAtIndex(
+    int index,
+    DocumentReference Function(DocumentReference) updateFn,
+  ) {
+    _DropdownValue[index] = updateFn(_DropdownValue[index]);
+  }
+
+  void insertAtIndexInDropdownValue(int index, DocumentReference value) {
+    _DropdownValue.insert(index, value);
+  }
+
+  List<DocumentReference> _SelectedValues = [];
+  List<DocumentReference> get SelectedValues => _SelectedValues;
+  set SelectedValues(List<DocumentReference> value) {
+    _SelectedValues = value;
+    prefs.setStringList(
+        'ff_SelectedValues', value.map((x) => x.path).toList());
+  }
+
+  void addToSelectedValues(DocumentReference value) {
+    _SelectedValues.add(value);
+    prefs.setStringList(
+        'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
+  }
+
+  void removeFromSelectedValues(DocumentReference value) {
+    _SelectedValues.remove(value);
+    prefs.setStringList(
+        'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
+  }
+
+  void removeAtIndexFromSelectedValues(int index) {
+    _SelectedValues.removeAt(index);
+    prefs.setStringList(
+        'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
+  }
+
+  void updateSelectedValuesAtIndex(
+    int index,
+    DocumentReference Function(DocumentReference) updateFn,
+  ) {
+    _SelectedValues[index] = updateFn(_SelectedValues[index]);
+    prefs.setStringList(
+        'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
+  }
+
+  void insertAtIndexInSelectedValues(int index, DocumentReference value) {
+    _SelectedValues.insert(index, value);
+    prefs.setStringList(
+        'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
   }
 }
 

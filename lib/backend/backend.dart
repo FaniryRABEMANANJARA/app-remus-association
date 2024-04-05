@@ -14,6 +14,7 @@ import 'schema/annonce_record.dart';
 import 'schema/recurrence_record.dart';
 import 'schema/code_record.dart';
 import 'schema/missiona_comble_record.dart';
+import 'schema/educateur_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,6 +31,7 @@ export 'schema/annonce_record.dart';
 export 'schema/recurrence_record.dart';
 export 'schema/code_record.dart';
 export 'schema/missiona_comble_record.dart';
+export 'schema/educateur_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -359,6 +361,43 @@ Future<List<MissionaCombleRecord>> queryMissionaCombleRecordOnce({
     queryCollectionOnce(
       MissionaCombleRecord.collection,
       MissionaCombleRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query EducateurRecords (as a Stream and as a Future).
+Future<int> queryEducateurRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      EducateurRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<EducateurRecord>> queryEducateurRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      EducateurRecord.collection,
+      EducateurRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<EducateurRecord>> queryEducateurRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      EducateurRecord.collection,
+      EducateurRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

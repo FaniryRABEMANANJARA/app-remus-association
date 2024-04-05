@@ -159,6 +159,7 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                       'ASSOCIATION',
                       style: FlutterFlowTheme.of(context).titleMedium.override(
                             fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                           ),
                     ),
@@ -191,7 +192,10 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
-                                  offset: Offset(0.0, 2.0),
+                                  offset: Offset(
+                                    0.0,
+                                    2.0,
+                                  ),
                                 )
                               ],
                               borderRadius: BorderRadius.circular(12.0),
@@ -219,10 +223,18 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                           const EdgeInsetsDirectional.fromSTEB(
                                               32.0, 0.0, 32.0, 0.0),
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .titleMedium,
+                                          .titleMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       unselectedLabelStyle:
                                           FlutterFlowTheme.of(context)
-                                              .titleMedium,
+                                              .titleMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
                                       indicatorColor: const Color(0xFFF4B74C),
                                       indicatorWeight: 3.0,
                                       tabs: const [
@@ -275,7 +287,12 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .headlineMedium,
+                                                        .headlineMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                   Padding(
                                                     padding:
@@ -286,10 +303,13 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                       'Commençons par remplir le formulaire ci-dessous.',
                                                       textAlign:
                                                           TextAlign.start,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelSmall,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                   Padding(
@@ -315,7 +335,13 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .labelLarge,
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
@@ -383,7 +409,14 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyLarge,
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        minLines: null,
                                                         keyboardType:
                                                             TextInputType
                                                                 .emailAddress,
@@ -419,7 +452,13 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .labelLarge,
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
@@ -510,7 +549,14 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyLarge,
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        minLines: null,
                                                         validator: _model
                                                             .passwordCreateControllerValidator
                                                             .asValidator(
@@ -597,6 +643,8 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                                         'Inter',
                                                                     color: Colors
                                                                         .white,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
@@ -651,7 +699,12 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .headlineMedium,
+                                                        .headlineMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                   Padding(
                                                     padding:
@@ -662,10 +715,13 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                       'Remplissez les informations ci-dessous pour accéder à votre compte.',
                                                       textAlign:
                                                           TextAlign.start,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                   Padding(
@@ -691,7 +747,13 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .labelLarge,
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
@@ -763,7 +825,14 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyLarge,
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        minLines: null,
                                                         keyboardType:
                                                             TextInputType
                                                                 .emailAddress,
@@ -799,7 +868,13 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .labelLarge,
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
@@ -894,7 +969,14 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyLarge,
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        minLines: null,
                                                         validator: _model
                                                             .passwordControllerValidator
                                                             .asValidator(
@@ -968,6 +1050,8 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                                         'Inter',
                                                                     color: Colors
                                                                         .white,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
@@ -1041,6 +1125,8 @@ class _AuthLoginAssociationWidgetState extends State<AuthLoginAssociationWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,

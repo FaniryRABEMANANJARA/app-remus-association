@@ -15,8 +15,6 @@ class ReccurenteModel extends FlutterFlowModel<ReccurenteWidget> {
   FormFieldController<String>? typeValueController;
   DateTime? datePicked;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -24,8 +22,4 @@ class ReccurenteModel extends FlutterFlowModel<ReccurenteWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

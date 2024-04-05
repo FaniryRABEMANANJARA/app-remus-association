@@ -68,11 +68,17 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
             children: [
               Text(
                 'Création d\'une maison',
-                style: FlutterFlowTheme.of(context).headlineMedium,
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                    ),
               ),
               Text(
                 'Formulaire pour créer une maison',
-                style: FlutterFlowTheme.of(context).labelMedium,
+                style: FlutterFlowTheme.of(context).labelMedium.override(
+                      fontFamily: 'Inter',
+                      letterSpacing: 0.0,
+                    ),
               ),
             ].divide(const SizedBox(height: 4.0)),
           ),
@@ -140,7 +146,11 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                               'Titre',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             Container(
                                               width: double.infinity,
@@ -170,14 +180,20 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
-                                                    labelStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     enabledBorder:
                                                         UnderlineInputBorder(
                                                       borderSide: BorderSide(
@@ -233,7 +249,12 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  minLines: null,
                                                   validator: _model
                                                       .nomControllerValidator
                                                       .asValidator(context),
@@ -258,7 +279,11 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                               'Adresse correspondante',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             Container(
                                               width: double.infinity,
@@ -288,14 +313,20 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
-                                                    labelStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     enabledBorder:
                                                         UnderlineInputBorder(
                                                       borderSide: BorderSide(
@@ -351,7 +382,12 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  minLines: null,
                                                   validator: _model
                                                       .adresseControllerValidator
                                                       .asValidator(context),
@@ -376,7 +412,11 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                               'Nombre de jeunes',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             Container(
                                               width: double.infinity,
@@ -406,14 +446,20 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
-                                                    labelStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     enabledBorder:
                                                         UnderlineInputBorder(
                                                       borderSide: BorderSide(
@@ -469,7 +515,12 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  minLines: null,
                                                   validator: _model
                                                       .nombreControllerValidator
                                                       .asValidator(context),
@@ -489,7 +540,11 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                               'Âge des jeunes',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             Container(
                                               width: double.infinity,
@@ -519,14 +574,20 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
-                                                    labelStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     enabledBorder:
                                                         UnderlineInputBorder(
                                                       borderSide: BorderSide(
@@ -582,7 +643,12 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  minLines: null,
                                                   validator: _model
                                                       .ageControllerValidator
                                                       .asValidator(context),
@@ -607,7 +673,11 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                               'Image du maison',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             Container(
                                               width: double.infinity,
@@ -732,6 +802,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   elevation: 3.0,
                                                   borderSide: const BorderSide(
@@ -762,7 +833,11 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                               'Ressource',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             Container(
                                               width: double.infinity,
@@ -875,6 +950,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   elevation: 3.0,
                                                   borderSide: const BorderSide(
@@ -894,8 +970,12 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                   ),
                                   Text(
                                     'Information ',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                   TextFormField(
                                     controller: _model.descriptionController,
@@ -906,10 +986,18 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .labelLarge,
+                                          .labelLarge
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
                                       alignLabelWithHint: true,
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
                                       errorStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -917,6 +1005,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             fontSize: 12.0,
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -965,8 +1054,12 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                           const EdgeInsetsDirectional.fromSTEB(
                                               16.0, 16.0, 16.0, 16.0),
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                     maxLines: 9,
                                     minLines: 5,
                                     cursorColor:
@@ -1021,6 +1114,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   .override(
                                                     fontFamily: 'Inter',
                                                     color: Colors.white,
+                                                    letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
                                           borderSide: const BorderSide(

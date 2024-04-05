@@ -47,7 +47,10 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
             alignment: const AlignmentDirectional(-1.0, 0.0),
             child: Text(
               'Évaluation',
-              style: FlutterFlowTheme.of(context).headlineMedium,
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily: 'Readex Pro',
+                    letterSpacing: 0.0,
+                  ),
             ),
           ),
           actions: [
@@ -78,7 +81,10 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 16.0),
                   child: Text(
                     'Notes et appreciations',
-                    style: FlutterFlowTheme.of(context).headlineMedium,
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ),
                 Padding(
@@ -92,13 +98,13 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
-                        return Center(
+                        return const Center(
                           child: SizedBox(
                             width: 50.0,
                             height: 50.0,
                             child: CircularProgressIndicator(
                               valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+                                Color(0xFFF4B74C),
                               ),
                             ),
                           ),
@@ -198,6 +204,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryText,
+                                                      letterSpacing: 0.0,
                                                     ),
                                               ),
                                               Padding(
@@ -216,6 +223,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),
@@ -241,7 +249,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                             MainAxisSize.max,
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
-                                                                .end,
+                                                                .start,
                                                         children: [
                                                           Icon(
                                                             Icons.stars_sharp,
@@ -255,7 +263,15 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                                 .note,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .labelLarge,
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  fontSize:
+                                                                      14.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                           ),
                                                         ],
                                                       ),
@@ -343,6 +359,8 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                                       'Inter',
                                                                   color: const Color(
                                                                       0xFFE2DC40),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                       ),
                                                     ),
@@ -386,17 +404,16 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                     },
                                                     child: Text(
                                                       'Supprimer',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],

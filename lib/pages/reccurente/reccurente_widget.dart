@@ -10,7 +10,12 @@ import 'reccurente_model.dart';
 export 'reccurente_model.dart';
 
 class ReccurenteWidget extends StatefulWidget {
-  const ReccurenteWidget({super.key});
+  const ReccurenteWidget({
+    super.key,
+    required this.recurrenteDetails,
+  });
+
+  final RecurrenceRecord? recurrenteDetails;
 
   @override
   State<ReccurenteWidget> createState() => _ReccurenteWidgetState();
@@ -66,6 +71,7 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                   fontFamily: 'Readex Pro',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: const [],
@@ -95,7 +101,12 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                             children: [
                               Text(
                                 'Récurrence',
-                                style: FlutterFlowTheme.of(context).labelMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               Container(
                                 width: double.infinity,
@@ -126,8 +137,12 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                       () => _model.recurrenceValue = val),
                                   width: 300.0,
                                   height: 56.0,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                   hintText: 'Veuillez séléctionner...',
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
@@ -171,8 +186,12 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                       setState(() => _model.typeValue = val),
                                   width: 300.0,
                                   height: 56.0,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                   hintText: 'Veuillez séléctionner...',
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
@@ -210,7 +229,12 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                             children: [
                               Text(
                                 'Date de fin',
-                                style: FlutterFlowTheme.of(context).labelMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               InkWell(
                                 splashColor: Colors.transparent,
@@ -238,6 +262,7 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                                 .override(
                                                   fontFamily: 'Readex Pro',
                                                   fontSize: 32.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                         pickerBackgroundColor:
@@ -295,7 +320,11 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                               .languageCode,
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge,
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                     ),
                                   ),
@@ -337,6 +366,7 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Inter',
                         color: Colors.white,
+                        letterSpacing: 0.0,
                       ),
                   elevation: 3.0,
                   borderSide: const BorderSide(

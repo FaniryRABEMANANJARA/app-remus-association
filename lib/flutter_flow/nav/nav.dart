@@ -162,16 +162,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             'modifierProfil': getDoc(['users'], UsersRecord.fromSnapshot),
           },
           builder: (context, params) => ModificationProfileAssociationWidget(
-            modifierProfil:
-                params.getParam('modifierProfil', ParamType.Document),
+            modifierProfil: params.getParam(
+              'modifierProfil',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
           name: 'Detail_maison',
           path: '/detailMaison',
           builder: (context, params) => DetailMaisonWidget(
-            maisonDetails: params.getParam('maisonDetails',
-                ParamType.DocumentReference, false, ['maison']),
+            maisonDetails: params.getParam(
+              'maisonDetails',
+              ParamType.DocumentReference,
+              false,
+              ['maison'],
+            ),
           ),
         ),
         FFRoute(
@@ -181,16 +187,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             'completeProfil': getDoc(['users'], UsersRecord.fromSnapshot),
           },
           builder: (context, params) => CompleteProfilWidget(
-            completeProfil:
-                params.getParam('completeProfil', ParamType.Document),
+            completeProfil: params.getParam(
+              'completeProfil',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
           name: 'Detail_annonce',
           path: '/detailAnnonce',
           builder: (context, params) => DetailAnnonceWidget(
-            annonceDetails: params.getParam('annonceDetails',
-                ParamType.DocumentReference, false, ['annonce']),
+            annonceDetails: params.getParam(
+              'annonceDetails',
+              ParamType.DocumentReference,
+              false,
+              ['annonce'],
+            ),
           ),
         ),
         FFRoute(
@@ -201,8 +213,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 getDoc(['ressource'], RessourceRecord.fromSnapshot),
           },
           builder: (context, params) => ModifierRessourceWidget(
-            modifierRessource:
-                params.getParam('modifierRessource', ParamType.Document),
+            modifierRessource: params.getParam(
+              'modifierRessource',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
@@ -213,14 +227,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ['note_association'], NoteAssociationRecord.fromSnapshot),
           },
           builder: (context, params) => ModifierEvaluationWidget(
-            modifEvaluation:
-                params.getParam('modifEvaluation', ParamType.Document),
+            modifEvaluation: params.getParam(
+              'modifEvaluation',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
           name: 'Reccurente',
           path: '/reccurente',
-          builder: (context, params) => const ReccurenteWidget(),
+          asyncParams: {
+            'recurrenteDetails':
+                getDoc(['recurrence'], RecurrenceRecord.fromSnapshot),
+          },
+          builder: (context, params) => ReccurenteWidget(
+            recurrenteDetails: params.getParam(
+              'recurrenteDetails',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: 'CodeValidation',
@@ -235,8 +260,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 getDoc(['missionaComble'], MissionaCombleRecord.fromSnapshot),
           },
           builder: (context, params) => DetailMissionCombleeWidget(
-            missionDetails:
-                params.getParam('missionDetails', ParamType.Document),
+            missionDetails: params.getParam(
+              'missionDetails',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
@@ -375,8 +402,12 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+    );
   }
 }
 

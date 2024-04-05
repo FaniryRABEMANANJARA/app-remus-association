@@ -32,8 +32,6 @@ class AuthLoginAssociationModel
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     passwordCreateVisibility = false;
@@ -56,8 +54,4 @@ class AuthLoginAssociationModel
     passwordFocusNode?.dispose();
     passwordController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -80,29 +79,35 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                         child: Text(
                                           'Mes ressources',
                                           style: FlutterFlowTheme.of(context)
-                                              .headlineMedium,
+                                              .titleLarge
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                                FlutterFlowIconButton(
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  borderRadius: 20.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 40.0,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  icon: Icon(
-                                    Icons.add,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  onPressed: () async {
-                                    context.pushNamed('AjoutRessource');
-                                  },
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed('AjoutRessource');
+                                      },
+                                      child: Icon(
+                                        Icons.add_circle,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 40.0,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -121,15 +126,14 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
-                                    return Center(
+                                    return const Center(
                                       child: SizedBox(
                                         width: 50.0,
                                         height: 50.0,
                                         child: CircularProgressIndicator(
                                           valueColor:
                                               AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
+                                            Color(0xFFF4B74C),
                                           ),
                                         ),
                                       ),
@@ -196,6 +200,7 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                 ),
@@ -208,7 +213,11 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                         .description,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelMedium,
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                                 Divider(
@@ -248,7 +257,13 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                             'Télécharger',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                           ),
                                                         ].divide(const SizedBox(
                                                             width: 4.0)),
@@ -295,6 +310,8 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryText,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                   ),
                                                             ),
                                                           ),
@@ -391,6 +408,8 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                                       'Inter',
                                                                   color: const Color(
                                                                       0xFFE2DC40),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                           ),
                                                         ),
@@ -441,6 +460,8 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .error,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                         ),
                                                       ),

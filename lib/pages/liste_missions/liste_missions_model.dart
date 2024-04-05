@@ -15,8 +15,6 @@ class ListeMissionsModel extends FlutterFlowModel<ListeMissionsWidget> {
   String? Function(BuildContext, String?)? textControllerValidator;
   List<MissionRecord> simpleSearchResults = [];
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -25,8 +23,4 @@ class ListeMissionsModel extends FlutterFlowModel<ListeMissionsWidget> {
     unfocusNode.dispose();
     textFieldFocusNode?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

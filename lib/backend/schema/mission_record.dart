@@ -65,6 +65,11 @@ class MissionRecord extends FirestoreRecord {
   String get dateFin => _dateFin ?? '';
   bool hasDateFin() => _dateFin != null;
 
+  // "educateur" field.
+  DocumentReference? _educateur;
+  DocumentReference? get educateur => _educateur;
+  bool hasEducateur() => _educateur != null;
+
   void _initializeFields() {
     _adresse = snapshotData['adresse'] as String?;
     _annotation = snapshotData['annotation'] as String?;
@@ -76,6 +81,7 @@ class MissionRecord extends FirestoreRecord {
     _localisation = snapshotData['localisation'] as String?;
     _dateDebut = snapshotData['date_debut'] as String?;
     _dateFin = snapshotData['date_fin'] as String?;
+    _educateur = snapshotData['educateur'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -123,6 +129,7 @@ Map<String, dynamic> createMissionRecordData({
   String? localisation,
   String? dateDebut,
   String? dateFin,
+  DocumentReference? educateur,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -136,6 +143,7 @@ Map<String, dynamic> createMissionRecordData({
       'localisation': localisation,
       'date_debut': dateDebut,
       'date_fin': dateFin,
+      'educateur': educateur,
     }.withoutNulls,
   );
 
@@ -156,7 +164,8 @@ class MissionRecordDocumentEquality implements Equality<MissionRecord> {
         e1?.image == e2?.image &&
         e1?.localisation == e2?.localisation &&
         e1?.dateDebut == e2?.dateDebut &&
-        e1?.dateFin == e2?.dateFin;
+        e1?.dateFin == e2?.dateFin &&
+        e1?.educateur == e2?.educateur;
   }
 
   @override
@@ -170,7 +179,8 @@ class MissionRecordDocumentEquality implements Equality<MissionRecord> {
         e?.image,
         e?.localisation,
         e?.dateDebut,
-        e?.dateFin
+        e?.dateFin,
+        e?.educateur
       ]);
 
   @override

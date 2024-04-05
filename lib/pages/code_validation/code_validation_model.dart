@@ -10,8 +10,6 @@ class CodeValidationModel extends FlutterFlowModel<CodeValidationWidget> {
   TextEditingController? codeController;
   String? Function(BuildContext, String?)? codeControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -20,8 +18,4 @@ class CodeValidationModel extends FlutterFlowModel<CodeValidationWidget> {
     codeFocusNode?.dispose();
     codeController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

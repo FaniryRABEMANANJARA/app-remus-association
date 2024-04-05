@@ -25,8 +25,6 @@ class AjoutRessourceModel extends FlutterFlowModel<AjoutRessourceWidget> {
   TextEditingController? descriptionController;
   String? Function(BuildContext, String?)? descriptionControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -40,9 +38,6 @@ class AjoutRessourceModel extends FlutterFlowModel<AjoutRessourceWidget> {
     descriptionController?.dispose();
   }
 
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
-
+  /// Additional helper methods.
   String? get radioButtonValue => radioButtonValueController?.value;
 }

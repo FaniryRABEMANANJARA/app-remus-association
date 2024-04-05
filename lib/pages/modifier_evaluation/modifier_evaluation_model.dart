@@ -20,8 +20,6 @@ class ModifierEvaluationModel
   TextEditingController? noteController;
   String? Function(BuildContext, String?)? noteControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -37,8 +35,4 @@ class ModifierEvaluationModel
     noteFocusNode?.dispose();
     noteController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

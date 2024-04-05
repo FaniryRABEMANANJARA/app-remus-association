@@ -44,7 +44,10 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
           automaticallyImplyLeading: false,
           title: Text(
             'Annonces de l\'administrateur',
-            style: FlutterFlowTheme.of(context).titleLarge,
+            style: FlutterFlowTheme.of(context).titleLarge.override(
+                  fontFamily: 'Readex Pro',
+                  letterSpacing: 0.0,
+                ),
           ),
           actions: const [],
           centerTitle: false,
@@ -61,7 +64,10 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
                   child: Text(
                     'Nouveau',
-                    style: FlutterFlowTheme.of(context).labelMedium,
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                          fontFamily: 'Inter',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ),
                 StreamBuilder<List<AnnonceRecord>>(
@@ -73,13 +79,13 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
-                      return Center(
+                      return const Center(
                         child: SizedBox(
                           width: 50.0,
                           height: 50.0,
                           child: CircularProgressIndicator(
                             valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
+                              Color(0xFFF4B74C),
                             ),
                           ),
                         ),
@@ -141,6 +147,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -157,6 +164,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -167,7 +175,11 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                     Text(
                                       'Détails ',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -211,7 +223,10 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
                   child: Text(
                     'Ce dernier mois',
-                    style: FlutterFlowTheme.of(context).labelMedium,
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                          fontFamily: 'Inter',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ),
                 StreamBuilder<List<AnnonceRecord>>(
@@ -222,13 +237,13 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
-                      return Center(
+                      return const Center(
                         child: SizedBox(
                           width: 50.0,
                           height: 50.0,
                           child: CircularProgressIndicator(
                             valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
+                              Color(0xFFF4B74C),
                             ),
                           ),
                         ),
@@ -289,6 +304,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                               .override(
                                                 fontFamily: 'Readex Pro',
                                                 fontSize: 12.0,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -302,7 +318,11 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                     Text(
                                       'Détails',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(

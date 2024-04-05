@@ -38,8 +38,6 @@ class AjoutMaisonModel extends FlutterFlowModel<AjoutMaisonWidget> {
   TextEditingController? descriptionController;
   String? Function(BuildContext, String?)? descriptionControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -61,8 +59,4 @@ class AjoutMaisonModel extends FlutterFlowModel<AjoutMaisonWidget> {
     descriptionFocusNode?.dispose();
     descriptionController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

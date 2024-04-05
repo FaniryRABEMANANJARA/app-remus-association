@@ -61,11 +61,17 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
             children: [
               Text(
                 'Création de Ressources',
-                style: FlutterFlowTheme.of(context).headlineMedium,
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                    ),
               ),
               Text(
                 'Formulaire pour créer une ressource',
-                style: FlutterFlowTheme.of(context).labelMedium,
+                style: FlutterFlowTheme.of(context).labelMedium.override(
+                      fontFamily: 'Inter',
+                      letterSpacing: 0.0,
+                    ),
               ),
             ].divide(const SizedBox(height: 4.0)),
           ),
@@ -133,7 +139,11 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                               'Titre',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             Container(
                                               width: double.infinity,
@@ -163,14 +173,20 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
-                                                    labelStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                     enabledBorder:
                                                         UnderlineInputBorder(
                                                       borderSide: BorderSide(
@@ -226,7 +242,12 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  minLines: null,
                                                   validator: _model
                                                       .nomControllerValidator
                                                       .asValidator(context),
@@ -251,7 +272,11 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                               'Date de création',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             InkWell(
                                               splashColor: Colors.transparent,
@@ -288,6 +313,8 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                                                 fontFamily:
                                                                     'Readex Pro',
                                                                 fontSize: 32.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
@@ -371,10 +398,13 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                                                     context)
                                                                 .languageCode,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ],
                                                 ),
@@ -398,7 +428,11 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                               'Fichier',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             Container(
                                               width: double.infinity,
@@ -506,6 +540,7 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   elevation: 3.0,
                                                   borderSide: const BorderSide(
@@ -532,7 +567,11 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                           Text(
                                             'Type',
                                             style: FlutterFlowTheme.of(context)
-                                                .labelMedium,
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ],
                                       ),
@@ -552,10 +591,18 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                             optionHeight: 32.0,
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Inter',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             selectedTextStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Inter',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             buttonPosition:
                                                 RadioButtonPosition.left,
                                             direction: Axis.horizontal,
@@ -577,8 +624,12 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                   ),
                                   Text(
                                     'Information ',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                   TextFormField(
                                     controller: _model.descriptionController,
@@ -589,10 +640,18 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .labelLarge,
+                                          .labelLarge
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
                                       alignLabelWithHint: true,
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
                                       errorStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -600,6 +659,7 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             fontSize: 12.0,
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -648,8 +708,12 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                                           const EdgeInsetsDirectional.fromSTEB(
                                               16.0, 16.0, 16.0, 16.0),
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                     maxLines: 9,
                                     minLines: 5,
                                     cursorColor:
@@ -708,6 +772,7 @@ class _AjoutRessourceWidgetState extends State<AjoutRessourceWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Inter',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                         elevation: 3.0,
                         borderSide: const BorderSide(

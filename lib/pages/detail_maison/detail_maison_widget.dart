@@ -59,7 +59,10 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
         ),
         title: Text(
           'Détails maison',
-          style: FlutterFlowTheme.of(context).headlineMedium,
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
+                fontFamily: 'Readex Pro',
+                letterSpacing: 0.0,
+              ),
         ),
         actions: const [],
         centerTitle: false,
@@ -70,13 +73,13 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    Color(0xFFF4B74C),
                   ),
                 ),
               ),
@@ -116,6 +119,7 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
                             .override(
                               fontFamily: 'Readex Pro',
                               fontSize: 16.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                       Column(
@@ -132,6 +136,7 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
                                 .override(
                                   fontFamily: 'Inter',
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           Text(
@@ -144,6 +149,7 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
                                 .override(
                                   fontFamily: 'Inter',
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           Padding(
@@ -154,8 +160,12 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
                               children: [
                                 Text(
                                   'Nombre des jeunes :',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
@@ -165,8 +175,12 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
                                       columnMainContentMaisonRecord.nombre,
                                       'nombre',
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                               ],
@@ -180,8 +194,12 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
                               children: [
                                 Text(
                                   'L\'âge des jeunes :',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
@@ -195,6 +213,7 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
@@ -204,8 +223,12 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
                                       5.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'ans',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                               ],
@@ -232,7 +255,12 @@ class _DetailMaisonWidgetState extends State<DetailMaisonWidget> {
                         alignment: const AlignmentDirectional(0.0, -1.0),
                         child: Text(
                           'Images',
-                          style: FlutterFlowTheme.of(context).headlineMedium,
+                          style: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .override(
+                                fontFamily: 'Readex Pro',
+                                letterSpacing: 0.0,
+                              ),
                         ),
                       ),
                       SingleChildScrollView(

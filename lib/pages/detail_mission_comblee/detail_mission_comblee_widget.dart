@@ -62,7 +62,10 @@ class _DetailMissionCombleeWidgetState
         ),
         title: Text(
           'Détails mission à Comblée',
-          style: FlutterFlowTheme.of(context).headlineMedium,
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
+                fontFamily: 'Readex Pro',
+                letterSpacing: 0.0,
+              ),
         ),
         actions: const [],
         centerTitle: false,
@@ -74,13 +77,13 @@ class _DetailMissionCombleeWidgetState
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    Color(0xFFF4B74C),
                   ),
                 ),
               ),
@@ -123,6 +126,7 @@ class _DetailMissionCombleeWidgetState
                             .override(
                               fontFamily: 'Readex Pro',
                               fontSize: 16.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                       Text(
@@ -135,6 +139,7 @@ class _DetailMissionCombleeWidgetState
                             .override(
                               fontFamily: 'Readex Pro',
                               fontSize: 14.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                       Text(
@@ -147,6 +152,7 @@ class _DetailMissionCombleeWidgetState
                             .override(
                               fontFamily: 'Readex Pro',
                               fontSize: 14.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                       Column(
@@ -157,15 +163,30 @@ class _DetailMissionCombleeWidgetState
                             children: [
                               Text(
                                 'Date et heure de début : ',
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               Text(
                                 columnMainContentMissionaCombleRecord.dateDebut,
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               Text(
                                 'AM',
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ],
                           ),
@@ -174,15 +195,30 @@ class _DetailMissionCombleeWidgetState
                             children: [
                               Text(
                                 'Fin d\'heure : ',
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               Text(
                                 columnMainContentMissionaCombleRecord.dateFin,
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               Text(
                                 'PM',
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ],
                           ),
@@ -212,6 +248,7 @@ class _DetailMissionCombleeWidgetState
                                         .override(
                                           fontFamily: 'Inter',
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
@@ -221,7 +258,7 @@ class _DetailMissionCombleeWidgetState
                                 alignment: const AlignmentDirectional(1.0, 0.0),
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      80.0, 5.0, 0.0, 0.0),
+                                      70.0, 5.0, 0.0, 0.0),
                                   child: Text(
                                     'Note :',
                                     style: FlutterFlowTheme.of(context)
@@ -229,6 +266,7 @@ class _DetailMissionCombleeWidgetState
                                         .override(
                                           fontFamily: 'Inter',
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
@@ -250,6 +288,7 @@ class _DetailMissionCombleeWidgetState
                                         .override(
                                           fontFamily: 'Inter',
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
@@ -273,6 +312,7 @@ class _DetailMissionCombleeWidgetState
                                         .override(
                                           fontFamily: 'Inter',
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                           decoration: TextDecoration.underline,
                                         ),
                                   ),
@@ -300,6 +340,7 @@ class _DetailMissionCombleeWidgetState
                                         .override(
                                           fontFamily: 'Inter',
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -322,6 +363,7 @@ class _DetailMissionCombleeWidgetState
                                         .override(
                                           fontFamily: 'Inter',
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                           decoration: TextDecoration.underline,
                                         ),
                                   ),
@@ -349,6 +391,7 @@ class _DetailMissionCombleeWidgetState
                                         .override(
                                           fontFamily: 'Inter',
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
