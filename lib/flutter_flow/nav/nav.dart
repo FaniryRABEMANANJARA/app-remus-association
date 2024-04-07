@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
@@ -8,7 +10,11 @@ import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -73,87 +79,87 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const NavBarPage()
-          : const AuthLoginAssociationWidget(),
+          ? NavBarPage()
+          : AuthLoginAssociationWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const NavBarPage()
-              : const AuthLoginAssociationWidget(),
+              ? NavBarPage()
+              : AuthLoginAssociationWidget(),
         ),
         FFRoute(
           name: 'AjoutMission_Association',
           path: '/ajoutMissionAssociation',
-          builder: (context, params) => const AjoutMissionAssociationWidget(),
+          builder: (context, params) => AjoutMissionAssociationWidget(),
         ),
         FFRoute(
           name: 'Accueil',
           path: '/accueil',
-          builder: (context, params) => const AccueilWidget(),
+          builder: (context, params) => AccueilWidget(),
         ),
         FFRoute(
           name: 'Gestion_Ressources',
           path: '/gestionRessources',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Gestion_Ressources')
-              : const GestionRessourcesWidget(),
+              ? NavBarPage(initialPage: 'Gestion_Ressources')
+              : GestionRessourcesWidget(),
         ),
         FFRoute(
           name: 'AjoutRessource',
           path: '/ajoutRessource',
-          builder: (context, params) => const AjoutRessourceWidget(),
+          builder: (context, params) => AjoutRessourceWidget(),
         ),
         FFRoute(
           name: 'ListeMissions',
           path: '/listeMissions',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ListeMissions')
-              : const ListeMissionsWidget(),
+              ? NavBarPage(initialPage: 'ListeMissions')
+              : ListeMissionsWidget(),
         ),
         FFRoute(
           name: 'ListeAnnonce',
           path: '/listeAnnonce',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ListeAnnonce')
-              : const ListeAnnonceWidget(),
+              ? NavBarPage(initialPage: 'ListeAnnonce')
+              : ListeAnnonceWidget(),
         ),
         FFRoute(
           name: 'Profile_Association',
           path: '/profileAssociation',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Profile_Association')
-              : const ProfileAssociationWidget(),
+              ? NavBarPage(initialPage: 'Profile_Association')
+              : ProfileAssociationWidget(),
         ),
         FFRoute(
           name: 'ListeMaison',
           path: '/listeMaison',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ListeMaison')
-              : const ListeMaisonWidget(),
+              ? NavBarPage(initialPage: 'ListeMaison')
+              : ListeMaisonWidget(),
         ),
         FFRoute(
           name: 'AjoutMaison',
           path: '/ajoutMaison',
-          builder: (context, params) => const AjoutMaisonWidget(),
+          builder: (context, params) => AjoutMaisonWidget(),
         ),
         FFRoute(
           name: 'AjoutEvaluation',
           path: '/ajoutEvaluation',
-          builder: (context, params) => const AjoutEvaluationWidget(),
+          builder: (context, params) => AjoutEvaluationWidget(),
         ),
         FFRoute(
           name: 'Evaluation',
           path: '/evaluation',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Evaluation')
-              : const EvaluationWidget(),
+              ? NavBarPage(initialPage: 'Evaluation')
+              : EvaluationWidget(),
         ),
         FFRoute(
           name: 'Auth_Login_Association',
           path: '/authLoginAssociation',
-          builder: (context, params) => const AuthLoginAssociationWidget(),
+          builder: (context, params) => AuthLoginAssociationWidget(),
         ),
         FFRoute(
           name: 'Modification_Profile_Association',
@@ -250,7 +256,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'CodeValidation',
           path: '/codeValidation',
-          builder: (context, params) => const CodeValidationWidget(),
+          builder: (context, params) => CodeValidationWidget(),
         ),
         FFRoute(
           name: 'Detail_missionComblee',
@@ -269,7 +275,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ListeMissionsaComblee',
           path: '/listeMissionsaComblee',
-          builder: (context, params) => const ListeMissionsaCombleeWidget(),
+          builder: (context, params) => ListeMissionsaCombleeWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -503,7 +509,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

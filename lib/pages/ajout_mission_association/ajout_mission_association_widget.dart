@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -8,7 +9,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'ajout_mission_association_model.dart';
 export 'ajout_mission_association_model.dart';
@@ -65,7 +70,7 @@ class _AjoutMissionAssociationWidgetState
         if (!snapshot.hasData) {
           return Scaffold(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            body: const Center(
+            body: Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
@@ -96,7 +101,7 @@ class _AjoutMissionAssociationWidgetState
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             appBar: AppBar(
-              backgroundColor: const Color(0xFF928163),
+              backgroundColor: Color(0xFF928163),
               automaticallyImplyLeading: false,
               title: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -116,11 +121,11 @@ class _AjoutMissionAssociationWidgetState
                           letterSpacing: 0.0,
                         ),
                   ),
-                ].divide(const SizedBox(height: 4.0)),
+                ].divide(SizedBox(height: 4.0)),
               ),
               actions: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
                   child: FlutterFlowIconButton(
                     borderColor: FlutterFlowTheme.of(context).alternate,
                     borderRadius: 12.0,
@@ -156,14 +161,14 @@ class _AjoutMissionAssociationWidgetState
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: AlignmentDirectional(0.0, -1.0),
                               child: Container(
-                                constraints: const BoxConstraints(
+                                constraints: BoxConstraints(
                                   maxWidth: 770.0,
                                 ),
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -254,7 +259,7 @@ class _AjoutMissionAssociationWidgetState
                                               : FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
                                           contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 20.0, 16.0, 20.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -300,7 +305,7 @@ class _AjoutMissionAssociationWidgetState
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
-                                                    final datePicked1Date =
+                                                    final _datePicked1Date =
                                                         await showDatePicker(
                                                       context: context,
                                                       initialDate:
@@ -361,10 +366,10 @@ class _AjoutMissionAssociationWidgetState
                                                       },
                                                     );
 
-                                                    TimeOfDay? datePicked1Time;
-                                                    if (datePicked1Date !=
+                                                    TimeOfDay? _datePicked1Time;
+                                                    if (_datePicked1Date !=
                                                         null) {
-                                                      datePicked1Time =
+                                                      _datePicked1Time =
                                                           await showTimePicker(
                                                         context: context,
                                                         initialTime: TimeOfDay
@@ -424,20 +429,20 @@ class _AjoutMissionAssociationWidgetState
                                                       );
                                                     }
 
-                                                    if (datePicked1Date !=
+                                                    if (_datePicked1Date !=
                                                             null &&
-                                                        datePicked1Time !=
+                                                        _datePicked1Time !=
                                                             null) {
                                                       safeSetState(() {
                                                         _model.datePicked1 =
                                                             DateTime(
-                                                          datePicked1Date.year,
-                                                          datePicked1Date
+                                                          _datePicked1Date.year,
+                                                          _datePicked1Date
                                                               .month,
-                                                          datePicked1Date.day,
-                                                          datePicked1Time!
+                                                          _datePicked1Date.day,
+                                                          _datePicked1Time!
                                                               .hour,
-                                                          datePicked1Time
+                                                          _datePicked1Time
                                                               .minute,
                                                         );
                                                       });
@@ -463,7 +468,7 @@ class _AjoutMissionAssociationWidgetState
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         dateTimeFormat(
@@ -488,7 +493,7 @@ class _AjoutMissionAssociationWidgetState
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(const SizedBox(height: 4.0)),
+                                              ].divide(SizedBox(height: 4.0)),
                                             ),
                                           ),
                                           Expanded(
@@ -517,7 +522,7 @@ class _AjoutMissionAssociationWidgetState
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
-                                                    final datePicked2Time =
+                                                    final _datePicked2Time =
                                                         await showTimePicker(
                                                       context: context,
                                                       initialTime: TimeOfDay
@@ -575,7 +580,7 @@ class _AjoutMissionAssociationWidgetState
                                                         );
                                                       },
                                                     );
-                                                    if (datePicked2Time !=
+                                                    if (_datePicked2Time !=
                                                         null) {
                                                       safeSetState(() {
                                                         _model.datePicked2 =
@@ -586,8 +591,8 @@ class _AjoutMissionAssociationWidgetState
                                                               .month,
                                                           getCurrentTimestamp
                                                               .day,
-                                                          datePicked2Time.hour,
-                                                          datePicked2Time
+                                                          _datePicked2Time.hour,
+                                                          _datePicked2Time
                                                               .minute,
                                                         );
                                                       });
@@ -613,7 +618,7 @@ class _AjoutMissionAssociationWidgetState
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         dateTimeFormat(
@@ -638,10 +643,10 @@ class _AjoutMissionAssociationWidgetState
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(const SizedBox(height: 4.0)),
+                                              ].divide(SizedBox(height: 4.0)),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(width: 12.0)),
+                                        ].divide(SizedBox(width: 12.0)),
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -682,7 +687,7 @@ class _AjoutMissionAssociationWidgetState
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     child: TextFormField(
@@ -785,10 +790,10 @@ class _AjoutMissionAssociationWidgetState
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(const SizedBox(height: 4.0)),
+                                              ].divide(SizedBox(height: 4.0)),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(width: 12.0)),
+                                        ].divide(SizedBox(width: 12.0)),
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -841,7 +846,7 @@ class _AjoutMissionAssociationWidgetState
                                                       RadioButtonPosition.left,
                                                   direction: Axis.horizontal,
                                                   radioButtonColor:
-                                                      const Color(0xFF928163),
+                                                      Color(0xFF928163),
                                                   inactiveRadioButtonColor:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -852,10 +857,10 @@ class _AjoutMissionAssociationWidgetState
                                                   verticalAlignment:
                                                       WrapCrossAlignment.start,
                                                 ),
-                                              ].divide(const SizedBox(height: 4.0)),
+                                              ].divide(SizedBox(height: 4.0)),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(width: 12.0)),
+                                        ].divide(SizedBox(width: 12.0)),
                                       ),
                                       TextFormField(
                                         controller: _model.annotationController,
@@ -941,7 +946,7 @@ class _AjoutMissionAssociationWidgetState
                                               : FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
                                           contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 20.0, 16.0, 20.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -966,7 +971,7 @@ class _AjoutMissionAssociationWidgetState
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
-                                                return const Center(
+                                                return Center(
                                                   child: SizedBox(
                                                     width: 50.0,
                                                     height: 50.0,
@@ -1024,7 +1029,7 @@ class _AjoutMissionAssociationWidgetState
                                                         .alternate,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
-                                                margin: const EdgeInsetsDirectional
+                                                margin: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 4.0, 12.0, 4.0),
                                                 hidesUnderline: true,
@@ -1035,7 +1040,7 @@ class _AjoutMissionAssociationWidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: StreamBuilder<
                                                 List<EducateurRecord>>(
@@ -1048,7 +1053,7 @@ class _AjoutMissionAssociationWidgetState
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
-                                                  return const Center(
+                                                  return Center(
                                                     child: SizedBox(
                                                       width: 50.0,
                                                       height: 50.0,
@@ -1114,7 +1119,7 @@ class _AjoutMissionAssociationWidgetState
                                                           .alternate,
                                                   borderWidth: 2.0,
                                                   borderRadius: 8.0,
-                                                  margin: const EdgeInsetsDirectional
+                                                  margin: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           20.0, 4.0, 12.0, 4.0),
                                                   hidesUnderline: true,
@@ -1238,18 +1243,18 @@ class _AjoutMissionAssociationWidgetState
                                                     }
                                                   },
                                                   text: 'Télécharger',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.download_for_offline,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -1263,7 +1268,7 @@ class _AjoutMissionAssociationWidgetState
                                                           letterSpacing: 0.0,
                                                         ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1302,7 +1307,7 @@ class _AjoutMissionAssociationWidgetState
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
-                                                return const Center(
+                                                return Center(
                                                   child: SizedBox(
                                                     width: 50.0,
                                                     height: 50.0,
@@ -1404,7 +1409,7 @@ class _AjoutMissionAssociationWidgetState
                                                             .left,
                                                     direction: Axis.horizontal,
                                                     radioButtonColor:
-                                                        const Color(0xFF928163),
+                                                        Color(0xFF928163),
                                                     inactiveRadioButtonColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -1517,7 +1522,7 @@ class _AjoutMissionAssociationWidgetState
                                               : FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
                                           contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 16.0, 16.0, 16.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -1536,13 +1541,13 @@ class _AjoutMissionAssociationWidgetState
                                             .asValidator(context),
                                       ),
                                       Container(
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 770.0,
                                         ),
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 12.0, 16.0, 12.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
@@ -1612,12 +1617,12 @@ class _AjoutMissionAssociationWidgetState
                                             options: FFButtonOptions(
                                               width: double.infinity,
                                               height: 48.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: const Color(0xFF928163),
+                                              color: Color(0xFF928163),
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
@@ -1627,7 +1632,7 @@ class _AjoutMissionAssociationWidgetState
                                                         letterSpacing: 0.0,
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -1638,8 +1643,8 @@ class _AjoutMissionAssociationWidgetState
                                         ),
                                       ),
                                     ]
-                                        .divide(const SizedBox(height: 12.0))
-                                        .addToEnd(const SizedBox(height: 32.0)),
+                                        .divide(SizedBox(height: 12.0))
+                                        .addToEnd(SizedBox(height: 32.0)),
                                   ),
                                 ),
                               ),

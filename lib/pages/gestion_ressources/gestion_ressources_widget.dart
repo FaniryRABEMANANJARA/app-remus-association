@@ -1,7 +1,10 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'gestion_ressources_model.dart';
 export 'gestion_ressources_model.dart';
 
@@ -48,20 +51,20 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
             children: [
               Expanded(
                 child: Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: Container(
                     width: double.infinity,
-                    constraints: const BoxConstraints(
+                    constraints: BoxConstraints(
                       maxWidth: 1170.0,
                     ),
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -74,7 +77,7 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 20.0, 0.0, 0.0),
                                         child: Text(
                                           'Mes ressources',
@@ -119,14 +122,14 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                             desktop: false,
                           ))
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 10.0),
                               child: StreamBuilder<List<RessourceRecord>>(
                                 stream: queryRessourceRecord(),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
-                                    return const Center(
+                                    return Center(
                                       child: SizedBox(
                                         width: 50.0,
                                         height: 50.0,
@@ -143,7 +146,7 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                       documentRessourceRecordList =
                                       snapshot.data!;
                                   return ListView.separated(
-                                    padding: const EdgeInsets.fromLTRB(
+                                    padding: EdgeInsets.fromLTRB(
                                       0,
                                       0,
                                       0,
@@ -154,17 +157,17 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                     itemCount:
                                         documentRessourceRecordList.length,
                                     separatorBuilder: (_, __) =>
-                                        const SizedBox(height: 12.0),
+                                        SizedBox(height: 12.0),
                                     itemBuilder: (context, documentIndex) {
                                       final documentRessourceRecord =
                                           documentRessourceRecordList[
                                               documentIndex];
                                       return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         child: Container(
                                           width: 500.0,
-                                          constraints: const BoxConstraints(
+                                          constraints: BoxConstraints(
                                             maxWidth: 570.0,
                                           ),
                                           decoration: BoxDecoration(
@@ -180,14 +183,14 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
+                                            padding: EdgeInsets.all(4.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 12.0, 0.0),
                                                   child: Text(
@@ -205,7 +208,7 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(12.0, 4.0, 12.0,
                                                           16.0),
                                                   child: Text(
@@ -228,7 +231,7 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                       .alternate,
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(12.0, 12.0,
                                                           12.0, 8.0),
                                                   child: Row(
@@ -265,7 +268,7 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                                       0.0,
                                                                 ),
                                                           ),
-                                                        ].divide(const SizedBox(
+                                                        ].divide(SizedBox(
                                                             width: 4.0)),
                                                       ),
                                                       Container(
@@ -288,11 +291,11 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -321,7 +324,7 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(12.0, 12.0,
                                                           12.0, 8.0),
                                                   child: Row(
@@ -357,7 +360,7 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                             },
                                                           );
                                                         },
-                                                        child: const Icon(
+                                                        child: Icon(
                                                           Icons.edit,
                                                           color:
                                                               Color(0xFFE2DC40),
@@ -365,7 +368,7 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -406,7 +409,7 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFFE2DC40),
                                                                   letterSpacing:
                                                                       0.0,

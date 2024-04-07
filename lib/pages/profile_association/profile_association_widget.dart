@@ -2,7 +2,11 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'profile_association_model.dart';
 export 'profile_association_model.dart';
 
@@ -47,7 +51,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                 letterSpacing: 0.0,
               ),
         ),
-        actions: const [],
+        actions: [],
         centerTitle: false,
         elevation: 0.0,
       ),
@@ -56,7 +60,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
-            return const Center(
+            return Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
@@ -85,7 +89,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
-                      return const Center(
+                      return Center(
                         child: SizedBox(
                           width: 50.0,
                           height: 50.0,
@@ -120,7 +124,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                 blurRadius: 1.0,
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
-                                offset: const Offset(
+                                offset: Offset(
                                   0.0,
                                   0.0,
                                 ),
@@ -128,7 +132,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                             ],
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 12.0, 24.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -142,7 +146,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
+                                    padding: EdgeInsets.all(2.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10.0),
                                       child: Image.network(
@@ -155,7 +159,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -175,7 +179,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -195,7 +199,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                                 .bodySmall
                                                 .override(
                                                   fontFamily: 'Outfit',
-                                                  color: const Color(0xFFF4B74C),
+                                                  color: Color(0xFFF4B74C),
                                                   fontSize: 14.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
@@ -215,7 +219,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                   },
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -235,7 +239,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 12.0, 24.0, 12.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -260,14 +264,14 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                       borderRadius: BorderRadius.circular(20.0),
                                     ),
                                     child: Stack(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.95, 0.0),
+                                              AlignmentDirectional(0.95, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 8.0, 0.0),
                                             child: Icon(
                                               Icons.nights_stay,
@@ -280,7 +284,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-0.85, 0.0),
+                                              AlignmentDirectional(-0.85, 0.0),
                                           child: Container(
                                             width: 36.0,
                                             height: 36.0,
@@ -288,7 +292,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              boxShadow: const [
+                                              boxShadow: [
                                                 BoxShadow(
                                                   blurRadius: 4.0,
                                                   color: Color(0x430B0D0F),
@@ -328,7 +332,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 12.0, 24.0, 12.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -353,14 +357,14 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                       borderRadius: BorderRadius.circular(20.0),
                                     ),
                                     child: Stack(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-0.9, 0.0),
+                                              AlignmentDirectional(-0.9, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 2.0, 0.0, 0.0),
                                             child: Icon(
                                               Icons.wb_sunny_rounded,
@@ -373,7 +377,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.9, 0.0),
+                                              AlignmentDirectional(0.9, 0.0),
                                           child: Container(
                                             width: 36.0,
                                             height: 36.0,
@@ -381,7 +385,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              boxShadow: const [
+                                              boxShadow: [
                                                 BoxShadow(
                                                   blurRadius: 4.0,
                                                   color: Color(0x430B0D0F),
@@ -415,7 +419,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 12.0, 0.0, 12.0),
                           child: Text(
                             'Vos informations',
@@ -436,7 +440,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 10.0),
                         child: Container(
                           width: double.infinity,
@@ -444,7 +448,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
                                 blurRadius: 5.0,
                                 color: Color(0x3416202A),
@@ -458,12 +462,12 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                             shape: BoxShape.rectangle,
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Completer vos informations',
@@ -477,7 +481,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                 ),
                                 Expanded(
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.9, 0.0),
+                                    alignment: AlignmentDirectional(0.9, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -514,7 +518,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                       Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 20.0, 20.0, 10.0),
                             child: Container(
                               width: double.infinity,
@@ -522,7 +526,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 5.0,
                                     color: Color(0x3416202A),
@@ -536,12 +540,12 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                 shape: BoxShape.rectangle,
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => Text(
@@ -561,7 +565,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Téléphone',
@@ -579,7 +583,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                       Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 20.0, 20.0, 10.0),
                             child: Container(
                               width: double.infinity,
@@ -587,7 +591,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 5.0,
                                     color: Color(0x3416202A),
@@ -601,12 +605,12 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                 shape: BoxShape.rectangle,
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => Text(
@@ -627,7 +631,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Adresse',
@@ -644,7 +648,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                       Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 20.0, 20.0, 0.0),
                             child: Container(
                               width: double.infinity,
@@ -652,7 +656,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 5.0,
                                     color: Color(0x3416202A),
@@ -666,12 +670,12 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                 shape: BoxShape.rectangle,
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => Text(
@@ -692,7 +696,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Maison',
@@ -707,7 +711,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 20.0, 20.0, 20.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -732,13 +736,13 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                   },
                                 );
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.edit,
                                 color: Color(0xFFF4B74C),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 10.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -765,7 +769,7 @@ class _ProfileAssociationWidgetState extends State<ProfileAssociationWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFFF4B74C),
+                                        color: Color(0xFFF4B74C),
                                         letterSpacing: 0.0,
                                       ),
                                 ),

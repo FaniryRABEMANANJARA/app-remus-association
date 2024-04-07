@@ -4,7 +4,10 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'code_validation_model.dart';
 export 'code_validation_model.dart';
 
@@ -51,7 +54,7 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
         if (!snapshot.hasData) {
           return Scaffold(
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: const Center(
+            body: Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
@@ -93,18 +96,18 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                 context.pop();
               },
             ),
-            actions: const [],
+            actions: [],
             centerTitle: false,
             elevation: 0.0,
           ),
           body: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: double.infinity,
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 570.0,
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -124,7 +127,7 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                       tablet: false,
                     ))
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 8.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -138,7 +141,7 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 12.0),
                                 child: Icon(
                                   Icons.arrow_back_rounded,
@@ -148,7 +151,7 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Back',
@@ -166,7 +169,7 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                       ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Activation de votre compte',
                         style: FlutterFlowTheme.of(context)
@@ -179,7 +182,7 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
                       child: Text(
                         'Nous vous enverrons un e-mail contenant le code d\'accès à votre compte.',
                         style:
@@ -191,13 +194,13 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
-                      child: SizedBox(
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                      child: Container(
                         width: double.infinity,
                         child: TextFormField(
                           controller: _model.codeController,
                           focusNode: _model.codeFocusNode,
-                          autofillHints: const [AutofillHints.oneTimeCode],
+                          autofillHints: [AutofillHints.oneTimeCode],
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: 'Code d\'activation',
@@ -245,7 +248,7 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                             filled: true,
                             fillColor: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                            contentPadding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 24.0, 20.0, 24.0),
                           ),
                           style:
@@ -263,10 +266,10 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             await CodeRecord.collection
@@ -292,11 +295,11 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                           options: FFButtonOptions(
                             width: 270.0,
                             height: 50.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0xFF928163),
+                            color: Color(0xFF928163),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -304,7 +307,7 @@ class _CodeValidationWidgetState extends State<CodeValidationWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

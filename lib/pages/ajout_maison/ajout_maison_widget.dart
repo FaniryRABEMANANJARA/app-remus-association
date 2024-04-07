@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -5,7 +6,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'ajout_maison_model.dart';
 export 'ajout_maison_model.dart';
 
@@ -60,7 +64,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFF928163),
+          backgroundColor: Color(0xFF928163),
           automaticallyImplyLeading: false,
           title: Column(
             mainAxisSize: MainAxisSize.max,
@@ -80,11 +84,11 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                       letterSpacing: 0.0,
                     ),
               ),
-            ].divide(const SizedBox(height: 4.0)),
+            ].divide(SizedBox(height: 4.0)),
           ),
           actions: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
               child: FlutterFlowIconButton(
                 borderColor: FlutterFlowTheme.of(context).alternate,
                 borderRadius: 12.0,
@@ -120,14 +124,14 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, -1.0),
+                          alignment: AlignmentDirectional(0.0, -1.0),
                           child: Container(
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 770.0,
                             ),
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 12.0, 16.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -169,7 +173,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
                                                 child: TextFormField(
@@ -261,10 +265,10 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 4.0)),
+                                          ].divide(SizedBox(height: 4.0)),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 12.0)),
+                                    ].divide(SizedBox(width: 12.0)),
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -302,7 +306,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
                                                 child: TextFormField(
@@ -394,10 +398,10 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 4.0)),
+                                          ].divide(SizedBox(height: 4.0)),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 12.0)),
+                                    ].divide(SizedBox(width: 12.0)),
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -435,7 +439,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
                                                 child: TextFormField(
@@ -527,7 +531,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 4.0)),
+                                          ].divide(SizedBox(height: 4.0)),
                                         ),
                                       ),
                                       Expanded(
@@ -563,7 +567,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
                                                 child: TextFormField(
@@ -655,10 +659,10 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 4.0)),
+                                          ].divide(SizedBox(height: 4.0)),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 12.0)),
+                                    ].divide(SizedBox(width: 12.0)),
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -776,18 +780,18 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   }
                                                 },
                                                 text: 'Télécharger image',
-                                                icon: const Icon(
+                                                icon: Icon(
                                                   Icons
                                                       .download_for_offline_sharp,
                                                   size: 15.0,
                                                 ),
                                                 options: FFButtonOptions(
                                                   height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 24.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -805,7 +809,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                                   elevation: 3.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -815,10 +819,10 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 4.0)),
+                                          ].divide(SizedBox(height: 4.0)),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 12.0)),
+                                    ].divide(SizedBox(width: 12.0)),
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -924,18 +928,18 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                   }
                                                 },
                                                 text: 'Télécharger document',
-                                                icon: const Icon(
+                                                icon: Icon(
                                                   Icons
                                                       .download_for_offline_sharp,
                                                   size: 15.0,
                                                 ),
                                                 options: FFButtonOptions(
                                                   height: 40.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 24.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -953,7 +957,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                                   elevation: 3.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -963,10 +967,10 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(height: 4.0)),
+                                          ].divide(SizedBox(height: 4.0)),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 12.0)),
+                                    ].divide(SizedBox(width: 12.0)),
                                   ),
                                   Text(
                                     'Information ',
@@ -1051,7 +1055,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                           : FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               16.0, 16.0, 16.0, 16.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -1069,12 +1073,12 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                         .asValidator(context),
                                   ),
                                   Container(
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 770.0,
                                     ),
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 12.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -1102,12 +1106,12 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                           width: double.infinity,
                                           height: 48.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: const Color(0xFF928163),
+                                          color: Color(0xFF928163),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
@@ -1117,7 +1121,7 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -1128,8 +1132,8 @@ class _AjoutMaisonWidgetState extends State<AjoutMaisonWidget> {
                                     ),
                                   ),
                                 ]
-                                    .divide(const SizedBox(height: 12.0))
-                                    .addToEnd(const SizedBox(height: 32.0)),
+                                    .divide(SizedBox(height: 12.0))
+                                    .addToEnd(SizedBox(height: 32.0)),
                               ),
                             ),
                           ),

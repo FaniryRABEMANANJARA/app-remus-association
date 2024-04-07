@@ -4,7 +4,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'liste_maison_model.dart';
 export 'liste_maison_model.dart';
 
@@ -36,8 +39,8 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(-60.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-60.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -55,8 +58,8 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, 50.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 50.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -74,8 +77,8 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 60.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -93,8 +96,8 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, 80.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 80.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -139,7 +142,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
@@ -154,7 +157,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
                       child: Text(
                         'Nouveau',
                         style:
@@ -167,7 +170,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: StreamBuilder<List<MaisonRecord>>(
                         stream: queryMaisonRecord(
                           queryBuilder: (maisonRecord) =>
@@ -177,7 +180,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
-                            return const Center(
+                            return Center(
                               child: SizedBox(
                                 width: 50.0,
                                 height: 50.0,
@@ -206,14 +209,14 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                             scrollDirection: Axis.vertical,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 8.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 4.0,
                                         color: Color(0x520E151B),
@@ -226,7 +229,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
+                                    padding: EdgeInsets.all(12.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -245,7 +248,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                               queryParameters: {
                                                 'maisonDetails': serializeParam(
                                                   listViewMaisonRecord
-                                                      .reference,
+                                                      ?.reference,
                                                   ParamType.DocumentReference,
                                                 ),
                                               }.withoutNulls,
@@ -264,7 +267,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -273,7 +276,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                             children: [
                                               Text(
                                                 valueOrDefault<String>(
-                                                  listViewMaisonRecord.nom,
+                                                  listViewMaisonRecord?.nom,
                                                   'nom',
                                                 ),
                                                 style:
@@ -289,11 +292,11 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 5.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
-                                              listViewMaisonRecord.adresse,
+                                              listViewMaisonRecord?.adresse,
                                               'adresse',
                                             ),
                                             style: FlutterFlowTheme.of(context)
@@ -306,10 +309,10 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
+                                              AlignmentDirectional(1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 5.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
@@ -319,7 +322,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                                     'maisonDetails':
                                                         serializeParam(
                                                       listViewMaisonRecord
-                                                          .reference,
+                                                          ?.reference,
                                                       ParamType
                                                           .DocumentReference,
                                                     ),
@@ -329,14 +332,14 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                               text: 'Détails',
                                               options: FFButtonOptions(
                                                 height: 30.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0xFF928163),
+                                                color: Color(0xFF928163),
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleLarge
@@ -347,7 +350,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                                           letterSpacing: 0.0,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -370,7 +373,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
                       child: Text(
                         'La liste des maisons',
                         style:
@@ -383,7 +386,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: StreamBuilder<List<MaisonRecord>>(
                         stream: queryMaisonRecord(
                           queryBuilder: (maisonRecord) =>
@@ -392,7 +395,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
-                            return const Center(
+                            return Center(
                               child: SizedBox(
                                 width: 50.0,
                                 height: 50.0,
@@ -416,7 +419,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                               final listViewMaisonRecord =
                                   listViewMaisonRecordList[listViewIndex];
                               return Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 8.0),
                                 child: Container(
                                   width: double.infinity,
@@ -424,7 +427,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 4.0,
                                         color: Color(0x520E151B),
@@ -437,7 +440,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(8.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -474,9 +477,9 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                         Expanded(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Column(
@@ -498,11 +501,11 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             -1.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   5.0,
@@ -529,7 +532,7 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             1.0, 0.0),
                                                     child: InkWell(
                                                       splashColor:
@@ -584,9 +587,9 @@ class _ListeMaisonWidgetState extends State<ListeMaisonWidget>
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(1.0, -1.0),
+                alignment: AlignmentDirectional(1.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,

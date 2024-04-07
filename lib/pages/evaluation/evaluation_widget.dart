@@ -2,7 +2,10 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'evaluation_model.dart';
 export 'evaluation_model.dart';
 
@@ -44,7 +47,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
           title: Align(
-            alignment: const AlignmentDirectional(-1.0, 0.0),
+            alignment: AlignmentDirectional(-1.0, 0.0),
             child: Text(
               'Évaluation',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -78,7 +81,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 16.0),
                   child: Text(
                     'Notes et appreciations',
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -88,7 +91,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
                   child: StreamBuilder<List<NoteAssociationRecord>>(
                     stream: queryNoteAssociationRecord(
                       queryBuilder: (noteAssociationRecord) =>
@@ -98,7 +101,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
-                        return const Center(
+                        return Center(
                           child: SizedBox(
                             width: 50.0,
                             height: 50.0,
@@ -120,12 +123,12 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                           final columnNoteAssociationRecord =
                               columnNoteAssociationRecordList[columnIndex];
                           return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 10.0),
                             child: Material(
                               color: Colors.transparent,
                               elevation: 1.0,
-                              shape: const RoundedRectangleBorder(
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(5.0),
                                   bottomRight: Radius.circular(5.0),
@@ -138,7 +141,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(5.0),
                                     bottomRight: Radius.circular(5.0),
                                     topLeft: Radius.circular(5.0),
@@ -146,7 +149,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 12.0, 12.0, 12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -168,7 +171,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   2.0, 2.0, 2.0, 2.0),
                                           child: ClipRRect(
                                             borderRadius:
@@ -185,7 +188,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -208,7 +211,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                     ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 0.0),
                                                 child: Text(
@@ -228,7 +231,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         220.0, 0.0, 0.0, 0.0),
                                                 child: Row(
@@ -310,7 +313,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                         },
                                                       );
                                                     },
-                                                    child: const Icon(
+                                                    child: Icon(
                                                       Icons.edit,
                                                       color: Color(0xFFE2DC40),
                                                       size: 24.0,
@@ -318,7 +321,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: InkWell(
@@ -357,7 +360,7 @@ class _EvaluationWidgetState extends State<EvaluationWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFFE2DC40),
                                                                   letterSpacing:
                                                                       0.0,

@@ -1,7 +1,10 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'liste_annonce_model.dart';
 export 'liste_annonce_model.dart';
 
@@ -49,7 +52,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
@@ -61,7 +64,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
                   child: Text(
                     'Nouveau',
                     style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -79,7 +82,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
-                      return const Center(
+                      return Center(
                         child: SizedBox(
                           width: 50.0,
                           height: 50.0,
@@ -108,7 +111,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                       scrollDirection: Axis.vertical,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 5.0, 0.0),
                           child: Container(
                             width: 100.0,
@@ -122,7 +125,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 5.0, 0.0, 0.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
@@ -135,11 +138,11 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 5.0, 0.0, 0.0),
                                   child: Text(
                                     valueOrDefault<String>(
-                                      listViewAnnonceRecord.nom,
+                                      listViewAnnonceRecord?.nom,
                                       'nom',
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -152,11 +155,11 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 5.0, 0.0, 0.0),
                                   child: Text(
                                     valueOrDefault<String>(
-                                      listViewAnnonceRecord.date,
+                                      listViewAnnonceRecord?.date,
                                       'date',
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -182,7 +185,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 5.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
@@ -195,7 +198,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                             queryParameters: {
                                               'annonceDetails': serializeParam(
                                                 listViewAnnonceRecord
-                                                    .reference,
+                                                    ?.reference,
                                                 ParamType.DocumentReference,
                                               ),
                                             }.withoutNulls,
@@ -220,7 +223,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                   },
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
                   child: Text(
                     'Ce dernier mois',
                     style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -237,7 +240,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
-                      return const Center(
+                      return Center(
                         child: SizedBox(
                           width: 50.0,
                           height: 50.0,
@@ -261,7 +264,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                         final listViewAnnonceRecord =
                             listViewAnnonceRecordList[listViewIndex];
                         return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 5.0, 0.0),
                           child: Container(
                             width: 100.0,
@@ -274,7 +277,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -295,7 +298,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 20.0),
                                         child: Text(
                                           listViewAnnonceRecord.nom,
@@ -325,7 +328,7 @@ class _ListeAnnonceWidgetState extends State<ListeAnnonceWidget> {
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 4.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,

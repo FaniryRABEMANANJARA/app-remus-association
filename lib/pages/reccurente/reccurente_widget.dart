@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -5,7 +6,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'reccurente_model.dart';
 export 'reccurente_model.dart';
 
@@ -49,14 +54,14 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFF928163),
+          backgroundColor: Color(0xFF928163),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -74,7 +79,7 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -85,7 +90,7 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -125,7 +130,7 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                   controller:
                                       _model.recurrenceValueController ??=
                                           FormFieldController<String>(null),
-                                  options: const [
+                                  options: [
                                     'Tous les jours',
                                     'Toutes les semaines',
                                     'Tous les 2 semaines',
@@ -157,7 +162,7 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                       FlutterFlowTheme.of(context).alternate,
                                   borderWidth: 2.0,
                                   borderRadius: 8.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 4.0, 16.0, 4.0),
                                   hidesUnderline: true,
                                   isOverButton: true,
@@ -181,7 +186,7 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.typeValueController ??=
                                       FormFieldController<String>(null),
-                                  options: const ['Jamais', 'Le'],
+                                  options: ['Jamais', 'Le'],
                                   onChanged: (val) =>
                                       setState(() => _model.typeValue = val),
                                   width: 300.0,
@@ -206,7 +211,7 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                       FlutterFlowTheme.of(context).alternate,
                                   borderWidth: 2.0,
                                   borderRadius: 8.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 4.0, 16.0, 4.0),
                                   hidesUnderline: true,
                                   isOverButton: true,
@@ -214,10 +219,10 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                   isMultiSelect: false,
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 4.0)),
+                            ].divide(SizedBox(height: 4.0)),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 12.0)),
+                      ].divide(SizedBox(width: 12.0)),
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
@@ -242,7 +247,7 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  final datePickedDate = await showDatePicker(
+                                  final _datePickedDate = await showDatePicker(
                                     context: context,
                                     initialDate: getCurrentTimestamp,
                                     firstDate: getCurrentTimestamp,
@@ -284,12 +289,12 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                     },
                                   );
 
-                                  if (datePickedDate != null) {
+                                  if (_datePickedDate != null) {
                                     safeSetState(() {
                                       _model.datePicked = DateTime(
-                                        datePickedDate.year,
-                                        datePickedDate.month,
-                                        datePickedDate.day,
+                                        _datePickedDate.year,
+                                        _datePickedDate.month,
+                                        _datePickedDate.day,
                                       );
                                     });
                                   }
@@ -308,9 +313,9 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                     ),
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         dateTimeFormat(
@@ -330,14 +335,14 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 4.0)),
+                            ].divide(SizedBox(height: 4.0)),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 12.0)),
+                      ].divide(SizedBox(width: 12.0)),
                     ),
                   ]
-                      .divide(const SizedBox(height: 12.0))
-                      .addToEnd(const SizedBox(height: 32.0)),
+                      .divide(SizedBox(height: 12.0))
+                      .addToEnd(SizedBox(height: 32.0)),
                 ),
               ),
               FFButtonWidget(
@@ -359,17 +364,17 @@ class _ReccurenteWidgetState extends State<ReccurenteWidget> {
                 text: 'Valider',
                 options: FFButtonOptions(
                   height: 40.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: const Color(0xFF928163),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: Color(0xFF928163),
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Inter',
                         color: Colors.white,
                         letterSpacing: 0.0,
                       ),
                   elevation: 3.0,
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

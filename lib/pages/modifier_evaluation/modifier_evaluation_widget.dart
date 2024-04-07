@@ -1,11 +1,16 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'modifier_evaluation_model.dart';
 export 'modifier_evaluation_model.dart';
 
@@ -43,8 +48,8 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, 110.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 110.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -92,7 +97,7 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFF928163),
+          backgroundColor: Color(0xFF928163),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -108,14 +113,14 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
               context.pop();
             },
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
             child: StreamBuilder<List<NoteAssociationRecord>>(
               stream: queryNoteAssociationRecord(
                 singleRecord: true,
@@ -123,7 +128,7 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
-                  return const Center(
+                  return Center(
                     child: SizedBox(
                       width: 50.0,
                       height: 50.0,
@@ -161,7 +166,7 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           'Laisser des notes et des appréciations',
                           style:
@@ -224,7 +229,7 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                                 ),
                                 borderRadius: BorderRadius.circular(0.0),
                               ),
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 12.0, 16.0, 12.0),
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -284,7 +289,7 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                                 ),
                                 borderRadius: BorderRadius.circular(0.0),
                               ),
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 24.0, 16.0, 12.0),
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -300,15 +305,15 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                                 .asValidator(context),
                           ),
                         ]
-                            .divide(const SizedBox(height: 16.0))
-                            .addToStart(const SizedBox(height: 12.0)),
+                            .divide(SizedBox(height: 16.0))
+                            .addToStart(SizedBox(height: 12.0)),
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                         child: Container(
                           width: double.infinity,
-                          constraints: const BoxConstraints(
+                          constraints: BoxConstraints(
                             maxWidth: 500.0,
                           ),
                           decoration: BoxDecoration(
@@ -321,13 +326,13 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.noteController,
@@ -406,7 +411,7 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -427,11 +432,11 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                               text: 'Modifier',
                               options: FFButtonOptions(
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: const Color(0xFF928163),
+                                color: Color(0xFF928163),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -440,7 +445,7 @@ class _ModifierEvaluationWidgetState extends State<ModifierEvaluationWidget>
                                       letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
