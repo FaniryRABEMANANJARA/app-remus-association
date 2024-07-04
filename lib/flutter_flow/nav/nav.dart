@@ -1,20 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -79,87 +72,75 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? NavBarPage()
-          : AuthLoginAssociationWidget(),
+          ? const AccueilWidget()
+          : const AuthLoginAssociationWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? NavBarPage()
-              : AuthLoginAssociationWidget(),
+              ? const AccueilWidget()
+              : const AuthLoginAssociationWidget(),
         ),
         FFRoute(
           name: 'AjoutMission_Association',
           path: '/ajoutMissionAssociation',
-          builder: (context, params) => AjoutMissionAssociationWidget(),
+          builder: (context, params) => const AjoutMissionAssociationWidget(),
         ),
         FFRoute(
           name: 'Accueil',
           path: '/accueil',
-          builder: (context, params) => AccueilWidget(),
+          builder: (context, params) => const AccueilWidget(),
         ),
         FFRoute(
           name: 'Gestion_Ressources',
           path: '/gestionRessources',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Gestion_Ressources')
-              : GestionRessourcesWidget(),
+          builder: (context, params) => const GestionRessourcesWidget(),
         ),
         FFRoute(
           name: 'AjoutRessource',
           path: '/ajoutRessource',
-          builder: (context, params) => AjoutRessourceWidget(),
+          builder: (context, params) => const AjoutRessourceWidget(),
         ),
         FFRoute(
           name: 'ListeMissions',
           path: '/listeMissions',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListeMissions')
-              : ListeMissionsWidget(),
+          builder: (context, params) => const ListeMissionsWidget(),
         ),
         FFRoute(
           name: 'ListeAnnonce',
           path: '/listeAnnonce',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListeAnnonce')
-              : ListeAnnonceWidget(),
+          builder: (context, params) => const ListeAnnonceWidget(),
         ),
         FFRoute(
           name: 'Profile_Association',
           path: '/profileAssociation',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Profile_Association')
-              : ProfileAssociationWidget(),
+          builder: (context, params) => const ProfileAssociationWidget(),
         ),
         FFRoute(
           name: 'ListeMaison',
           path: '/listeMaison',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListeMaison')
-              : ListeMaisonWidget(),
+          builder: (context, params) => const ListeMaisonWidget(),
         ),
         FFRoute(
           name: 'AjoutMaison',
           path: '/ajoutMaison',
-          builder: (context, params) => AjoutMaisonWidget(),
+          builder: (context, params) => const AjoutMaisonWidget(),
         ),
         FFRoute(
           name: 'AjoutEvaluation',
           path: '/ajoutEvaluation',
-          builder: (context, params) => AjoutEvaluationWidget(),
+          builder: (context, params) => const AjoutEvaluationWidget(),
         ),
         FFRoute(
           name: 'Evaluation',
           path: '/evaluation',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Evaluation')
-              : EvaluationWidget(),
+          builder: (context, params) => const EvaluationWidget(),
         ),
         FFRoute(
           name: 'Auth_Login_Association',
           path: '/authLoginAssociation',
-          builder: (context, params) => AuthLoginAssociationWidget(),
+          builder: (context, params) => const AuthLoginAssociationWidget(),
         ),
         FFRoute(
           name: 'Modification_Profile_Association',
@@ -181,18 +162,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             maisonDetails: params.getParam(
               'maisonDetails',
               ParamType.DocumentReference,
-              false,
-              ['maison'],
+              isList: false,
+              collectionNamePath: ['maison'],
             ),
           ),
         ),
         FFRoute(
-          name: 'Complete_profil',
-          path: '/completeProfil',
+          name: 'Complete_profil_association',
+          path: '/completeProfilAssociation',
           asyncParams: {
             'completeProfil': getDoc(['users'], UsersRecord.fromSnapshot),
           },
-          builder: (context, params) => CompleteProfilWidget(
+          builder: (context, params) => CompleteProfilAssociationWidget(
             completeProfil: params.getParam(
               'completeProfil',
               ParamType.Document,
@@ -206,8 +187,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             annonceDetails: params.getParam(
               'annonceDetails',
               ParamType.DocumentReference,
-              false,
-              ['annonce'],
+              isList: false,
+              collectionNamePath: ['annonce'],
             ),
           ),
         ),
@@ -256,7 +237,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'CodeValidation',
           path: '/codeValidation',
-          builder: (context, params) => CodeValidationWidget(),
+          builder: (context, params) => const CodeValidationWidget(),
         ),
         FFRoute(
           name: 'Detail_missionComblee',
@@ -275,7 +256,171 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ListeMissionsaComblee',
           path: '/listeMissionsaComblee',
-          builder: (context, params) => ListeMissionsaCombleeWidget(),
+          builder: (context, params) => const ListeMissionsaCombleeWidget(),
+        ),
+        FFRoute(
+          name: 'ListUser',
+          path: '/listUser',
+          builder: (context, params) => const ListUserWidget(),
+        ),
+        FFRoute(
+          name: 'Role',
+          path: '/role',
+          builder: (context, params) => const RoleWidget(),
+        ),
+        FFRoute(
+          name: 'Complete_profil_educateur',
+          path: '/completeProfilEducateur',
+          asyncParams: {
+            'completerProfil': getDoc(['users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => CompleteProfilEducateurWidget(
+            completerProfil: params.getParam(
+              'completerProfil',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Question1',
+          path: '/question1',
+          builder: (context, params) => const Question1Widget(),
+        ),
+        FFRoute(
+          name: 'Question2',
+          path: '/question2',
+          builder: (context, params) => const Question2Widget(),
+        ),
+        FFRoute(
+          name: 'Question3',
+          path: '/question3',
+          builder: (context, params) => const Question3Widget(),
+        ),
+        FFRoute(
+          name: 'Profile_Educateur',
+          path: '/profileEducateur',
+          builder: (context, params) => ProfileEducateurWidget(
+            detailProfil: params.getParam(
+              'detailProfil',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Engagement',
+          path: '/engagement',
+          builder: (context, params) => const EngagementWidget(),
+        ),
+        FFRoute(
+          name: 'Modification_Profil',
+          path: '/modificationProfil',
+          builder: (context, params) => ModificationProfilWidget(
+            detailProfil: params.getParam(
+              'detailProfil',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ListeMissions_EducateurEncours',
+          path: '/listeMissionsEducateurEncours',
+          builder: (context, params) => const ListeMissionsEducateurEncoursWidget(),
+        ),
+        FFRoute(
+          name: 'ListeMissions_EducateurAnnuler',
+          path: '/listeMissionsEducateurAnnuler',
+          builder: (context, params) => const ListeMissionsEducateurAnnulerWidget(),
+        ),
+        FFRoute(
+          name: 'DetailMission',
+          path: '/detailMission',
+          builder: (context, params) => DetailMissionWidget(
+            missionDetails: params.getParam(
+              'missionDetails',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['mission'],
+            ),
+            recurrenceMission: params.getParam(
+              'recurrenceMission',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['recurrence'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'DetailMission_Encours',
+          path: '/detailMissionEncours',
+          builder: (context, params) => DetailMissionEncoursWidget(
+            missionDetailsEncours: params.getParam(
+              'missionDetailsEncours',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['missionenCours'],
+            ),
+            recurrenceMission: params.getParam(
+              'recurrenceMission',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['recurrence'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'EvaluationMission_Educateur',
+          path: '/evaluationMissionEducateur',
+          builder: (context, params) => EvaluationMissionEducateurWidget(
+            missionEvaluation: params.getParam(
+              'missionEvaluation',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['missionenCours'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Evaluation_Educateur',
+          path: '/evaluationEducateur',
+          builder: (context, params) => const EvaluationEducateurWidget(),
+        ),
+        FFRoute(
+          name: 'AjoutEvaluation_Educateur',
+          path: '/ajoutEvaluationEducateur',
+          builder: (context, params) => const AjoutEvaluationEducateurWidget(),
+        ),
+        FFRoute(
+          name: 'Mission_valider',
+          path: '/missionValider',
+          builder: (context, params) => const MissionValiderWidget(),
+        ),
+        FFRoute(
+          name: 'ListeMissions_EducateurAComblee',
+          path: '/listeMissionsEducateurAComblee',
+          builder: (context, params) => const ListeMissionsEducateurACombleeWidget(),
+        ),
+        FFRoute(
+          name: 'ModificationEvaluation_Educateur',
+          path: '/modificationEvaluationEducateur',
+          asyncParams: {
+            'modifierNoteEducateur':
+                getDoc(['note_educateur'], NoteEducateurRecord.fromSnapshot),
+          },
+          builder: (context, params) => ModificationEvaluationEducateurWidget(
+            modifierNoteEducateur: params.getParam(
+              'modifierNoteEducateur',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'motdepasseoublie',
+          path: '/motdepasseoublie',
+          builder: (context, params) => const MotdepasseoublieWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -352,7 +497,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -371,7 +516,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -392,10 +537,10 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
-  ]) {
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -445,7 +590,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/authLoginAssociation';
           }
           return null;
@@ -509,7 +654,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
@@ -520,7 +665,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;
@@ -530,4 +675,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

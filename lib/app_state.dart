@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '/backend/backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -39,117 +38,116 @@ class FFAppState extends ChangeNotifier {
 
   bool _searchActive = false;
   bool get searchActive => _searchActive;
-  set searchActive(bool _value) {
-    _searchActive = _value;
+  set searchActive(bool value) {
+    _searchActive = value;
   }
 
   bool _searchActive2 = false;
   bool get searchActive2 => _searchActive2;
-  set searchActive2(bool _value) {
-    _searchActive2 = _value;
+  set searchActive2(bool value) {
+    _searchActive2 = value;
   }
 
   List<String> _recentSearch = [];
   List<String> get recentSearch => _recentSearch;
-  set recentSearch(List<String> _value) {
-    _recentSearch = _value;
-    prefs.setStringList('ff_recentSearch', _value);
+  set recentSearch(List<String> value) {
+    _recentSearch = value;
+    prefs.setStringList('ff_recentSearch', value);
   }
 
-  void addToRecentSearch(String _value) {
-    _recentSearch.add(_value);
+  void addToRecentSearch(String value) {
+    recentSearch.add(value);
     prefs.setStringList('ff_recentSearch', _recentSearch);
   }
 
-  void removeFromRecentSearch(String _value) {
-    _recentSearch.remove(_value);
+  void removeFromRecentSearch(String value) {
+    recentSearch.remove(value);
     prefs.setStringList('ff_recentSearch', _recentSearch);
   }
 
-  void removeAtIndexFromRecentSearch(int _index) {
-    _recentSearch.removeAt(_index);
+  void removeAtIndexFromRecentSearch(int index) {
+    recentSearch.removeAt(index);
     prefs.setStringList('ff_recentSearch', _recentSearch);
   }
 
   void updateRecentSearchAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _recentSearch[_index] = updateFn(_recentSearch[_index]);
+    recentSearch[index] = updateFn(_recentSearch[index]);
     prefs.setStringList('ff_recentSearch', _recentSearch);
   }
 
-  void insertAtIndexInRecentSearch(int _index, String _value) {
-    _recentSearch.insert(_index, _value);
+  void insertAtIndexInRecentSearch(int index, String value) {
+    recentSearch.insert(index, value);
     prefs.setStringList('ff_recentSearch', _recentSearch);
   }
 
   List<DocumentReference> _DropdownValue = [];
   List<DocumentReference> get DropdownValue => _DropdownValue;
-  set DropdownValue(List<DocumentReference> _value) {
-    _DropdownValue = _value;
+  set DropdownValue(List<DocumentReference> value) {
+    _DropdownValue = value;
   }
 
-  void addToDropdownValue(DocumentReference _value) {
-    _DropdownValue.add(_value);
+  void addToDropdownValue(DocumentReference value) {
+    DropdownValue.add(value);
   }
 
-  void removeFromDropdownValue(DocumentReference _value) {
-    _DropdownValue.remove(_value);
+  void removeFromDropdownValue(DocumentReference value) {
+    DropdownValue.remove(value);
   }
 
-  void removeAtIndexFromDropdownValue(int _index) {
-    _DropdownValue.removeAt(_index);
+  void removeAtIndexFromDropdownValue(int index) {
+    DropdownValue.removeAt(index);
   }
 
   void updateDropdownValueAtIndex(
-    int _index,
+    int index,
     DocumentReference Function(DocumentReference) updateFn,
   ) {
-    _DropdownValue[_index] = updateFn(_DropdownValue[_index]);
+    DropdownValue[index] = updateFn(_DropdownValue[index]);
   }
 
-  void insertAtIndexInDropdownValue(int _index, DocumentReference _value) {
-    _DropdownValue.insert(_index, _value);
+  void insertAtIndexInDropdownValue(int index, DocumentReference value) {
+    DropdownValue.insert(index, value);
   }
 
   List<DocumentReference> _SelectedValues = [];
   List<DocumentReference> get SelectedValues => _SelectedValues;
-  set SelectedValues(List<DocumentReference> _value) {
-    _SelectedValues = _value;
-    prefs.setStringList(
-        'ff_SelectedValues', _value.map((x) => x.path).toList());
+  set SelectedValues(List<DocumentReference> value) {
+    _SelectedValues = value;
+    prefs.setStringList('ff_SelectedValues', value.map((x) => x.path).toList());
   }
 
-  void addToSelectedValues(DocumentReference _value) {
-    _SelectedValues.add(_value);
-    prefs.setStringList(
-        'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
-  }
-
-  void removeFromSelectedValues(DocumentReference _value) {
-    _SelectedValues.remove(_value);
+  void addToSelectedValues(DocumentReference value) {
+    SelectedValues.add(value);
     prefs.setStringList(
         'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
   }
 
-  void removeAtIndexFromSelectedValues(int _index) {
-    _SelectedValues.removeAt(_index);
+  void removeFromSelectedValues(DocumentReference value) {
+    SelectedValues.remove(value);
+    prefs.setStringList(
+        'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
+  }
+
+  void removeAtIndexFromSelectedValues(int index) {
+    SelectedValues.removeAt(index);
     prefs.setStringList(
         'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
   }
 
   void updateSelectedValuesAtIndex(
-    int _index,
+    int index,
     DocumentReference Function(DocumentReference) updateFn,
   ) {
-    _SelectedValues[_index] = updateFn(_SelectedValues[_index]);
+    SelectedValues[index] = updateFn(_SelectedValues[index]);
     prefs.setStringList(
         'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
   }
 
-  void insertAtIndexInSelectedValues(int _index, DocumentReference _value) {
-    _SelectedValues.insert(_index, _value);
+  void insertAtIndexInSelectedValues(int index, DocumentReference value) {
+    SelectedValues.insert(index, value);
     prefs.setStringList(
         'ff_SelectedValues', _SelectedValues.map((x) => x.path).toList());
   }

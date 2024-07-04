@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -8,11 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'modifier_ressource_model.dart';
 export 'modifier_ressource_model.dart';
 
@@ -39,11 +34,11 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
     super.initState();
     _model = createModel(context, () => ModifierRessourceModel());
 
-    _model.nomController ??=
+    _model.nomTextController ??=
         TextEditingController(text: widget.modifierRessource?.nom);
     _model.nomFocusNode ??= FocusNode();
 
-    _model.descriptionController ??=
+    _model.descriptionTextController ??=
         TextEditingController(text: widget.modifierRessource?.description);
     _model.descriptionFocusNode ??= FocusNode();
     _model.descriptionFocusNode!.addListener(() => setState(() {}));
@@ -66,7 +61,7 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: AppBar(
-          backgroundColor: Color(0xFF928163),
+          backgroundColor: const Color(0xFF928163),
           automaticallyImplyLeading: false,
           title: Column(
             mainAxisSize: MainAxisSize.max,
@@ -76,6 +71,8 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                 'Modification d\'une Ressource',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Readex Pro',
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      fontSize: 20.0,
                       letterSpacing: 0.0,
                     ),
               ),
@@ -86,11 +83,11 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                       letterSpacing: 0.0,
                     ),
               ),
-            ].divide(SizedBox(height: 4.0)),
+            ].divide(const SizedBox(height: 4.0)),
           ),
           actions: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
               child: FlutterFlowIconButton(
                 borderColor: FlutterFlowTheme.of(context).alternate,
                 borderRadius: 12.0,
@@ -122,7 +119,7 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
-                  return Center(
+                  return const Center(
                     child: SizedBox(
                       width: 50.0,
                       height: 50.0,
@@ -145,14 +142,14 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, -1.0),
+                              alignment: const AlignmentDirectional(0.0, -1.0),
                               child: Container(
-                                constraints: BoxConstraints(
+                                constraints: const BoxConstraints(
                                   maxWidth: 770.0,
                                 ),
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -198,12 +195,12 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     child: TextFormField(
-                                                      controller:
-                                                          _model.nomController,
+                                                      controller: _model
+                                                          .nomTextController,
                                                       focusNode:
                                                           _model.nomFocusNode,
                                                       autofocus: true,
@@ -294,17 +291,16 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                             fontFamily: 'Inter',
                                                             letterSpacing: 0.0,
                                                           ),
-                                                      minLines: null,
                                                       validator: _model
-                                                          .nomControllerValidator
+                                                          .nomTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(SizedBox(height: 4.0)),
+                                              ].divide(const SizedBox(height: 4.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(width: 12.0)),
+                                        ].divide(const SizedBox(width: 12.0)),
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -335,7 +331,7 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
-                                                    final _datePickedDate =
+                                                    final datePickedDate =
                                                         await showDatePicker(
                                                       context: context,
                                                       initialDate:
@@ -396,14 +392,14 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                       },
                                                     );
 
-                                                    if (_datePickedDate !=
+                                                    if (datePickedDate !=
                                                         null) {
                                                       safeSetState(() {
                                                         _model.datePicked =
                                                             DateTime(
-                                                          _datePickedDate.year,
-                                                          _datePickedDate.month,
-                                                          _datePickedDate.day,
+                                                          datePickedDate.year,
+                                                          datePickedDate.month,
+                                                          datePickedDate.day,
                                                         );
                                                       });
                                                     }
@@ -428,11 +424,11 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               -1.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -460,10 +456,10 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(SizedBox(height: 4.0)),
+                                              ].divide(const SizedBox(height: 4.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(width: 12.0)),
+                                        ].divide(const SizedBox(width: 12.0)),
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -522,6 +518,11 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                         var downloadUrls =
                                                             <String>[];
                                                         try {
+                                                          showUploadMessage(
+                                                            context,
+                                                            'Téléchargement du fichier',
+                                                            showLoading: true,
+                                                          );
                                                           selectedUploadedFiles =
                                                               selectedFiles
                                                                   .map((m) =>
@@ -551,6 +552,9 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                                       (u) => u!)
                                                                   .toList();
                                                         } finally {
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .hideCurrentSnackBar();
                                                           _model.isDataUploading =
                                                               false;
                                                         }
@@ -570,8 +574,16 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                                 downloadUrls
                                                                     .first;
                                                           });
+                                                          showUploadMessage(
+                                                            context,
+                                                            'Succès',
+                                                          );
                                                         } else {
                                                           setState(() {});
+                                                          showUploadMessage(
+                                                            context,
+                                                            'Failed to upload file',
+                                                          );
                                                           return;
                                                         }
                                                       }
@@ -580,14 +592,14 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                     options: FFButtonOptions(
                                                       height: 40.0,
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   0.0,
                                                                   24.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -610,7 +622,7 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                                     0.0,
                                                               ),
                                                       elevation: 3.0,
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                         width: 1.0,
@@ -621,10 +633,10 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(SizedBox(height: 4.0)),
+                                              ].divide(const SizedBox(height: 4.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(width: 12.0)),
+                                        ].divide(const SizedBox(width: 12.0)),
                                       ),
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -705,7 +717,7 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                       ),
                                       TextFormField(
                                         controller:
-                                            _model.descriptionController,
+                                            _model.descriptionTextController,
                                         focusNode: _model.descriptionFocusNode,
                                         autofocus: true,
                                         textCapitalization:
@@ -789,7 +801,7 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                               : FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
                                           contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 16.0, 16.0, 16.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -804,12 +816,12 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .primary,
                                         validator: _model
-                                            .descriptionControllerValidator
+                                            .descriptionTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ]
-                                        .divide(SizedBox(height: 12.0))
-                                        .addToEnd(SizedBox(height: 32.0)),
+                                        .divide(const SizedBox(height: 12.0))
+                                        .addToEnd(const SizedBox(height: 32.0)),
                                   ),
                                 ),
                               ),
@@ -819,22 +831,23 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                       ),
                     ),
                     Container(
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                         maxWidth: 770.0,
                       ),
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 12.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             await widget.modifierRessource!.reference
                                 .update(createRessourceRecordData(
-                              nom: _model.nomController.text,
+                              nom: _model.nomTextController.text,
                               fichier: _model.uploadedFileUrl,
                               date: _model.datePicked?.toString(),
                               type: _model.radioButtonValue,
-                              description: _model.descriptionController.text,
+                              description:
+                                  _model.descriptionTextController.text,
                             ));
 
                             context.pushNamed('Gestion_Ressources');
@@ -843,11 +856,11 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 48.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF928163),
+                            color: const Color(0xFF928163),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -856,7 +869,7 @@ class _ModifierRessourceWidgetState extends State<ModifierRessourceWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

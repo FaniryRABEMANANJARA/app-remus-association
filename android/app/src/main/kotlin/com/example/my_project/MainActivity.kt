@@ -1,4 +1,4 @@
-package com.mycompany.appremus
+package com.mycompany.appremuseducateur
 
 import io.flutter.embedding.android.FlutterActivity
 

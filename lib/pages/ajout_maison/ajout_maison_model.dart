@@ -1,38 +1,28 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
+import '/components/nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_data.dart';
 import 'ajout_maison_widget.dart' show AjoutMaisonWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class AjoutMaisonModel extends FlutterFlowModel<AjoutMaisonWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  final formKey = GlobalKey<FormState>();
   // State field(s) for nom widget.
   FocusNode? nomFocusNode;
-  TextEditingController? nomController;
-  String? Function(BuildContext, String?)? nomControllerValidator;
+  TextEditingController? nomTextController;
+  String? Function(BuildContext, String?)? nomTextControllerValidator;
   // State field(s) for adresse widget.
   FocusNode? adresseFocusNode;
-  TextEditingController? adresseController;
-  String? Function(BuildContext, String?)? adresseControllerValidator;
+  TextEditingController? adresseTextController;
+  String? Function(BuildContext, String?)? adresseTextControllerValidator;
   // State field(s) for nombre widget.
   FocusNode? nombreFocusNode;
-  TextEditingController? nombreController;
-  String? Function(BuildContext, String?)? nombreControllerValidator;
+  TextEditingController? nombreTextController;
+  String? Function(BuildContext, String?)? nombreTextControllerValidator;
   // State field(s) for age widget.
   FocusNode? ageFocusNode;
-  TextEditingController? ageController;
-  String? Function(BuildContext, String?)? ageControllerValidator;
+  TextEditingController? ageTextController;
+  String? Function(BuildContext, String?)? ageTextControllerValidator;
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -45,28 +35,34 @@ class AjoutMaisonModel extends FlutterFlowModel<AjoutMaisonWidget> {
 
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
-  TextEditingController? descriptionController;
-  String? Function(BuildContext, String?)? descriptionControllerValidator;
+  TextEditingController? descriptionTextController;
+  String? Function(BuildContext, String?)? descriptionTextControllerValidator;
+  // Model for Nav component.
+  late NavModel navModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    navModel = createModel(context, () => NavModel());
+  }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     nomFocusNode?.dispose();
-    nomController?.dispose();
+    nomTextController?.dispose();
 
     adresseFocusNode?.dispose();
-    adresseController?.dispose();
+    adresseTextController?.dispose();
 
     nombreFocusNode?.dispose();
-    nombreController?.dispose();
+    nombreTextController?.dispose();
 
     ageFocusNode?.dispose();
-    ageController?.dispose();
+    ageTextController?.dispose();
 
     descriptionFocusNode?.dispose();
-    descriptionController?.dispose();
+    descriptionTextController?.dispose();
+
+    navModel.dispose();
   }
 }

@@ -9,10 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'modification_profile_association_model.dart';
 export 'modification_profile_association_model.dart';
 
@@ -40,19 +37,19 @@ class _ModificationProfileAssociationWidgetState
     super.initState();
     _model = createModel(context, () => ModificationProfileAssociationModel());
 
-    _model.nomController ??=
+    _model.nomTextController ??=
         TextEditingController(text: widget.modifierProfil?.nom);
     _model.nomFocusNode ??= FocusNode();
 
-    _model.adresseController ??=
+    _model.adresseTextController ??=
         TextEditingController(text: widget.modifierProfil?.adresse);
     _model.adresseFocusNode ??= FocusNode();
 
-    _model.phoneNumberController ??=
+    _model.phoneNumberTextController ??=
         TextEditingController(text: widget.modifierProfil?.phoneNumber);
     _model.phoneNumberFocusNode ??= FocusNode();
 
-    _model.emailController ??=
+    _model.emailTextController ??=
         TextEditingController(text: widget.modifierProfil?.email);
     _model.emailFocusNode ??= FocusNode();
   }
@@ -69,63 +66,35 @@ class _ModificationProfileAssociationWidgetState
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100.0),
-        child: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          automaticallyImplyLeading: false,
-          actions: [],
-          flexibleSpace: FlexibleSpaceBar(
-            title: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
-                        child: FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 30.0,
-                          borderWidth: 1.0,
-                          buttonSize: 50.0,
-                          icon: Icon(
-                            Icons.arrow_back_rounded,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 30.0,
-                          ),
-                          onPressed: () async {
-                            context.pop();
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
-                  child: Text(
-                    'Modifier votre profile',
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Readex Pro',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: 20.0,
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                ),
-              ],
-            ),
-            centerTitle: true,
-            expandedTitleScale: 1.0,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primary,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30.0,
+          borderWidth: 1.0,
+          buttonSize: 60.0,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+            size: 30.0,
           ),
-          elevation: 0.0,
+          onPressed: () async {
+            context.pop();
+          },
         ),
+        title: Text(
+          'Modifier votre profil',
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
+                fontFamily: 'Readex Pro',
+                color: Colors.white,
+                fontSize: 22.0,
+                letterSpacing: 0.0,
+              ),
+        ),
+        actions: const [],
+        centerTitle: true,
+        elevation: 2.0,
       ),
       body: SafeArea(
         top: true,
@@ -134,7 +103,7 @@ class _ModificationProfileAssociationWidgetState
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
-              return Center(
+              return const Center(
                 child: SizedBox(
                   width: 50.0,
                   height: 50.0,
@@ -153,7 +122,7 @@ class _ModificationProfileAssociationWidgetState
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -166,7 +135,7 @@ class _ModificationProfileAssociationWidgetState
                             shape: BoxShape.circle,
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(2.0),
+                            padding: const EdgeInsets.all(2.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -188,6 +157,11 @@ class _ModificationProfileAssociationWidgetState
 
                                   var downloadUrls = <String>[];
                                   try {
+                                    showUploadMessage(
+                                      context,
+                                      'Téléchargement du fichier',
+                                      showLoading: true,
+                                    );
                                     selectedUploadedFiles = selectedMedia
                                         .map((m) => FFUploadedFile(
                                               name:
@@ -209,6 +183,8 @@ class _ModificationProfileAssociationWidgetState
                                         .map((u) => u!)
                                         .toList();
                                   } finally {
+                                    ScaffoldMessenger.of(context)
+                                        .hideCurrentSnackBar();
                                     _model.isDataUploading = false;
                                   }
                                   if (selectedUploadedFiles.length ==
@@ -221,8 +197,11 @@ class _ModificationProfileAssociationWidgetState
                                       _model.uploadedFileUrl =
                                           downloadUrls.first;
                                     });
+                                    showUploadMessage(context, 'Succès');
                                   } else {
                                     setState(() {});
+                                    showUploadMessage(
+                                        context, 'Failed to upload data');
                                     return;
                                   }
                                 }
@@ -231,12 +210,12 @@ class _ModificationProfileAssociationWidgetState
                                 width: 90.0,
                                 height: 90.0,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: CachedNetworkImage(
-                                  fadeInDuration: Duration(milliseconds: 500),
-                                  fadeOutDuration: Duration(milliseconds: 500),
+                                  fadeInDuration: const Duration(milliseconds: 500),
+                                  fadeOutDuration: const Duration(milliseconds: 500),
                                   imageUrl: columnUsersRecord.photoUrl,
                                   fit: BoxFit.fitWidth,
                                 ),
@@ -249,9 +228,9 @@ class _ModificationProfileAssociationWidgetState
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
                     child: TextFormField(
-                      controller: _model.nomController,
+                      controller: _model.nomTextController,
                       focusNode: _model.nomFocusNode,
                       textCapitalization: TextCapitalization.words,
                       obscureText: false,
@@ -298,23 +277,22 @@ class _ModificationProfileAssociationWidgetState
                         filled: true,
                         fillColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 24.0, 0.0, 24.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
                           ),
-                      minLines: null,
-                      validator:
-                          _model.nomControllerValidator.asValidator(context),
+                      validator: _model.nomTextControllerValidator
+                          .asValidator(context),
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
                     child: TextFormField(
-                      controller: _model.adresseController,
+                      controller: _model.adresseTextController,
                       focusNode: _model.adresseFocusNode,
                       textCapitalization: TextCapitalization.words,
                       obscureText: false,
@@ -361,23 +339,22 @@ class _ModificationProfileAssociationWidgetState
                         filled: true,
                         fillColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 24.0, 0.0, 24.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
                           ),
-                      minLines: null,
-                      validator: _model.adresseControllerValidator
+                      validator: _model.adresseTextControllerValidator
                           .asValidator(context),
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
                     child: TextFormField(
-                      controller: _model.phoneNumberController,
+                      controller: _model.phoneNumberTextController,
                       focusNode: _model.phoneNumberFocusNode,
                       textCapitalization: TextCapitalization.words,
                       obscureText: false,
@@ -424,23 +401,22 @@ class _ModificationProfileAssociationWidgetState
                         filled: true,
                         fillColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 24.0, 0.0, 24.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
                           ),
-                      minLines: null,
-                      validator: _model.phoneNumberControllerValidator
+                      validator: _model.phoneNumberTextControllerValidator
                           .asValidator(context),
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
                     child: TextFormField(
-                      controller: _model.emailController,
+                      controller: _model.emailTextController,
                       focusNode: _model.emailFocusNode,
                       textCapitalization: TextCapitalization.words,
                       obscureText: false,
@@ -487,27 +463,26 @@ class _ModificationProfileAssociationWidgetState
                         filled: true,
                         fillColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 24.0, 0.0, 24.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Inter',
                             letterSpacing: 0.0,
                           ),
-                      minLines: null,
-                      validator:
-                          _model.emailControllerValidator.asValidator(context),
+                      validator: _model.emailTextControllerValidator
+                          .asValidator(context),
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 12.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 12.0),
                     child: StreamBuilder<List<MaisonRecord>>(
                       stream: queryMaisonRecord(),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
-                          return Center(
+                          return const Center(
                             child: SizedBox(
                               width: 50.0,
                               height: 50.0,
@@ -550,7 +525,7 @@ class _ModificationProfileAssociationWidgetState
                           borderColor: FlutterFlowTheme.of(context).alternate,
                           borderWidth: 2.0,
                           borderRadius: 8.0,
-                          margin: EdgeInsetsDirectional.fromSTEB(
+                          margin: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 4.0, 12.0, 4.0),
                           hidesUnderline: true,
                           isSearchable: false,
@@ -560,20 +535,20 @@ class _ModificationProfileAssociationWidgetState
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 0.05),
+                    alignment: const AlignmentDirectional(0.0, 0.05),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           await currentUserReference!
                               .update(createUsersRecordData(
-                            email: _model.emailController.text,
-                            nom: _model.nomController.text,
-                            adresse: _model.adresseController.text,
+                            email: _model.emailTextController.text,
+                            nom: _model.nomTextController.text,
+                            adresse: _model.adresseTextController.text,
                             maison: _model.maisonValue,
                             photoUrl: _model.uploadedFileUrl,
-                            phoneNumber: _model.phoneNumberController.text,
+                            phoneNumber: _model.phoneNumberTextController.text,
                           ));
 
                           context.pushNamed('Profile_Association');
@@ -582,11 +557,11 @@ class _ModificationProfileAssociationWidgetState
                         options: FFButtonOptions(
                           width: 270.0,
                           height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFF928163),
+                          color: const Color(0xFF928163),
                           textStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
                                     fontFamily: 'Readex Pro',
@@ -594,7 +569,7 @@ class _ModificationProfileAssociationWidgetState
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

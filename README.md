@@ -1,4 +1,4 @@
-# AppRemus-Association
+# AppRemus
 
 A new Flutter project.
 

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>AppRemus-Association</string>
+	<string>AppRemus</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>AppRemus-Association</string>
+	<string>AppRemus</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -37,10 +37,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>appremusassociation.com</string>
+        <string>appremus.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>appremusassociation</string>
+        <string>appremus</string>
         </array>
         </dict>
     </array>
@@ -54,10 +54,13 @@
 	<true/>
 
 	<key>NSCameraUsageDescription</key>
-    <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+    <string>L&#39;application REMUS souhaite accéder à votre caméra pour vous permettre de prendre des photos et des vidéos directement depuis l&#39;application. Veuillez autoriser l&#39;accès pour continuer.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>In order to upload data, this app requires permission to access the photo library.</string>
-
+    <string>L&#39;application REMUS souhaite accéder à votre bibliothèque de photos pour vous permettre de sélectionner et d&#39;importer des images directement dans l&#39;application. Veuillez autoriser l&#39;accès pour continuer.</string>
+	<key>NSContactsUsageDescription</key>
+    <string>L'application REMUS souhaite accéder à vos contacts pour faciliter le partage et la connexion avec vos amis et contacts. Veuillez autoriser l'accès pour continuer.</string>
+	<key>PermissionGroupNotification</key>
+    <string>L'application REMUS souhaite vous envoyer des notifications</string>
 
 
 	<key>UILaunchStoryboardName</key>

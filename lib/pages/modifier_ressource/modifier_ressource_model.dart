@@ -1,19 +1,7 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/upload_data.dart';
 import 'modifier_ressource_widget.dart' show ModifierRessourceWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class ModifierRessourceModel extends FlutterFlowModel<ModifierRessourceWidget> {
   ///  State fields for stateful widgets in this page.
@@ -22,8 +10,8 @@ class ModifierRessourceModel extends FlutterFlowModel<ModifierRessourceWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for nom widget.
   FocusNode? nomFocusNode;
-  TextEditingController? nomController;
-  String? Function(BuildContext, String?)? nomControllerValidator;
+  TextEditingController? nomTextController;
+  String? Function(BuildContext, String?)? nomTextControllerValidator;
   DateTime? datePicked;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
@@ -34,8 +22,8 @@ class ModifierRessourceModel extends FlutterFlowModel<ModifierRessourceWidget> {
   FormFieldController<String>? radioButtonValueController;
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
-  TextEditingController? descriptionController;
-  String? Function(BuildContext, String?)? descriptionControllerValidator;
+  TextEditingController? descriptionTextController;
+  String? Function(BuildContext, String?)? descriptionTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -44,10 +32,10 @@ class ModifierRessourceModel extends FlutterFlowModel<ModifierRessourceWidget> {
   void dispose() {
     unfocusNode.dispose();
     nomFocusNode?.dispose();
-    nomController?.dispose();
+    nomTextController?.dispose();
 
     descriptionFocusNode?.dispose();
-    descriptionController?.dispose();
+    descriptionTextController?.dispose();
   }
 
   /// Additional helper methods.

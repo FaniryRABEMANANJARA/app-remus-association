@@ -1,10 +1,9 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'gestion_ressources_model.dart';
 export 'gestion_ressources_model.dart';
 
@@ -43,161 +42,143 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        body: SafeArea(
-          top: true,
-          child: Row(
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          automaticallyImplyLeading: false,
+          title: Row(
             mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
-                  child: Container(
-                    width: double.infinity,
-                    constraints: BoxConstraints(
-                      maxWidth: 1170.0,
+              Align(
+                alignment: const AlignmentDirectional(-1.0, 0.0),
+                child: Text(
+                  'Mes ressources',
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily: 'Readex Pro',
+                        color: Colors.white,
+                        fontSize: 22.0,
+                        letterSpacing: 0.0,
+                      ),
+                ),
+              ),
+              if (valueOrDefault(currentUserDocument?.role, '') ==
+                  'association')
+                AuthUserStreamWidget(
+                  builder: (context) => InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed('AjoutRessource');
+                    },
+                    child: Icon(
+                      Icons.add_circle,
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                      size: 40.0,
                     ),
-                    decoration: BoxDecoration(),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 16.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 20.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Mes ressources',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleLarge
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
+                  ),
+                ),
+            ],
+          ),
+          actions: const [],
+          centerTitle: false,
+          elevation: 2.0,
+        ),
+        body: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
+            ),
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (responsiveVisibility(
+                        context: context,
+                        tablet: false,
+                        tabletLandscape: false,
+                        desktop: false,
+                      ))
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 10.0),
+                          child: StreamBuilder<List<RessourceRecord>>(
+                            stream: queryRessourceRecord(),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return const Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        Color(0xFFF4B74C),
                                       ),
-                                    ],
+                                    ),
                                   ),
+                                );
+                              }
+                              List<RessourceRecord>
+                                  documentRessourceRecordList = snapshot.data!;
+                              return ListView.separated(
+                                padding: const EdgeInsets.fromLTRB(
+                                  0,
+                                  0,
+                                  0,
+                                  44.0,
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed('AjoutRessource');
-                                      },
-                                      child: Icon(
-                                        Icons.add_circle,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 40.0,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: documentRessourceRecordList.length,
+                                separatorBuilder: (_, __) =>
+                                    const SizedBox(height: 12.0),
+                                itemBuilder: (context, documentIndex) {
+                                  final documentRessourceRecord =
+                                      documentRessourceRecordList[
+                                          documentIndex];
+                                  return Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    child: Container(
+                                      width: 500.0,
+                                      constraints: const BoxConstraints(
+                                        maxWidth: 570.0,
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          if (responsiveVisibility(
-                            context: context,
-                            tablet: false,
-                            tabletLandscape: false,
-                            desktop: false,
-                          ))
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 10.0),
-                              child: StreamBuilder<List<RessourceRecord>>(
-                                stream: queryRessourceRecord(),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            Color(0xFFF4B74C),
-                                          ),
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 1.0,
                                         ),
                                       ),
-                                    );
-                                  }
-                                  List<RessourceRecord>
-                                      documentRessourceRecordList =
-                                      snapshot.data!;
-                                  return ListView.separated(
-                                    padding: EdgeInsets.fromLTRB(
-                                      0,
-                                      0,
-                                      0,
-                                      44.0,
-                                    ),
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount:
-                                        documentRessourceRecordList.length,
-                                    separatorBuilder: (_, __) =>
-                                        SizedBox(height: 12.0),
-                                    itemBuilder: (context, documentIndex) {
-                                      final documentRessourceRecord =
-                                          documentRessourceRecordList[
-                                              documentIndex];
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        child: Container(
-                                          width: 500.0,
-                                          constraints: BoxConstraints(
-                                            maxWidth: 570.0,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            border: Border.all(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              width: 1.0,
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsets.all(4.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 12.0, 0.0),
-                                                  child: Text(
-                                                    documentRessourceRecord.nom,
-                                                    textAlign: TextAlign.end,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 0.0, 12.0, 0.0),
+                                              child: Text(
+                                                documentRessourceRecord.nom,
+                                                textAlign: TextAlign.end,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .headlineSmall
                                                         .override(
                                                           fontFamily:
@@ -205,61 +186,60 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                         ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(12.0, 4.0, 12.0,
-                                                          16.0),
-                                                  child: Text(
-                                                    documentRessourceRecord
-                                                        .description,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 4.0, 12.0, 16.0),
+                                              child: Text(
+                                                documentRessourceRecord
+                                                    .description,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .labelMedium
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                  ),
-                                                ),
-                                                Divider(
-                                                  height: 2.0,
-                                                  thickness: 1.0,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
+                                              ),
+                                            ),
+                                            Divider(
+                                              height: 2.0,
+                                              thickness: 1.0,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
                                                       .alternate,
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(12.0, 12.0,
-                                                          12.0, 8.0),
-                                                  child: Row(
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 12.0, 12.0, 8.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
                                                     children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Icon(
-                                                            Icons
-                                                                .cloud_download,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
+                                                      Icon(
+                                                        Icons.cloud_download,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
                                                                 .secondaryText,
-                                                            size: 24.0,
-                                                          ),
-                                                          Text(
-                                                            'Télécharger',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
+                                                        size: 24.0,
+                                                      ),
+                                                      Text(
+                                                        'Télécharger',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
@@ -267,67 +247,71 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                          ),
-                                                        ].divide(SizedBox(
-                                                            width: 4.0)),
                                                       ),
-                                                      Container(
-                                                        height: 32.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBackground,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      12.0),
-                                                          border: Border.all(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary,
-                                                            width: 2.0,
-                                                          ),
-                                                        ),
-                                                        child: Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        8.0,
-                                                                        0.0,
-                                                                        8.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              documentRessourceRecord
-                                                                  .type,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Inter',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
+                                                    ].divide(
+                                                        const SizedBox(width: 4.0)),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(12.0, 12.0,
-                                                          12.0, 8.0),
-                                                  child: Row(
+                                                  Container(
+                                                    height: 32.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .primaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        width: 2.0,
+                                                      ),
+                                                    ),
+                                                    child: Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    8.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          documentRessourceRecord
+                                                              .type,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Inter',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            if (valueOrDefault(
+                                                    currentUserDocument?.role,
+                                                    '') ==
+                                                'association')
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 12.0, 12.0, 8.0),
+                                                child: AuthUserStreamWidget(
+                                                  builder: (context) => Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     mainAxisAlignment:
@@ -362,13 +346,14 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                         },
                                                         child: Icon(
                                                           Icons.edit,
-                                                          color:
-                                                              Color(0xFFE2DC40),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
                                                         ),
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -409,8 +394,9 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: Color(
-                                                                      0xFFE2DC40),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -471,23 +457,32 @@ class _GestionRessourcesWidgetState extends State<GestionRessourcesWidget> {
                                                     ],
                                                   ),
                                                 ),
-                                              ],
-                                            ),
-                                          ),
+                                              ),
+                                          ],
                                         ),
-                                      );
-                                    },
+                                      ),
+                                    ),
                                   );
                                 },
-                              ),
-                            ),
-                        ],
-                      ),
+                              );
+                            },
+                          ),
+                        ),
+                    ].addToEnd(const SizedBox(height: 100.0)),
+                  ),
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 1.0),
+                  child: wrapWithModel(
+                    model: _model.navModel,
+                    updateCallback: () => setState(() {}),
+                    child: const NavWidget(
+                      hidden: false,
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -1,16 +1,8 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
+import '/components/nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'liste_missionsa_comblee_widget.dart' show ListeMissionsaCombleeWidget;
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:text_search/text_search.dart';
 
 class ListeMissionsaCombleeModel
     extends FlutterFlowModel<ListeMissionsaCombleeWidget> {
@@ -24,13 +16,19 @@ class ListeMissionsaCombleeModel
   String? textFieldSelectedOption;
   String? Function(BuildContext, String?)? textControllerValidator;
   List<MissionaCombleRecord> simpleSearchResults = [];
+  // Model for Nav component.
+  late NavModel navModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    navModel = createModel(context, () => NavModel());
+  }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     textFieldFocusNode?.dispose();
+
+    navModel.dispose();
   }
 }

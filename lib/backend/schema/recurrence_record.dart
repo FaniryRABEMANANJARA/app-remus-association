@@ -3,16 +3,15 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class RecurrenceRecord extends FirestoreRecord {
   RecurrenceRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -26,15 +25,15 @@ class RecurrenceRecord extends FirestoreRecord {
   String get date => _date ?? '';
   bool hasDate() => _date != null;
 
-  // "recurrene" field.
-  String? _recurrene;
-  String get recurrene => _recurrene ?? '';
-  bool hasRecurrene() => _recurrene != null;
+  // "recurrence" field.
+  String? _recurrence;
+  String get recurrence => _recurrence ?? '';
+  bool hasRecurrence() => _recurrence != null;
 
   void _initializeFields() {
     _type = snapshotData['type'] as String?;
     _date = snapshotData['date'] as String?;
-    _recurrene = snapshotData['recurrene'] as String?;
+    _recurrence = snapshotData['recurrence'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -74,13 +73,13 @@ class RecurrenceRecord extends FirestoreRecord {
 Map<String, dynamic> createRecurrenceRecordData({
   String? type,
   String? date,
-  String? recurrene,
+  String? recurrence,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'type': type,
       'date': date,
-      'recurrene': recurrene,
+      'recurrence': recurrence,
     }.withoutNulls,
   );
 
@@ -94,12 +93,12 @@ class RecurrenceRecordDocumentEquality implements Equality<RecurrenceRecord> {
   bool equals(RecurrenceRecord? e1, RecurrenceRecord? e2) {
     return e1?.type == e2?.type &&
         e1?.date == e2?.date &&
-        e1?.recurrene == e2?.recurrene;
+        e1?.recurrence == e2?.recurrence;
   }
 
   @override
   int hash(RecurrenceRecord? e) =>
-      const ListEquality().hash([e?.type, e?.date, e?.recurrene]);
+      const ListEquality().hash([e?.type, e?.date, e?.recurrence]);
 
   @override
   bool isValidKey(Object? o) => o is RecurrenceRecord;
